@@ -1,0 +1,5245 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、准备工作1.1 载入库和初始化设置1234567891011#载入库和初始化设置import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport math#字体plt.rcParams[&#x27;font.sans-serif&#x27;]&#x3D;[&#x27;SimHei&#x27;]plt.rcParams[&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前程无忧数据分析岗位可视化分析">
+<meta property="og:url" content="https://3022799479.github.io/blog/2025/02/15/%E6%B1%82%E8%81%8C%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、准备工作1.1 载入库和初始化设置1234567891011#载入库和初始化设置import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport math#字体plt.rcParams[&#x27;font.sans-serif&#x27;]&#x3D;[&#x27;SimHei&#x27;]plt.rcParams[&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output1-1.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output1-2.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output2-1.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output3-1.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_68_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_71_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_74_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_77_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_80_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_83_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_87_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output3-2.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_96_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_98_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output_102_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output3-3.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output3-4.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output3-5.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output4-1.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output4-2.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output4-3.png">
+<meta property="article:published_time" content="2025-02-15T08:49:38.000Z">
+<meta property="article:modified_time" content="2025-04-28T00:35:41.286Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://3022799479.github.io/blog/pic/jobsrwuImg/output1-1.png">
+  
+  
+  
+  <title>前程无忧数据分析岗位可视化分析 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"3022799479.github.io","root":"/blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>数据分析项目集</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前程无忧数据分析岗位可视化分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-15 16:49" pubdate>
+          2025年2月15日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          174 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">前程无忧数据分析岗位可视化分析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h1><h2 id="1-1-载入库和初始化设置"><a href="#1-1-载入库和初始化设置" class="headerlink" title="1.1 载入库和初始化设置"></a>1.1 载入库和初始化设置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#载入库和初始化设置</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> math<br><span class="hljs-comment">#字体</span><br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>]=[<span class="hljs-string">&#x27;SimHei&#x27;</span>]<br>plt.rcParams[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="hljs-literal">False</span><br><span class="hljs-comment">#通过警告过滤器对是否发出警告信息进行控制</span><br><span class="hljs-keyword">import</span> warnings<br>warnings.filterwarnings(<span class="hljs-string">&#x27;ignore&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-2-读取数据"><a href="#1-2-读取数据" class="headerlink" title="1.2 读取数据"></a>1.2 读取数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#读取csv文件 </span><br>df=pd.read_csv(<span class="hljs-string">&#x27;C:\\数据分析师\\2大数据分析师\\12数据分析项目\\项目1 求职分析\\data.csv&#x27;</span>) <br><span class="hljs-comment">#展示前5行数据 </span><br>df.head()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/pic/jobsrwuImg/output1-1.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="1-3-观察数据基本情况"><a href="#1-3-观察数据基本情况" class="headerlink" title="1.3 观察数据基本情况"></a>1.3 观察数据基本情况</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1000 entries, 0 to 999
+Data columns (total 12 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   职位      1000 non-null   object
+ 1   薪资      999 non-null    object
+ 2   城市      993 non-null    object
+ 3   区域      1000 non-null   object
+ 4   经验      1000 non-null   object
+ 5   学历      987 non-null    object
+ 6   发布时间    1000 non-null   object
+ 7   公司      1000 non-null   object
+ 8   公司领域    1000 non-null   object
+ 9   公司性质    1000 non-null   object
+ 10  公司规模    1000 non-null   object
+ 11  标签      993 non-null    object
+dtypes: object(12)
+memory usage: 93.9+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.describe()<span class="hljs-comment">#展示数据的描述性统计信息</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output1-2.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h1 id="二、数据清洗"><a href="#二、数据清洗" class="headerlink" title="二、数据清洗"></a>二、数据清洗</h1><h2 id="2-1-对薪酬进行处理"><a href="#2-1-对薪酬进行处理" class="headerlink" title="2.1 对薪酬进行处理"></a>2.1 对薪酬进行处理</h2><p>（1）删除薪酬中的缺少值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean=df.dropna(subset=[<span class="hljs-string">&#x27;薪资&#x27;</span>])<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 999 entries, 0 to 999
+Data columns (total 12 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   职位      999 non-null    object
+ 1   薪资      999 non-null    object
+ 2   城市      992 non-null    object
+ 3   区域      999 non-null    object
+ 4   经验      999 non-null    object
+ 5   学历      986 non-null    object
+ 6   发布时间    999 non-null    object
+ 7   公司      999 non-null    object
+ 8   公司领域    999 non-null    object
+ 9   公司性质    999 non-null    object
+ 10  公司规模    999 non-null    object
+ 11  标签      992 non-null    object
+dtypes: object(12)
+memory usage: 101.5+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean[<span class="hljs-string">&#x27;薪资&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">0              5-7千
+1              3-4千
+2      1.2-1.8万·19薪
+3              4-8千
+4        1-1.5万·13薪
+           ...     
+995    1.5-2.5万·14薪
+996        3.5-4.5千
+997            5-6千
+998            6-8千
+999        1.2-1.6万
+Name: 薪资, Length: 999, dtype: object
+</code></pre>
+<p>(2)薪酬单位统一为千&#x2F;月</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">cut_word</span>(<span class="hljs-params">word,method</span>):<br>    pos1=word.find(<span class="hljs-string">&#x27;万&#x27;</span>)<br>    pos2=word.find(<span class="hljs-string">&#x27;千&#x27;</span>)<br>    pos3=word.find(<span class="hljs-string">&#x27;-&#x27;</span>)        <br>    <span class="hljs-keyword">if</span> pos3!=-<span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">if</span> pos1!=-<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">if</span> pos2==-<span class="hljs-number">1</span>:<br>                bottom=<span class="hljs-built_in">float</span>(word[:pos3])*<span class="hljs-number">10</span><span class="hljs-comment">#计算最低薪酬</span><br>                top=<span class="hljs-built_in">float</span>(word[pos3+<span class="hljs-number">1</span>:pos1])*<span class="hljs-number">10</span><span class="hljs-comment">#计算最高薪酬</span><br>            <span class="hljs-keyword">else</span>: <br>                bottom=<span class="hljs-built_in">float</span>(word[:pos2])<span class="hljs-comment">#计算最低薪酬,假如遇到千为最低位数据</span><br>                top=<span class="hljs-built_in">float</span>(word[pos3+<span class="hljs-number">1</span>:pos1])*<span class="hljs-number">10</span><span class="hljs-comment">#计算最高薪酬</span><br>        <span class="hljs-keyword">elif</span> pos2!=-<span class="hljs-number">1</span>:<br>            bottom=<span class="hljs-built_in">float</span>(word[:pos3])<br>            top=<span class="hljs-built_in">float</span>(word[pos3+<span class="hljs-number">1</span>:pos2])<br>    <span class="hljs-keyword">else</span>:<br>        bottom=np.nan<br>        top=np.nan<br>    <span class="hljs-keyword">if</span> method==<span class="hljs-string">&#x27;top&#x27;</span>:<br>        <span class="hljs-keyword">return</span> top<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> bottom<br><br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">salary=df_clean[<span class="hljs-string">&#x27;薪资&#x27;</span>][<span class="hljs-number">6</span>]<br>cut_word(salary,<span class="hljs-string">&#x27;bottom&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">7.0
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean[<span class="hljs-string">&#x27;top&#x27;</span>]=df_clean.薪资.apply(cut_word,method=<span class="hljs-string">&#x27;top&#x27;</span>)<span class="hljs-comment">#计算最高薪酬写入top列</span><br>df_clean[<span class="hljs-string">&#x27;bottom&#x27;</span>]=df_clean.薪资.apply(cut_word,method=<span class="hljs-string">&#x27;bottom&#x27;</span>)<span class="hljs-comment">#计算最低薪酬</span><br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.head()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output2-1.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 999 entries, 0 to 999
+Data columns (total 14 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   职位      999 non-null    object 
+ 1   薪资      999 non-null    object 
+ 2   城市      992 non-null    object 
+ 3   区域      999 non-null    object 
+ 4   经验      999 non-null    object 
+ 5   学历      986 non-null    object 
+ 6   发布时间    999 non-null    object 
+ 7   公司      999 non-null    object 
+ 8   公司领域    999 non-null    object 
+ 9   公司性质    999 non-null    object 
+ 10  公司规模    999 non-null    object 
+ 11  标签      992 non-null    object 
+ 12  top     997 non-null    float64
+ 13  bottom  997 non-null    float64
+dtypes: float64(2), object(12)
+memory usage: 149.4+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">(<span class="hljs-number">3</span>)删除top中的缺失值<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean=df_clean.dropna(subset=[<span class="hljs-string">&#x27;bottom&#x27;</span>])<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 997 entries, 0 to 999
+Data columns (total 14 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   职位      997 non-null    object 
+ 1   薪资      997 non-null    object 
+ 2   城市      990 non-null    object 
+ 3   区域      997 non-null    object 
+ 4   经验      997 non-null    object 
+ 5   学历      984 non-null    object 
+ 6   发布时间    997 non-null    object 
+ 7   公司      997 non-null    object 
+ 8   公司领域    997 non-null    object 
+ 9   公司性质    997 non-null    object 
+ 10  公司规模    997 non-null    object 
+ 11  标签      990 non-null    object 
+ 12  top     997 non-null    float64
+ 13  bottom  997 non-null    float64
+dtypes: float64(2), object(12)
+memory usage: 116.8+ KB
+</code></pre>
+<p>(4)获取平均薪酬和对数平均薪酬（GDP和股票会做对数平均）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean[<span class="hljs-string">&#x27;avgsalary&#x27;</span>]=df_clean.apply(<span class="hljs-keyword">lambda</span> x:(x.top+x.bottom)/<span class="hljs-number">2</span>,axis=<span class="hljs-number">1</span>)<br>df_clean[<span class="hljs-string">&#x27;insalary&#x27;</span>]=df_clean.apply(<span class="hljs-keyword">lambda</span> x:math.log(x.avgsalary),axis=<span class="hljs-number">1</span>)<br>df_clean[<span class="hljs-string">&#x27;avgsalary&#x27;</span>].head()<br>df_clean[<span class="hljs-string">&#x27;insalary&#x27;</span>].head()<br>            <br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">0    1.791759
+1    1.252763
+2    2.708050
+3    1.791759
+4    2.525729
+Name: insalary, dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 997 entries, 0 to 999
+Data columns (total 16 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         997 non-null    object 
+ 1   薪资         997 non-null    object 
+ 2   城市         990 non-null    object 
+ 3   区域         997 non-null    object 
+ 4   经验         997 non-null    object 
+ 5   学历         984 non-null    object 
+ 6   发布时间       997 non-null    object 
+ 7   公司         997 non-null    object 
+ 8   公司领域       997 non-null    object 
+ 9   公司性质       997 non-null    object 
+ 10  公司规模       997 non-null    object 
+ 11  标签         990 non-null    object 
+ 12  top        997 non-null    float64
+ 13  bottom     997 non-null    float64
+ 14  avgsalary  997 non-null    float64
+ 15  insalary   997 non-null    float64
+dtypes: float64(4), object(12)
+memory usage: 132.4+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.to_excel(<span class="hljs-string">&#x27;C:\\数据分析师\\2大数据分析师\\12数据分析项目\\项目1 求职分析\\51salary.xlsx&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2地区处理"><a href="#2-2地区处理" class="headerlink" title="2.2地区处理"></a>2.2地区处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.城市[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">&#39;宿迁&#39;
+</code></pre>
+<p>(1)提取出现率最高的前n个城市</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.城市.value_counts().head(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">城市
+上海    158
+深圳     98
+广州     94
+北京     62
+武汉     49
+成都     40
+南京     31
+重庆     28
+苏州     27
+宁波     23
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#构建一个提取前n个城市的函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">topN</span>(<span class="hljs-params">city,n</span>):<br>    topNCity=<span class="hljs-built_in">list</span>(df_clean.城市.value_counts().head(n).index)<br>    <span class="hljs-keyword">if</span> city <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> topNCity:<br>        name=<span class="hljs-string">&#x27;其他&#x27;</span><br>    <span class="hljs-keyword">else</span>:<br>        name=city<br>    <span class="hljs-keyword">return</span> name<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean[<span class="hljs-string">&#x27;city&#x27;</span>]=df_clean.城市.apply(topN,n=<span class="hljs-number">15</span>)<br>df_clean.city.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">city
+其他    292
+上海    158
+深圳     98
+广州     94
+北京     62
+武汉     49
+成都     40
+南京     31
+重庆     28
+苏州     27
+宁波     23
+杭州     22
+无锡     22
+长沙     20
+佛山     16
+郑州     15
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.drop([<span class="hljs-string">&#x27;城市&#x27;</span>],axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>)<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 997 entries, 0 to 999
+Data columns (total 16 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         997 non-null    object 
+ 1   薪资         997 non-null    object 
+ 2   区域         997 non-null    object 
+ 3   经验         997 non-null    object 
+ 4   学历         984 non-null    object 
+ 5   发布时间       997 non-null    object 
+ 6   公司         997 non-null    object 
+ 7   公司领域       997 non-null    object 
+ 8   公司性质       997 non-null    object 
+ 9   公司规模       997 non-null    object 
+ 10  标签         990 non-null    object 
+ 11  top        997 non-null    float64
+ 12  bottom     997 non-null    float64
+ 13  avgsalary  997 non-null    float64
+ 14  insalary   997 non-null    float64
+ 15  city       997 non-null    object 
+dtypes: float64(4), object(12)
+memory usage: 132.4+ KB
+</code></pre>
+<h2 id="2-3处理企业性质"><a href="#2-3处理企业性质" class="headerlink" title="2.3处理企业性质"></a>2.3处理企业性质</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">1</span>）预处理<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.公司性质.value_counts()<br><span class="hljs-comment">#非盈利组织、事业单位、创业公司没有代表性，予以删除</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">公司性质
+民营         670
+国企          82
+已上市         64
+外资（非欧美）     62
+外资（欧美）      57
+合资          47
+非营利组织        8
+事业单位         6
+创业公司         1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#非盈利组织、事业单位、创业公司没有代表性，予以删除</span><br>df_clean=df_clean.loc[~df_clean[<span class="hljs-string">&#x27;公司性质&#x27;</span>].isin([<span class="hljs-string">&#x27;非营利组织&#x27;</span>,<span class="hljs-string">&#x27;事业单位&#x27;</span>,<span class="hljs-string">&#x27;创业公司&#x27;</span>])]<br>df_clean.公司性质.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">公司性质
+民营         670
+国企          82
+已上市         64
+外资（非欧美）     62
+外资（欧美）      57
+合资          47
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">(<span class="hljs-number">2</span>)构建一个函数，将指定类别合并<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">mergeType</span>(<span class="hljs-params"><span class="hljs-built_in">type</span></span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;外资（非欧美）&#x27;</span>,<span class="hljs-string">&#x27;外资（欧美）&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;外资企业&#x27;</span><br>    <span class="hljs-keyword">else</span>:<br>        type1=<span class="hljs-built_in">type</span><br>    <span class="hljs-keyword">return</span> type1<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean[<span class="hljs-string">&#x27;type&#x27;</span>]=df_clean.公司性质.apply(mergeType)<br>df_clean.<span class="hljs-built_in">type</span>.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">type
+民营      670
+外资企业    119
+国企       82
+已上市      64
+合资       47
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.drop([<span class="hljs-string">&#x27;公司性质&#x27;</span>],axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>)<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 982 entries, 0 to 999
+Data columns (total 16 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         982 non-null    object 
+ 1   薪资         982 non-null    object 
+ 2   区域         982 non-null    object 
+ 3   经验         982 non-null    object 
+ 4   学历         969 non-null    object 
+ 5   发布时间       982 non-null    object 
+ 6   公司         982 non-null    object 
+ 7   公司领域       982 non-null    object 
+ 8   公司规模       982 non-null    object 
+ 9   标签         975 non-null    object 
+ 10  top        982 non-null    float64
+ 11  bottom     982 non-null    float64
+ 12  avgsalary  982 non-null    float64
+ 13  insalary   982 non-null    float64
+ 14  city       982 non-null    object 
+ 15  type       982 non-null    object 
+dtypes: float64(4), object(12)
+memory usage: 130.4+ KB
+</code></pre>
+<h2 id="2-4-公司规模"><a href="#2-4-公司规模" class="headerlink" title="2.4 公司规模"></a>2.4 公司规模</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.公司规模.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">公司规模
+150-500人       185
+50-150人        167
+1000-5000人     157
+少于50人          125
+10000人以上       106
+未知             105
+500-1000人      103
+5000-10000人     34
+Name: count, dtype: int64
+</code></pre>
+<h2 id="2-5行业"><a href="#2-5行业" class="headerlink" title="2.5行业"></a>2.5行业</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.公司领域.value_counts()<span class="hljs-comment">#行业分布情况</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">公司领域
+计算机软件                132
+电子技术/半导体/集成电路         82
+互联网/电子商务              80
+贸易/进出口                61
+快速消费品(食品、饮料、化妆品)      55
+专业服务(咨询、人力资源、财会)      42
+计算机服务(系统、数据服务、维修)     38
+机械/设备/重工              32
+环保                    31
+制药/生物工程               30
+汽车                    28
+服装/纺织/皮革              28
+金融/投资/证券              28
+批发/零售                 26
+新能源                   23
+交通/运输/物流              20
+通信/电信/网络设备            18
+中介服务                  17
+房地产                   16
+医疗设备/器械               14
+多元化业务集团公司             12
+影视/媒体/艺术/文化传播         11
+石油/化工/矿产/地质           11
+仪器仪表/工业自动化            11
+通信/电信运营、增值服务          11
+银行                    10
+家具/家电/玩具/礼品           10
+电气/电力/水利               9
+教育/培训/院校               8
+建筑/建材/工程               7
+酒店/旅游                  7
+会计/审计                  7
+原材料和加工                 6
+物业管理/商业中心              6
+广告                     5
+网络游戏                   5
+医疗/护理/卫生               5
+印刷/包装/造纸               4
+保险                     4
+文字媒体/出版                4
+农/林/牧/渔                4
+美容/保健                  3
+航天/航空                  3
+汽车零配件                  3
+外包服务                   3
+检测，认证                  3
+奢侈品/收藏品/工艺品/珠宝         2
+计算机硬件                  1
+非营利组织                  1
+办公用品及设备                1
+家居/室内设计/装潢             1
+餐饮业                    1
+公关/市场推广/会展             1
+学术/科研                  1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.公司领域=df_clean.公司领域.<span class="hljs-built_in">str</span>.split(<span class="hljs-string">&#x27;，&#x27;</span>,expand=<span class="hljs-literal">True</span>)[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.公司领域.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">公司领域
+计算机软件                132
+电子技术/半导体/集成电路         82
+互联网/电子商务              80
+贸易/进出口                61
+快速消费品(食品、饮料、化妆品)      55
+专业服务(咨询、人力资源、财会)      42
+计算机服务(系统、数据服务、维修)     38
+机械/设备/重工              32
+环保                    31
+制药/生物工程               30
+汽车                    28
+服装/纺织/皮革              28
+金融/投资/证券              28
+批发/零售                 26
+新能源                   23
+交通/运输/物流              20
+通信/电信/网络设备            18
+中介服务                  17
+房地产                   16
+医疗设备/器械               14
+多元化业务集团公司             12
+影视/媒体/艺术/文化传播         11
+石油/化工/矿产/地质           11
+仪器仪表/工业自动化            11
+通信/电信运营、增值服务          11
+银行                    10
+家具/家电/玩具/礼品           10
+电气/电力/水利               9
+教育/培训/院校               8
+建筑/建材/工程               7
+酒店/旅游                  7
+会计/审计                  7
+原材料和加工                 6
+物业管理/商业中心              6
+广告                     5
+网络游戏                   5
+医疗/护理/卫生               5
+印刷/包装/造纸               4
+保险                     4
+文字媒体/出版                4
+农/林/牧/渔                4
+美容/保健                  3
+航天/航空                  3
+汽车零配件                  3
+外包服务                   3
+检测                     3
+奢侈品/收藏品/工艺品/珠宝         2
+计算机硬件                  1
+非营利组织                  1
+办公用品及设备                1
+家居/室内设计/装潢             1
+餐饮业                    1
+公关/市场推广/会展             1
+学术/科研                  1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">topNiudu</span>(<span class="hljs-params">industry,n</span>):<br>    topNiudu=<span class="hljs-built_in">list</span>(df_clean.公司领域.value_counts().head(n).index)<br>    <span class="hljs-keyword">if</span> industry <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> topNiudu:<br>            name=<span class="hljs-string">&#x27;其他&#x27;</span>    <br>    <span class="hljs-keyword">else</span>:<br>            name=industry    <br>    <span class="hljs-keyword">return</span> name<br>df_clean[<span class="hljs-string">&#x27;industry&#x27;</span>]=df_clean.公司领域.apply(topNiudu,n=<span class="hljs-number">15</span>)<br>df_clean.industry.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">industry
+其他                   266
+计算机软件                132
+电子技术/半导体/集成电路         82
+互联网/电子商务              80
+贸易/进出口                61
+快速消费品(食品、饮料、化妆品)      55
+专业服务(咨询、人力资源、财会)      42
+计算机服务(系统、数据服务、维修)     38
+机械/设备/重工              32
+环保                    31
+制药/生物工程               30
+汽车                    28
+金融/投资/证券              28
+服装/纺织/皮革              28
+批发/零售                 26
+新能源                   23
+Name: count, dtype: int64
+</code></pre>
+<h2 id="2-6-工作经验处理"><a href="#2-6-工作经验处理" class="headerlink" title="2.6 工作经验处理"></a>2.6 工作经验处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 982 entries, 0 to 999
+Data columns (total 18 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         982 non-null    object 
+ 1   薪资         982 non-null    object 
+ 2   区域         982 non-null    object 
+ 3   经验         982 non-null    object 
+ 4   学历         969 non-null    object 
+ 5   发布时间       982 non-null    object 
+ 6   公司         982 non-null    object 
+ 7   公司领域       982 non-null    object 
+ 8   公司性质       982 non-null    object 
+ 9   公司规模       982 non-null    object 
+ 10  标签         975 non-null    object 
+ 11  top        982 non-null    float64
+ 12  bottom     982 non-null    float64
+ 13  avgsalary  982 non-null    float64
+ 14  insalary   982 non-null    float64
+ 15  city       982 non-null    object 
+ 16  type       982 non-null    object 
+ 17  industry   982 non-null    object 
+dtypes: float64(4), object(14)
+memory usage: 145.8+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.经验.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">经验
+无需经验      282
+3年及以上     165
+1年及以上     117
+2年及以上     102
+1年         63
+5年及以上      60
+1-3年       44
+3-4年       32
+2年         31
+3-5年       25
+5-7年       13
+1-2年        9
+2-3年        7
+2-5年        4
+7年及以上       3
+1-5年        3
+8年及以上       3
+3年          3
+2-4年        3
+5-10年       3
+5年          2
+8-9年        2
+2-8年        1
+10年及以上      1
+4年及以上       1
+1-7年        1
+5-8年        1
+6-8年        1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">mergeExp</span>(<span class="hljs-params">exp</span>):    <br>    <span class="hljs-keyword">if</span> exp <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;3年及以上&#x27;</span>,<span class="hljs-string">&#x27;3-4年&#x27;</span>,<span class="hljs-string">&#x27;3-5年&#x27;</span>,<span class="hljs-string">&#x27;3年&#x27;</span>,<span class="hljs-string">&#x27;4年及以上&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;3-5年经验&#x27;</span> <br>    <span class="hljs-keyword">elif</span> exp <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;2年及以上&#x27;</span>,<span class="hljs-string">&#x27;2年&#x27;</span>,<span class="hljs-string">&#x27;2-3年&#x27;</span>,<span class="hljs-string">&#x27;2-5年&#x27;</span>,<span class="hljs-string">&#x27;2-4年&#x27;</span>,<span class="hljs-string">&#x27;2-8年&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;2年及以上经验&#x27;</span><br>    <span class="hljs-keyword">elif</span> exp <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;1年及以上&#x27;</span>,<span class="hljs-string">&#x27;1年&#x27;</span>,<span class="hljs-string">&#x27;1-3年&#x27;</span>,<span class="hljs-string">&#x27;1-2年&#x27;</span>,<span class="hljs-string">&#x27;1-5年&#x27;</span>,<span class="hljs-string">&#x27;1-7年&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;1年及以上经验&#x27;</span><br>    <span class="hljs-keyword">elif</span> exp <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;5年及以上&#x27;</span>,<span class="hljs-string">&#x27;5-7年&#x27;</span>,<span class="hljs-string">&#x27;5-10年&#x27;</span>,<span class="hljs-string">&#x27;5年&#x27;</span>,<span class="hljs-string">&#x27;5-8年&#x27;</span>,<span class="hljs-string">&#x27;6-8年&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;5年及以上经验&#x27;</span><br>    <span class="hljs-keyword">elif</span> exp <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;7年及以上&#x27;</span>,<span class="hljs-string">&#x27;8年及以上&#x27;</span>,<span class="hljs-string">&#x27;8-9年&#x27;</span>,<span class="hljs-string">&#x27;10年及以上&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;7年及以上经验&#x27;</span><br>    <span class="hljs-keyword">elif</span> exp <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;无需经验&#x27;</span>]:<br>        type1=<span class="hljs-string">&#x27;无需经验&#x27;</span><br>    <span class="hljs-keyword">else</span>:<br>        type1=<span class="hljs-string">&#x27;其他&#x27;</span>    <br>    <span class="hljs-keyword">return</span> type1<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean[<span class="hljs-string">&#x27;exp&#x27;</span>]=df_clean.经验.apply(mergeExp)<br>df_clean.exp.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">exp
+无需经验       282
+1年及以上经验    237
+3-5年经验     226
+2年及以上经验    148
+5年及以上经验     80
+7年及以上经验      9
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 982 entries, 0 to 999
+Data columns (total 19 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         982 non-null    object 
+ 1   薪资         982 non-null    object 
+ 2   区域         982 non-null    object 
+ 3   经验         982 non-null    object 
+ 4   学历         969 non-null    object 
+ 5   发布时间       982 non-null    object 
+ 6   公司         982 non-null    object 
+ 7   公司领域       982 non-null    object 
+ 8   公司性质       982 non-null    object 
+ 9   公司规模       982 non-null    object 
+ 10  标签         975 non-null    object 
+ 11  top        982 non-null    float64
+ 12  bottom     982 non-null    float64
+ 13  avgsalary  982 non-null    float64
+ 14  insalary   982 non-null    float64
+ 15  city       982 non-null    object 
+ 16  type       982 non-null    object 
+ 17  industry   982 non-null    object 
+ 18  exp        982 non-null    object 
+dtypes: float64(4), object(15)
+memory usage: 153.4+ KB
+</code></pre>
+<h2 id="2-7学历处理"><a href="#2-7学历处理" class="headerlink" title="2.7学历处理"></a>2.7学历处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean.学历.value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">学历
+本科       683
+大专       219
+硕士        48
+高中        12
+中技/中专      6
+博士         1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#删除缺失值</span><br>df_clean=df_clean.dropna(subset=[<span class="hljs-string">&#x27;学历&#x27;</span>])<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 969 entries, 0 to 999
+Data columns (total 19 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         969 non-null    object 
+ 1   薪资         969 non-null    object 
+ 2   区域         969 non-null    object 
+ 3   经验         969 non-null    object 
+ 4   学历         969 non-null    object 
+ 5   发布时间       969 non-null    object 
+ 6   公司         969 non-null    object 
+ 7   公司领域       969 non-null    object 
+ 8   公司性质       969 non-null    object 
+ 9   公司规模       969 non-null    object 
+ 10  标签         962 non-null    object 
+ 11  top        969 non-null    float64
+ 12  bottom     969 non-null    float64
+ 13  avgsalary  969 non-null    float64
+ 14  insalary   969 non-null    float64
+ 15  city       969 non-null    object 
+ 16  type       969 non-null    object 
+ 17  industry   969 non-null    object 
+ 18  exp        969 non-null    object 
+dtypes: float64(4), object(15)
+memory usage: 151.4+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#观察发现高中、中技/中专、博士数量很少，考虑删除</span><br>df_clean=df_clean.loc[~df_clean[<span class="hljs-string">&#x27;学历&#x27;</span>].isin([<span class="hljs-string">&#x27;高中&#x27;</span>,<span class="hljs-string">&#x27;中技/中专&#x27;</span>,<span class="hljs-string">&#x27;博士&#x27;</span>])]<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 950 entries, 0 to 999
+Data columns (total 19 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         950 non-null    object 
+ 1   薪资         950 non-null    object 
+ 2   区域         950 non-null    object 
+ 3   经验         950 non-null    object 
+ 4   学历         950 non-null    object 
+ 5   发布时间       950 non-null    object 
+ 6   公司         950 non-null    object 
+ 7   公司领域       950 non-null    object 
+ 8   公司性质       950 non-null    object 
+ 9   公司规模       950 non-null    object 
+ 10  标签         943 non-null    object 
+ 11  top        950 non-null    float64
+ 12  bottom     950 non-null    float64
+ 13  avgsalary  950 non-null    float64
+ 14  insalary   950 non-null    float64
+ 15  city       950 non-null    object 
+ 16  type       950 non-null    object 
+ 17  industry   950 non-null    object 
+ 18  exp        950 non-null    object 
+dtypes: float64(4), object(15)
+memory usage: 148.4+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># df_clean.drop([&#x27;经验&#x27;],axis=1,inplace=True)</span><br><span class="hljs-comment"># df_clean.drop([&#x27;公司领域&#x27;],axis=1,inplace=True)</span><br><span class="hljs-comment"># df_clean.drop([&#x27;公司性质&#x27;],axis=1,inplace=True)</span><br>df_clean.drop([<span class="hljs-string">&#x27;薪资&#x27;</span>],axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>)<br>df_clean.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 950 entries, 0 to 999
+Data columns (total 15 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   职位         950 non-null    object 
+ 1   区域         950 non-null    object 
+ 2   学历         950 non-null    object 
+ 3   发布时间       950 non-null    object 
+ 4   公司         950 non-null    object 
+ 5   公司规模       950 non-null    object 
+ 6   标签         943 non-null    object 
+ 7   top        950 non-null    float64
+ 8   bottom     950 non-null    float64
+ 9   avgsalary  950 non-null    float64
+ 10  insalary   950 non-null    float64
+ 11  city       950 non-null    object 
+ 12  type       950 non-null    object 
+ 13  industry   950 non-null    object 
+ 14  exp        950 non-null    object 
+dtypes: float64(4), object(11)
+memory usage: 118.8+ KB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean1=df_clean.rename(columns=&#123;<br>    <span class="hljs-string">&#x27;职位&#x27;</span>:<span class="hljs-string">&#x27;job&#x27;</span>,<br>    <span class="hljs-string">&#x27;区域&#x27;</span>:<span class="hljs-string">&#x27;area&#x27;</span>,<br>    <span class="hljs-string">&#x27;学历&#x27;</span>:<span class="hljs-string">&#x27;education&#x27;</span>,<br>    <span class="hljs-string">&#x27;发布时间&#x27;</span>:<span class="hljs-string">&#x27;datetime&#x27;</span>,<br>    <span class="hljs-string">&#x27;公司&#x27;</span>:<span class="hljs-string">&#x27;company&#x27;</span>,<br>    <span class="hljs-string">&#x27;公司规模&#x27;</span>:<span class="hljs-string">&#x27;scale&#x27;</span>,<br>    <span class="hljs-string">&#x27;标签&#x27;</span>:<span class="hljs-string">&#x27;tag&#x27;</span><br>&#125;)<br>df_clean1.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 950 entries, 0 to 999
+Data columns (total 15 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   job        950 non-null    object 
+ 1   area       950 non-null    object 
+ 2   education  950 non-null    object 
+ 3   datetime   950 non-null    object 
+ 4   company    950 non-null    object 
+ 5   scale      950 non-null    object 
+ 6   tag        943 non-null    object 
+ 7   top        950 non-null    float64
+ 8   bottom     950 non-null    float64
+ 9   avgsalary  950 non-null    float64
+ 10  insalary   950 non-null    float64
+ 11  city       950 non-null    object 
+ 12  type       950 non-null    object 
+ 13  industry   950 non-null    object 
+ 14  exp        950 non-null    object 
+dtypes: float64(4), object(11)
+memory usage: 118.8+ KB
+</code></pre>
+<h2 id="2-8保存清洗结果"><a href="#2-8保存清洗结果" class="headerlink" title="2.8保存清洗结果"></a>2.8保存清洗结果</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_clean1.to_excel(<span class="hljs-string">&#x27;C:\\数据分析师\\2大数据分析师\\12数据分析项目\\项目1 求职分析\\51salary.xlsx&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="三、数据可视化分析"><a href="#三、数据可视化分析" class="headerlink" title="三、数据可视化分析"></a>三、数据可视化分析</h1><h2 id="3-1读取数据"><a href="#3-1读取数据" class="headerlink" title="3.1读取数据"></a>3.1读取数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">df_plot=pd.read_excel(<span class="hljs-string">&#x27;C:\\数据分析师\\2大数据分析师\\12数据分析项目\\项目1 求职分析\\51salary.xlsx&#x27;</span>,sheet_name=<span class="hljs-string">&#x27;Sheet1&#x27;</span>)<br>df_plot.drop([<span class="hljs-string">&#x27;Unnamed: 0&#x27;</span>],axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>)<br>df_plot.head()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output3-1.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="3-2单因素分析及可视化"><a href="#3-2单因素分析及可视化" class="headerlink" title="3.2单因素分析及可视化"></a>3.2单因素分析及可视化</h2><h3 id="3-2-1各因素对职位数量的影响"><a href="#3-2-1各因素对职位数量的影响" class="headerlink" title="3.2.1各因素对职位数量的影响"></a>3.2.1各因素对职位数量的影响</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">1</span>）城市对职位的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">jobcount=df_plot.city.value_counts()<br>jobcount<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">city
+其他    287
+上海    153
+深圳     93
+广州     89
+北京     60
+武汉     49
+成都     32
+南京     31
+苏州     26
+宁波     23
+杭州     22
+无锡     21
+重庆     19
+长沙     19
+佛山     16
+郑州     10
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">ax=jobcount.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">12</span>,color=[<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-string">&#x27;orange&#x27;</span>])<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():<br>    <span class="hljs-comment">#遍历ax对象中的每个xticklabels,将角度设为0</span><br>    label.set_rotation(<span class="hljs-number">0</span>)<br><span class="hljs-comment">#将数据写上去</span><br><span class="hljs-comment"># ax.text(0-0.2,290,&#x27;其他&#x27;)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(jobcount)):<br>    ax.text(i-<span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(jobcount[i]))/<span class="hljs-number">10</span>,jobcount[i]+<span class="hljs-number">4</span>,jobcount[i])<br>plt.title(<span class="hljs-string">&#x27;职位数按城市分布情况&#x27;</span>,fontsize=<span class="hljs-number">15</span>,y=<span class="hljs-number">1.05</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_68_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">从上图可以看出，上海、深圳、广州、北京、武汉公司出现次数最多，即职位数量最多，占据了总数量的<span class="hljs-number">1</span>/<span class="hljs-number">3</span>左右；另外其他公司出现次数占据了总数量的<span class="hljs-number">2</span>/<span class="hljs-number">3</span>,<br>而其他数据均为在城市数量里非前<span class="hljs-number">10</span>的类别，说明该职位的城市分布较广，比较流行。<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">2</span>）公司规模对职位数量的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">jobcount=df_plot.scale.value_counts()<br>ax=jobcount.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">10</span>,color=[<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-string">&#x27;orange&#x27;</span>])<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():    <br><span class="hljs-comment">#遍历ax对象中的每个xticklabels,将角度设为0</span><br>    label.set_rotation(<span class="hljs-number">0</span>)<br><span class="hljs-comment">#将数据写上去</span><br><span class="hljs-comment"># ax.text(0-0.2,290,&#x27;其他&#x27;)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(jobcount)):<br>    ax.text(i-<span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(jobcount[i]))/<span class="hljs-number">22</span>,jobcount[i]+<span class="hljs-number">3</span>,jobcount[i])<br>plt.title(<span class="hljs-string">&#x27;职位数按公司规模分布情况&#x27;</span>,fontsize=<span class="hljs-number">13</span>,y=<span class="hljs-number">1.05</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_71_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">从上图可以看出，公司规模为<span class="hljs-number">150</span>-<span class="hljs-number">500</span>人的照片需求旺盛，公司规模<span class="hljs-number">5000</span>-<span class="hljs-number">10000</span>人以上的公司招聘需求不大<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">3</span>）学历对职位数量的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">jobcount=df_plot.education.value_counts()<br>ax=jobcount.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">15</span>,color=[<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-string">&#x27;orange&#x27;</span>])<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():    <br><span class="hljs-comment">#遍历ax对象中的每个xticklabels,将角度设为0</span><br>    label.set_rotation(<span class="hljs-number">0</span>)<br><span class="hljs-comment">#将数据写上去</span><br><span class="hljs-comment"># ax.text(0-0.2,290,&#x27;其他&#x27;)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(jobcount)):<br>    ax.text(i-<span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(jobcount[i]))/<span class="hljs-number">40</span>,jobcount[i]+<span class="hljs-number">5</span>,jobcount[i])<br>plt.title(<span class="hljs-string">&#x27;职位数按学历分布情况&#x27;</span>,fontsize=<span class="hljs-number">18</span>,y=<span class="hljs-number">1.05</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_74_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">从上图可以看出，本科和大专以上是职位数量最多的，占据了总职位数的一半以上<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">4</span>）工作经验对职位数量的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">jobcount=df_plot.exp.value_counts()<br>ax=jobcount.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">10</span>,color=[<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-string">&#x27;orange&#x27;</span>])<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():    <br><span class="hljs-comment">#遍历ax对象中的每个xticklabels,将角度设为0</span><br>    label.set_rotation(<span class="hljs-number">0</span>)<br><span class="hljs-comment">#将数据写上去</span><br><span class="hljs-comment"># ax.text(0-0.2,290,&#x27;其他&#x27;)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(jobcount)):<br>    ax.text(i-<span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(jobcount[i]))/<span class="hljs-number">30</span>,jobcount[i]+<span class="hljs-number">2</span>,jobcount[i])<br>plt.title(<span class="hljs-string">&#x27;职位数按工作经验分布情况&#x27;</span>,fontsize=<span class="hljs-number">15</span>,y=<span class="hljs-number">1.05</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_77_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">通过上图观察发现，<span class="hljs-number">1</span>年及以上经验、<span class="hljs-number">3</span>-<span class="hljs-number">5</span>年经验职位数量较多，<span class="hljs-number">7</span>年及以上要求的职位非常少，大部分职位没有工作经验的要求，可能需要面谈<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">5</span>）企业性质对职位数量的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">jobcount=df_plot.<span class="hljs-built_in">type</span>.value_counts()<br>ax=jobcount.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">10</span>,color=[<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-string">&#x27;orange&#x27;</span>])<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():    <br><span class="hljs-comment">#遍历ax对象中的每个xticklabels,将角度设为0</span><br>    label.set_rotation(<span class="hljs-number">0</span>)<br><span class="hljs-comment">#将数据写上去</span><br><span class="hljs-comment"># ax.text(0-0.2,290,&#x27;其他&#x27;)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(jobcount)):<br>    ax.text(i-<span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(jobcount[i]))/<span class="hljs-number">30</span>,jobcount[i]+<span class="hljs-number">2</span>,jobcount[i])<br>plt.title(<span class="hljs-string">&#x27;职位数按企业性质分布情况&#x27;</span>,fontsize=<span class="hljs-number">15</span>,y=<span class="hljs-number">1.05</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_80_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">通过上图发现，民营类企业对数据分析师需求最高<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">6</span>） 行业对职位数量的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">jobcount=df_plot.industry.value_counts()<br>ax=jobcount.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">10</span>,color=[<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-string">&#x27;orange&#x27;</span>])<br><span class="hljs-comment"># for label in ax.get_xticklabels():    </span><br><span class="hljs-comment">#遍历ax对象中的每个xticklabels,将角度设为0</span><br>    <span class="hljs-comment"># label.set_rotation(0)</span><br><span class="hljs-comment">#将数据写上去</span><br><span class="hljs-comment"># ax.text(0-0.2,290,&#x27;其他&#x27;)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(jobcount)):<br>    ax.text(i-<span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(jobcount[i]))/<span class="hljs-number">10</span>,jobcount[i]+<span class="hljs-number">2</span>,jobcount[i])<br>plt.title(<span class="hljs-string">&#x27;职位数按企业性质分布情况&#x27;</span>,fontsize=<span class="hljs-number">15</span>,y=<span class="hljs-number">1.05</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_83_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">通过上图发现，计算机软件行业职位数量最多，另外其他类别职位数占总数的<span class="hljs-number">2</span>/<span class="hljs-number">3</span>左右，说明数据分析师职业的行业分布较广。<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">(<span class="hljs-number">5</span>)不同城市对薪酬的影响<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">citycount=df_plot.groupby([<span class="hljs-string">&#x27;city&#x27;</span>]).count().insalary<br>citycount<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">city
+上海    153
+佛山     16
+其他    287
+北京     60
+南京     31
+宁波     23
+广州     89
+成都     32
+无锡     21
+杭州     22
+武汉     49
+深圳     93
+苏州     26
+郑州     10
+重庆     19
+长沙     19
+Name: insalary, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">df_plot.boxplot(column=[<span class="hljs-string">&#x27;insalary&#x27;</span>],by=<span class="hljs-string">&#x27;city&#x27;</span>,fontsize=<span class="hljs-number">12</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),widths=citycount/<span class="hljs-number">900</span>+<span class="hljs-number">0.3</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;城市&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;薪酬水平分布&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;不同城市的薪酬水平分布情况&#x27;</span>,fontsize=<span class="hljs-number">15</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_87_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">上海、北京、宁波薪酬水平整体较高，其他城市薪酬水平较为平衡<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-3多因素分析及可视化"><a href="#3-3多因素分析及可视化" class="headerlink" title="3.3多因素分析及可视化"></a>3.3多因素分析及可视化</h2><h3 id="3-3-1城市和学历对薪酬的多重影响"><a href="#3-3-1城市和学历对薪酬的多重影响" class="headerlink" title="3.3.1城市和学历对薪酬的多重影响"></a>3.3.1城市和学历对薪酬的多重影响</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">1</span>）预处理、数据透视<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 每个城市对应的对数平均薪酬的平均值</span><br>df_plot.groupby(<span class="hljs-string">&#x27;city&#x27;</span>).insalary.mean()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">city
+上海    2.699730
+佛山    2.163198
+其他    2.320035
+北京    2.734078
+南京    2.637441
+宁波    2.929867
+广州    2.443657
+成都    2.386616
+无锡    2.320558
+杭州    2.445171
+武汉    2.532356
+深圳    2.479486
+苏州    2.404957
+郑州    2.306187
+重庆    2.284883
+长沙    2.920612
+Name: insalary, dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df_plot.head()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output3-2.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 每个城市下，每种学历对应的对数平均薪酬的平均值</span><br>df_plot.groupby([<span class="hljs-string">&#x27;city&#x27;</span>,<span class="hljs-string">&#x27;education&#x27;</span>]).insalary.mean().unstack()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code class="hljs">.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>education</th>
+      <th>大专</th>
+      <th>本科</th>
+      <th>硕士</th>
+    </tr>
+    <tr>
+      <th>city</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>上海</th>
+      <td>2.208830</td>
+      <td>2.814228</td>
+      <td>2.818495</td>
+    </tr>
+    <tr>
+      <th>佛山</th>
+      <td>2.188974</td>
+      <td>2.154606</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>其他</th>
+      <td>2.008698</td>
+      <td>2.424660</td>
+      <td>2.835047</td>
+    </tr>
+    <tr>
+      <th>北京</th>
+      <td>2.163051</td>
+      <td>2.777939</td>
+      <td>3.104713</td>
+    </tr>
+    <tr>
+      <th>南京</th>
+      <td>2.136451</td>
+      <td>2.679837</td>
+      <td>2.995732</td>
+    </tr>
+    <tr>
+      <th>宁波</th>
+      <td>2.098345</td>
+      <td>3.054596</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>广州</th>
+      <td>1.920796</td>
+      <td>2.594564</td>
+      <td>2.616889</td>
+    </tr>
+    <tr>
+      <th>成都</th>
+      <td>2.116709</td>
+      <td>2.476585</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>无锡</th>
+      <td>2.083337</td>
+      <td>2.407854</td>
+      <td>2.197225</td>
+    </tr>
+    <tr>
+      <th>杭州</th>
+      <td>2.175986</td>
+      <td>2.414396</td>
+      <td>3.806662</td>
+    </tr>
+    <tr>
+      <th>武汉</th>
+      <td>2.061707</td>
+      <td>2.502203</td>
+      <td>3.776276</td>
+    </tr>
+    <tr>
+      <th>深圳</th>
+      <td>2.165335</td>
+      <td>2.545916</td>
+      <td>4.214181</td>
+    </tr>
+    <tr>
+      <th>苏州</th>
+      <td>1.739401</td>
+      <td>2.535918</td>
+      <td>3.113515</td>
+    </tr>
+    <tr>
+      <th>郑州</th>
+      <td>1.871802</td>
+      <td>2.410846</td>
+      <td>2.442347</td>
+    </tr>
+    <tr>
+      <th>重庆</th>
+      <td>NaN</td>
+      <td>2.205050</td>
+      <td>2.963463</td>
+    </tr>
+    <tr>
+      <th>长沙</th>
+      <td>1.871802</td>
+      <td>3.264417</td>
+      <td>2.302585</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">(<span class="hljs-number">2</span>)可视化<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">ax=df_plot.groupby([<span class="hljs-string">&#x27;city&#x27;</span>,<span class="hljs-string">&#x27;education&#x27;</span>]).insalary.mean().unstack().plot.bar(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">10</span>)<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():<br>    label.set_rotation(<span class="hljs-number">0</span>)<span class="hljs-comment">#设置每个x刻度的标签角度为0</span><br>plt.xlabel(<span class="hljs-string">&#x27;城市&#x27;</span>,fontsize=<span class="hljs-number">12</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;对数平均薪酬&#x27;</span>,fontsize=<span class="hljs-number">12</span>)<br>plt.title(<span class="hljs-string">&#x27;城市和学历对薪酬的多重影响&#x27;</span>,fontsize=<span class="hljs-number">14</span>)<br>plt.legend(fontsize=<span class="hljs-number">12</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_96_0.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<h3 id="3-3-2学历和工作经验对薪酬的多重影响"><a href="#3-3-2学历和工作经验对薪酬的多重影响" class="headerlink" title="3.3.2学历和工作经验对薪酬的多重影响"></a>3.3.2学历和工作经验对薪酬的多重影响</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">ax=df_plot.groupby([<span class="hljs-string">&#x27;education&#x27;</span>,<span class="hljs-string">&#x27;exp&#x27;</span>]).insalary.mean().unstack().plot.bar(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),fontsize=<span class="hljs-number">10</span>)<br><span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> ax.get_xticklabels():<br>    label.set_rotation(<span class="hljs-number">0</span>)<span class="hljs-comment">#设置每个x刻度的标签角度为0</span><br>plt.xlabel(<span class="hljs-string">&#x27;学历&#x27;</span>,fontsize=<span class="hljs-number">12</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;对数平均薪酬&#x27;</span>,fontsize=<span class="hljs-number">12</span>)<br>plt.title(<span class="hljs-string">&#x27;学历和工作经验对薪酬的多重影响&#x27;</span>,fontsize=<span class="hljs-number">14</span>)<br>plt.legend(fontsize=<span class="hljs-number">12</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_98_0.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">从上图可以看出，大部分学历中的薪酬与工作经验都呈正相关；硕士学历下，各工作经验下的薪资水平差别不大；无工作经验的薪酬水平和一年工作经验的薪酬水平在同一学历条件下相差不大<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-3大专和本科学历对薪酬的影响"><a href="#3-3-3大专和本科学历对薪酬的影响" class="headerlink" title="3.3.3大专和本科学历对薪酬的影响"></a>3.3.3大专和本科学历对薪酬的影响</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">dz=df_plot[df_plot.education==<span class="hljs-string">&#x27;大专&#x27;</span>].insalary<br>bk=df_plot[df_plot.education==<span class="hljs-string">&#x27;本科&#x27;</span>].insalary<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">fig,ax=plt.subplots(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>))<br>ax.hist(dz,bins=<span class="hljs-number">40</span>,alpha=<span class="hljs-number">0.5</span>,color=<span class="hljs-string">&#x27;r&#x27;</span>)<br>ax.hist(bk,bins=<span class="hljs-number">40</span>,alpha=<span class="hljs-number">0.5</span>,color=<span class="hljs-string">&#x27;b&#x27;</span>)<br>ax.legend([<span class="hljs-string">&#x27;大专&#x27;</span>,<span class="hljs-string">&#x27;本科&#x27;</span>],fontsize=<span class="hljs-number">12</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/jobsrwuImg/output_102_0.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">本科覆盖范围比大专更广，高薪更多<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-4关键词的词云图绘制"><a href="#3-4关键词的词云图绘制" class="headerlink" title="3.4关键词的词云图绘制"></a>3.4关键词的词云图绘制</h2><h3 id="3-4-1读取数据"><a href="#3-4-1读取数据" class="headerlink" title="3.4.1读取数据"></a>3.4.1读取数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dfw=pd.read_excel(<span class="hljs-string">&#x27;C:\\数据分析师\\2大数据分析师\\12数据分析项目\\项目1 求职分析\\51salary.xlsx&#x27;</span>,sheet_name=<span class="hljs-string">&#x27;Sheet1&#x27;</span>)<br>dfw.drop([<span class="hljs-string">&#x27;Unnamed: 0&#x27;</span>],axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>)<br>dfw.head()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output3-3.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#按空格进行分割，获得的是一个以列表为元素的series对象</span><br>wel_word=dfw.tag.<span class="hljs-built_in">str</span>.split(<span class="hljs-string">&#x27; &#x27;</span>)<br>wel_word<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">0              [数据分析, 市场营销, 短视频, 用户运营, 五险一金, 节日福利, 定期体检]
+1                                          [数据分析, excel]
+2                               [数据分析, 数据挖掘, 数据支撑, 数据提取]
+3      [销售, 办公软件, 售后, 客户维护, 产品销售, 市场动态, 外贸销售, 数据统计分析,...
+4      [数据分析, sql, 英语, 编程, 数学, 数据仓库, 数据支持, 数据挖掘, 数据可视...
+                             ...                        
+945                                                  NaN
+946                [数据分析, excel, 报表, 图表制作, 数据整理录入, 周末双休]
+947    [英语读写, bpo行业, 韩语读写, 五险一金, 补充医疗保险, 定期体检, 周末双休, ...
+948    [大气科学, 环境科学, 分析决策, 绩效奖金, 专业培训, 带薪年假, 五险一金, 节日福...
+949    [办公软件, 运营, excel, 财务, 审计, 预算, 会计, 财务管理, 财务报表, ...
+Name: tag, Length: 950, dtype: object
+</code></pre>
+<h3 id="3-4-2词云图的绘制"><a href="#3-4-2词云图的绘制" class="headerlink" title="3.4.2词云图的绘制"></a>3.4.2词云图的绘制</h3><h4 id="3-4-2-1先展开成一个交叉表，再利用stack和unstack进行切换"><a href="#3-4-2-1先展开成一个交叉表，再利用stack和unstack进行切换" class="headerlink" title="3.4.2.1先展开成一个交叉表，再利用stack和unstack进行切换"></a>3.4.2.1先展开成一个交叉表，再利用stack和unstack进行切换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">（<span class="hljs-number">1</span>）统计各关键词出现的次数<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df_word=wel_word.dropna().apply(pd.value_counts)<br>df_word<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output3-4.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">wel_word=df_word.unstack().dropna().reset_index()<br>wel_word<br></code></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code class="hljs">.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>level_0</th>
+      <th>level_1</th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>数据分析</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>数据分析</td>
+      <td>1</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>数据分析</td>
+      <td>2</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>数据分析</td>
+      <td>4</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>数据分析</td>
+      <td>5</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>12556</th>
+      <td>学术活动</td>
+      <td>942</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12557</th>
+      <td>临床研究</td>
+      <td>942</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12558</th>
+      <td>图表制作</td>
+      <td>946</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12559</th>
+      <td>数据整理录入</td>
+      <td>946</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12560</th>
+      <td>分析决策</td>
+      <td>948</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>12561 rows × 3 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">wel_word=wel_word.groupby(<span class="hljs-string">&#x27;level_0&#x27;</span>).count().sort_values(by=[<span class="hljs-string">&#x27;level_1&#x27;</span>],ascending=<span class="hljs-literal">False</span>)<br>wel_word<br></code></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code class="hljs">.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>level_1</th>
+      <th>0</th>
+    </tr>
+    <tr>
+      <th>level_0</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>五险一金</th>
+      <td>690</td>
+      <td>690</td>
+    </tr>
+    <tr>
+      <th>数据分析</th>
+      <td>580</td>
+      <td>580</td>
+    </tr>
+    <tr>
+      <th>年终奖金</th>
+      <td>466</td>
+      <td>466</td>
+    </tr>
+    <tr>
+      <th>绩效奖金</th>
+      <td>444</td>
+      <td>444</td>
+    </tr>
+    <tr>
+      <th>定期体检</th>
+      <td>380</td>
+      <td>380</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>案例分析</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>案例分析报告</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>案例研究</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>初中物理</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>***</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1555 rows × 2 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">(<span class="hljs-number">2</span>)绘制词云图<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pyecharts.charts <span class="hljs-keyword">import</span> WordCloud<br><span class="hljs-keyword">import</span> pyecharts.options <span class="hljs-keyword">as</span> opt<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">word=wel_word[<span class="hljs-string">&#x27;level_1&#x27;</span>].index.tolist()<br>word<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">[&#39;五险一金&#39;,
+ &#39;数据分析&#39;,
+ &#39;年终奖金&#39;,
+ &#39;绩效奖金&#39;,
+ &#39;定期体检&#39;,
+ &#39;专业培训&#39;,
+ &#39;带薪年假&#39;,
+ &#39;餐饮补贴&#39;,
+ &#39;sql&#39;,
+ &#39;excel&#39;,
+ &#39;节日福利&#39;,
+ &#39;员工旅游&#39;,
+ &#39;周末双休&#39;,
+ &#39;交通补贴&#39;,
+ &#39;通讯补贴&#39;,
+ &#39;数学&#39;,
+ &#39;计算机&#39;,
+ &#39;弹性工作&#39;,
+ &#39;补充医疗保险&#39;,
+ &#39;统计&#39;,
+ &#39;方案&#39;,
+ &#39;数据&#39;,
+ &#39;免费班车&#39;,
+ &#39;办公软件&#39;,
+ &#39;数据挖掘&#39;,
+ &#39;数据支持&#39;,
+ &#39;数据可视化&#39;,
+ &#39;数据库&#39;,
+ &#39;ppt&#39;,
+ &#39;tableau&#39;,
+ &#39;计算机科学&#39;,
+ &#39;统计学&#39;,
+ &#39;五险&#39;,
+ &#39;高温补贴&#39;,
+ &#39;全勤奖&#39;,
+ &#39;数据收集&#39;,
+ &#39;分析报告&#39;,
+ &#39;做五休二&#39;,
+ &#39;建模&#39;,
+ &#39;数据处理&#39;,
+ &#39;数据仓库&#39;,
+ &#39;数据建模&#39;,
+ &#39;python&#39;,
+ &#39;补充公积金&#39;,
+ &#39;机器学习&#39;,
+ &#39;hive&#39;,
+ &#39;大数据&#39;,
+ &#39;运营数据&#39;,
+ &#39;编程语言&#39;,
+ &#39;出国机会&#39;,
+ &#39;数据统计&#39;,
+ &#39;股票期权&#39;,
+ &#39;培训&#39;,
+ &#39;word&#39;,
+ &#39;分析&#39;,
+ &#39;报表&#39;,
+ &#39;互联网&#39;,
+ &#39;双休&#39;,
+ &#39;带薪病假&#39;,
+ &#39;定期团建&#39;,
+ &#39;零食下午茶&#39;,
+ &#39;数据清洗&#39;,
+ &#39;财务&#39;,
+ &#39;统计分析&#39;,
+ &#39;bi&#39;,
+ &#39;项目奖金&#39;,
+ &#39;数据分析报告&#39;,
+ &#39;包吃&#39;,
+ &#39;大数据分析&#39;,
+ &#39;数据分析师&#39;,
+ &#39;经济学&#39;,
+ &#39;java&#39;,
+ &#39;年度旅游&#39;,
+ &#39;金融&#39;,
+ &#39;应用数学&#39;,
+ &#39;自动化&#39;,
+ &#39;编程&#39;,
+ &#39;市场营销&#39;,
+ &#39;数据管理&#39;,
+ &#39;节假日福利&#39;,
+ &#39;hadoop&#39;,
+ &#39;节假日&#39;,
+ &#39;经营管理&#39;,
+ &#39;office&#39;,
+ &#39;六险一金&#39;,
+ &#39;住房补贴&#39;,
+ &#39;oracle&#39;,
+ &#39;可视化&#39;,
+ &#39;数据质量&#39;,
+ &#39;数据报表&#39;,
+ &#39;英语&#39;,
+ &#39;数据模型&#39;,
+ &#39;数据敏感度&#39;,
+ &#39;包住宿&#39;,
+ &#39;数据洞察力&#39;,
+ &#39;spss&#39;,
+ &#39;数据监测&#39;,
+ &#39;数据治理&#39;,
+ &#39;mysql&#39;,
+ &#39;数字&#39;,
+ &#39;销售数据&#39;,
+ &#39;运营数据分析&#39;,
+ &#39;量化分析&#39;,
+ &#39;经营分析&#39;,
+ &#39;生日福利&#39;,
+ &#39;数据驱动&#39;,
+ &#39;数据采集&#39;,
+ &#39;spark&#39;,
+ &#39;法定节假&#39;,
+ &#39;运营&#39;,
+ &#39;数据提取&#39;,
+ &#39;加班补贴&#39;,
+ &#39;etl&#39;,
+ &#39;有餐补&#39;,
+ &#39;机械&#39;,
+ &#39;项目管理&#39;,
+ &#39;powerbi&#39;,
+ &#39;sas&#39;,
+ &#39;linux&#39;,
+ &#39;租房补贴&#39;,
+ &#39;免费工作餐&#39;,
+ &#39;下午茶&#39;,
+ &#39;sap&#39;,
+ &#39;运筹学&#39;,
+ &#39;化学&#39;,
+ &#39;销售&#39;,
+ &#39;data&#39;,
+ &#39;SQL&#39;,
+ &#39;电商&#39;,
+ &#39;带薪休假&#39;,
+ &#39;信息收集&#39;,
+ &#39;团队管理&#39;,
+ &#39;数据整理&#39;,
+ &#39;医药行业&#39;,
+ &#39;统计报表&#39;,
+ &#39;出差补贴&#39;,
+ &#39;设计解决方案&#39;,
+ &#39;设计建议&#39;,
+ &#39;实施方案&#39;,
+ &#39;报告撰写&#39;,
+ &#39;ai&#39;,
+ &#39;免费三餐&#39;,
+ &#39;电子&#39;,
+ &#39;标注&#39;,
+ &#39;数字敏感性&#39;,
+ &#39;数据洞察&#39;,
+ &#39;数据规则&#39;,
+ &#39;数据体系建设&#39;,
+ &#39;清洗&#39;,
+ &#39;管理&#39;,
+ &#39;团队氛围好&#39;,
+ &#39;数据分析软件&#39;,
+ &#39;数据统计分析&#39;,
+ &#39;零售&#39;,
+ &#39;包住&#39;,
+ &#39;会计&#39;,
+ &#39;数据指标&#39;,
+ &#39;包吃包住&#39;,
+ &#39;市场调研&#39;,
+ &#39;销售数据分析&#39;,
+ &#39;origin&#39;,
+ &#39;人工智能&#39;,
+ &#39;分析数据&#39;,
+ &#39;英语四级&#39;,
+ &#39;测试&#39;,
+ &#39;英语读写&#39;,
+ &#39;市场分析&#39;,
+ &#39;需求分析&#39;,
+ &#39;扁平管理&#39;,
+ &#39;餐补&#39;,
+ &#39;数据透视&#39;,
+ &#39;职业发展&#39;,
+ &#39;环境&#39;,
+ &#39;数据报告&#39;,
+ &#39;年终奖&#39;,
+ &#39;员工活动&#39;,
+ &#39;奖金&#39;,
+ &#39;经济&#39;,
+ &#39;产假&#39;,
+ &#39;流程优化&#39;,
+ &#39;保险&#39;,
+ &#39;社保&#39;,
+ &#39;大牛带队&#39;,
+ &#39;电商行业&#39;,
+ &#39;用户过亿&#39;,
+ &#39;节日慰问&#39;,
+ &#39;erp&#39;,
+ &#39;管控&#39;,
+ &#39;mysql数据库&#39;,
+ &#39;数据监控&#39;,
+ &#39;matlab&#39;,
+ &#39;pandas&#39;,
+ &#39;年度体检&#39;,
+ &#39;数据运营&#39;,
+ &#39;power&#39;,
+ &#39;医药&#39;,
+ &#39;审计&#39;,
+ &#39;供应链&#39;,
+ &#39;供应链管理&#39;,
+ &#39;晋升空间大&#39;,
+ &#39;业务分析&#39;,
+ &#39;数据分析模型&#39;,
+ &#39;业务数据&#39;,
+ &#39;营销&#39;,
+ &#39;电子商务&#39;,
+ &#39;工作餐&#39;,
+ &#39;风险管理&#39;,
+ &#39;子女医疗保险&#39;,
+ &#39;环境工程&#39;,
+ &#39;包吃住&#39;,
+ &#39;决策支持&#39;,
+ &#39;数据收集整理&#39;,
+ &#39;补贴&#39;,
+ &#39;提供住宿&#39;,
+ &#39;员工宿舍&#39;,
+ &#39;it行业&#39;,
+ &#39;商业分析&#39;,
+ &#39;c++&#39;,
+ &#39;算法&#39;,
+ &#39;电脑&#39;,
+ &#39;filter&#39;,
+ &#39;团队年轻&#39;,
+ &#39;跨境电商&#39;,
+ &#39;年轻团队&#39;,
+ &#39;目标管理&#39;,
+ &#39;13薪&#39;,
+ &#39;databases&#39;,
+ &#39;年假&#39;,
+ &#39;kafka&#39;,
+ &#39;数据科学&#39;,
+ &#39;团建旅游&#39;,
+ &#39;crm&#39;,
+ &#39;福利多多&#39;,
+ &#39;信息管理&#39;,
+ &#39;tensorflow&#39;,
+ &#39;业务策略&#39;,
+ &#39;业务决策&#39;,
+ &#39;深度学习&#39;,
+ &#39;晋升&#39;,
+ &#39;提供食宿&#39;,
+ &#39;金融行业&#39;,
+ &#39;服装&#39;,
+ &#39;spreadsheets&#39;,
+ &#39;systems&#39;,
+ &#39;odbc&#39;,
+ &#39;电商平台&#39;,
+ &#39;推广&#39;,
+ &#39;创建模型&#39;,
+ &#39;数据支撑&#39;,
+ &#39;大气科学&#39;,
+ &#39;加班费&#39;,
+ &#39;策略运营&#39;,
+ &#39;企业年金&#39;,
+ &#39;复核&#39;,
+ &#39;年底双薪&#39;,
+ &#39;环境科学&#39;,
+ &#39;指标管理&#39;,
+ &#39;数据分析报表&#39;,
+ &#39;电商运营&#39;,
+ &#39;指标体系&#39;,
+ &#39;工龄奖&#39;,
+ &#39;生日慰问&#39;,
+ &#39;医疗保险&#39;,
+ &#39;技能培训&#39;,
+ &#39;生鲜&#39;,
+ &#39;研发&#39;,
+ &#39;免费住宿&#39;,
+ &#39;广告&#39;,
+ &#39;数据集&#39;,
+ &#39;数据透视表&#39;,
+ &#39;法定节假日&#39;,
+ &#39;假日福利&#39;,
+ &#39;财务管理&#39;,
+ &#39;英语口语&#39;,
+ &#39;Python&#39;,
+ &#39;业务逻辑&#39;,
+ &#39;能力优先&#39;,
+ &#39;c#&#39;,
+ &#39;运营管理&#39;,
+ &#39;需求调研&#39;,
+ &#39;调优&#39;,
+ &#39;产品优化&#39;,
+ &#39;设计开发&#39;,
+ &#39;ab测试&#39;,
+ &#39;pmo&#39;,
+ &#39;powerpoint&#39;,
+ &#39;英语听说读写&#39;,
+ &#39;数字化转型&#39;,
+ &#39;数据中台&#39;,
+ &#39;amazon&#39;,
+ &#39;电气&#39;,
+ &#39;法定假期&#39;,
+ &#39;电子信息&#39;,
+ &#39;节假日休&#39;,
+ &#39;模型&#39;,
+ &#39;核算&#39;,
+ &#39;能源&#39;,
+ &#39;汽车配件&#39;,
+ &#39;团建&#39;,
+ &#39;津贴&#39;,
+ &#39;生物&#39;,
+ &#39;服装行业&#39;,
+ &#39;法定年休假&#39;,
+ &#39;ebay&#39;,
+ &#39;过节费&#39;,
+ &#39;生成报告&#39;,
+ &#39;软件&#39;,
+ &#39;员工食堂&#39;,
+ &#39;公积金&#39;,
+ &#39;电脑办公软件&#39;,
+ &#39;理工科&#39;,
+ &#39;员工培训&#39;,
+ &#39;财务数据&#39;,
+ &#39;发货计划&#39;,
+ &#39;发展空间&#39;,
+ &#39;mongodb&#39;,
+ &#39;numpy&#39;,
+ &#39;数据预处理&#39;,
+ &#39;旅游&#39;,
+ &#39;系统维护&#39;,
+ &#39;用户行为分析&#39;,
+ &#39;sql数据库&#39;,
+ &#39;库存周转率&#39;,
+ &#39;传播学&#39;,
+ &#39;项目成本&#39;,
+ &#39;BI&#39;,
+ &#39;媒体广告&#39;,
+ &#39;婚育礼金&#39;,
+ &#39;报表分析&#39;,
+ &#39;广告投放&#39;,
+ &#39;成本分析&#39;,
+ &#39;市场策略&#39;,
+ &#39;挖掘&#39;,
+ &#39;优于法定年假&#39;,
+ &#39;学习平台&#39;,
+ &#39;数据集成&#39;,
+ &#39;工业工程&#39;,
+ &#39;居家办公&#39;,
+ &#39;午餐补助&#39;,
+ &#39;库存管理&#39;,
+ &#39;方案设计&#39;,
+ &#39;CRM&#39;,
+ &#39;预测模型&#39;,
+ &#39;预算&#39;,
+ &#39;AI&#39;,
+ &#39;食品行业&#39;,
+ &#39;医学&#39;,
+ &#39;postgresql&#39;,
+ &#39;机器学习算法&#39;,
+ &#39;模型开发&#39;,
+ &#39;高温津贴&#39;,
+ &#39;14薪&#39;,
+ &#39;餐费补贴&#39;,
+ &#39;架构设计&#39;,
+ &#39;食堂&#39;,
+ &#39;营销策略&#39;,
+ &#39;市场定位&#39;,
+ &#39;数据结构算法&#39;,
+ &#39;包三餐&#39;,
+ &#39;rpg&#39;,
+ &#39;解决方案&#39;,
+ &#39;订单数据&#39;,
+ &#39;市场动态&#39;,
+ &#39;晋升机会&#39;,
+ &#39;化工行业&#39;,
+ &#39;可视化报告&#39;,
+ &#39;销售运营&#39;,
+ &#39;财务报表&#39;,
+ &#39;销售报表&#39;,
+ &#39;采购&#39;,
+ &#39;数据应用&#39;,
+ &#39;报表开发&#39;,
+ &#39;数据处理分析&#39;,
+ &#39;bi报表&#39;,
+ &#39;零售行业&#39;,
+ &#39;销售数据统计&#39;,
+ &#39;选型&#39;,
+ &#39;数据准确性&#39;,
+ &#39;指标分析&#39;,
+ &#39;失业保险&#39;,
+ &#39;R&#39;,
+ &#39;销售趋势&#39;,
+ &#39;大数据处理&#39;,
+ &#39;团建活动&#39;,
+ &#39;报表制作&#39;,
+ &#39;数据看板&#39;,
+ &#39;趋势分析&#39;,
+ &#39;kpi&#39;,
+ &#39;Tableau&#39;,
+ &#39;心理学&#39;,
+ &#39;快消品行业&#39;,
+ &#39;意外险&#39;,
+ &#39;质量管理&#39;,
+ &#39;咨询&#39;,
+ &#39;数据拟合&#39;,
+ &#39;数据标准&#39;,
+ &#39;Hadoop&#39;,
+ &#39;抖音&#39;,
+ &#39;韩语读写&#39;,
+ &#39;商品管理&#39;,
+ &#39;运营计划&#39;,
+ &#39;归因分析&#39;,
+ &#39;谈判&#39;,
+ &#39;带薪事假&#39;,
+ &#39;流程管理&#39;,
+ &#39;代码编写&#39;,
+ &#39;仪表板&#39;,
+ &#39;企业管理&#39;,
+ &#39;深度分析&#39;,
+ &#39;英语4级&#39;,
+ &#39;英文&#39;,
+ &#39;热能动力&#39;,
+ &#39;养老保险&#39;,
+ &#39;理工&#39;,
+ &#39;节日津贴&#39;,
+ &#39;福利假&#39;,
+ &#39;生产数据&#39;,
+ &#39;二次开发&#39;,
+ &#39;社会保险&#39;,
+ &#39;供应商管理&#39;,
+ &#39;生产计划&#39;,
+ &#39;生信分析&#39;,
+ &#39;生育保险&#39;,
+ &#39;缴纳五险&#39;,
+ &#39;免费午餐&#39;,
+ &#39;业务优化&#39;,
+ &#39;用户画像&#39;,
+ &#39;职业晋升&#39;,
+ &#39;健身瑜伽&#39;,
+ &#39;业务数据分析&#39;,
+ &#39;信息系统&#39;,
+ &#39;业务监控体系&#39;,
+ &#39;vlookup&#39;,
+ &#39;育儿假&#39;,
+ &#39;活动策划&#39;,
+ &#39;管理培训&#39;,
+ &#39;药学&#39;,
+ &#39;系统培训&#39;,
+ &#39;算法模型&#39;,
+ &#39;法定假日&#39;,
+ &#39;目标分解&#39;,
+ &#39;雅思&#39;,
+ &#39;排污企业排查&#39;,
+ &#39;结构&#39;,
+ &#39;接待客户&#39;,
+ &#39;编码&#39;,
+ &#39;接收客户&#39;,
+ &#39;问题分析&#39;,
+ &#39;推广复制&#39;,
+ &#39;监测系统&#39;,
+ &#39;编程支持&#39;,
+ &#39;社交平台&#39;,
+ &#39;维护数据系统&#39;,
+ &#39;维护数据库&#39;,
+ &#39;管理流程&#39;,
+ &#39;管理学&#39;,
+ &#39;需求收集&#39;,
+ &#39;报表逻辑&#39;,
+ &#39;管理优化&#39;,
+ &#39;维修订单&#39;,
+ &#39;需求文档&#39;,
+ &#39;系统集成&#39;,
+ &#39;线上营销推广&#39;,
+ &#39;销售预测&#39;,
+ &#39;高并发&#39;,
+ &#39;粤语&#39;,
+ &#39;职位晋升&#39;,
+ &#39;高温补助&#39;,
+ &#39;带薪假&#39;,
+ &#39;销售毛利分析&#39;,
+ &#39;数据产品&#39;,
+ &#39;数据交易员&#39;,
+ &#39;股权激励&#39;,
+ &#39;销售策略&#39;,
+ &#39;销售计划&#39;,
+ &#39;数字营销&#39;,
+ &#39;销售费用分析&#39;,
+ &#39;职业规划&#39;,
+ &#39;推广策略&#39;,
+ &#39;数字化&#39;,
+ &#39;带薪假期&#39;,
+ &#39;带薪培训&#39;,
+ &#39;效益奖金&#39;,
+ &#39;效果评估&#39;,
+ &#39;监控进度&#39;,
+ &#39;提供带薪培训&#39;,
+ &#39;销售通报&#39;,
+ &#39;系统分析&#39;,
+ &#39;年底奖金&#39;,
+ &#39;社保福利&#39;,
+ &#39;需求沟通&#39;,
+ &#39;风险把控&#39;,
+ &#39;项目预算&#39;,
+ &#39;年终分红&#39;,
+ &#39;竞品分析&#39;,
+ &#39;快消品&#39;,
+ &#39;答辩&#39;,
+ &#39;录入&#39;,
+ &#39;策略优化&#39;,
+ &#39;项目数据&#39;,
+ &#39;建模分析&#39;,
+ &#39;年终双薪&#39;,
+ &#39;项目跟进&#39;,
+ &#39;应用统计学&#39;,
+ &#39;应用统计&#39;,
+ &#39;算法调研&#39;,
+ &#39;结题&#39;,
+ &#39;策略分析&#39;,
+ &#39;库存管控&#39;,
+ &#39;组织工会活动&#39;,
+ &#39;库存数据分析&#39;,
+ &#39;库存&#39;,
+ &#39;年金&#39;,
+ &#39;顾问&#39;,
+ &#39;广告策略&#39;,
+ &#39;广告数据分析&#39;,
+ &#39;快递&#39;,
+ &#39;快速发展&#39;,
+ &#39;竞争态势分析&#39;,
+ &#39;绩效工资&#39;,
+ &#39;福利假期&#39;,
+ &#39;报告呈现&#39;,
+ &#39;报告制作&#39;,
+ &#39;报告分析&#39;,
+ &#39;报告&#39;,
+ &#39;预算管控&#39;,
+ &#39;年度调薪&#39;,
+ &#39;预算分析报表&#39;,
+ &#39;韩语&#39;,
+ &#39;绩效考核&#39;,
+ &#39;项目奖&#39;,
+ &#39;竞争分析&#39;,
+ &#39;投流&#39;,
+ &#39;项目实施&#39;,
+ &#39;销售数据更新&#39;,
+ &#39;技术方案&#39;,
+ &#39;技术开发&#39;,
+ &#39;统计编程&#39;,
+ &#39;技术分析&#39;,
+ &#39;技术分享&#39;,
+ &#39;托福&#39;,
+ &#39;空运单证&#39;,
+ &#39;技术选型&#39;,
+ &#39;沟通渠道&#39;,
+ &#39;销售支持&#39;,
+ &#39;英文沟通&#39;,
+ &#39;海外仓&#39;,
+ &#39;海外机会&#39;,
+ &#39;订单管理&#39;,
+ &#39;海运单证&#39;,
+ &#39;时间管理&#39;,
+ &#39;订单管理系统&#39;,
+ &#39;无责底薪&#39;,
+ &#39;消费行为研究&#39;,
+ &#39;深度数据分析&#39;,
+ &#39;英语六级&#39;,
+ &#39;整理数据&#39;,
+ &#39;证书补贴&#39;,
+ &#39;数据需求&#39;,
+ &#39;英语流利&#39;,
+ &#39;渠道&#39;,
+ &#39;证券从业资格&#39;,
+ &#39;评优奖励&#39;,
+ &#39;游戏数据分析&#39;,
+ &#39;数据追踪&#39;,
+ &#39;物料申购&#39;,
+ &#39;物联网&#39;,
+ &#39;调研&#39;,
+ &#39;调货&#39;,
+ &#39;系统开发&#39;,
+ &#39;数据调研&#39;,
+ &#39;财务bp&#39;,
+ &#39;晋升空间&#39;,
+ &#39;晋升管理&#39;,
+ &#39;带假假日&#39;,
+ &#39;活动主持&#39;,
+ &#39;汇总分析&#39;,
+ &#39;气象&#39;,
+ &#39;法定休假&#39;,
+ &#39;营销决策&#39;,
+ &#39;检核&#39;,
+ &#39;营销业务&#39;,
+ &#39;核价&#39;,
+ &#39;营销咨询&#39;,
+ &#39;法定节日&#39;,
+ &#39;架构优化&#39;,
+ &#39;材料输出&#39;,
+ &#39;材料计划&#39;,
+ &#39;机电&#39;,
+ &#39;计算机网络&#39;,
+ &#39;营销规划&#39;,
+ &#39;活动分析报告&#39;,
+ &#39;薪资面议&#39;,
+ &#39;营运质量&#39;,
+ &#39;行业研究&#39;,
+ &#39;行情分析&#39;,
+ &#39;补充养老保险&#39;,
+ &#39;补单&#39;,
+ &#39;补货计划&#39;,
+ &#39;活动经费&#39;,
+ &#39;晋升通道&#39;,
+ &#39;计划管理&#39;,
+ &#39;环保检测&#39;,
+ &#39;数据维护&#39;,
+ &#39;财务分析报告&#39;,
+ &#39;能耗数据&#39;,
+ &#39;运维&#39;,
+ &#39;数据接入&#39;,
+ &#39;航运管理&#39;,
+ &#39;数据探索&#39;,
+ &#39;自然语言处理&#39;,
+ &#39;数据指标体系&#39;,
+ &#39;自动化行业&#39;,
+ &#39;进出口数据&#39;,
+ &#39;能耗数据分析&#39;,
+ &#39;部门经费&#39;,
+ &#39;数据开发&#39;,
+ &#39;酒店行业&#39;,
+ &#39;量化指标&#39;,
+ &#39;财务审计&#39;,
+ &#39;能力建设&#39;,
+ &#39;数据库维护&#39;,
+ &#39;金融产品支持&#39;,
+ &#39;数据工具&#39;,
+ &#39;数据展示&#39;,
+ &#39;污染源&#39;,
+ &#39;金融数据&#39;,
+ &#39;金融数据分析&#39;,
+ &#39;金融机构&#39;,
+ &#39;数据分析能力&#39;,
+ &#39;数据分析方案&#39;,
+ &#39;销售报告&#39;,
+ &#39;数据搜集整理&#39;,
+ &#39;生日礼金&#39;,
+ &#39;节假日正常休&#39;,
+ &#39;过程跟进&#39;,
+ &#39;环保管家&#39;,
+ &#39;节能改造&#39;,
+ &#39;节日礼金&#39;,
+ &#39;数据研究&#39;,
+ &#39;节日礼品&#39;,
+ &#39;财务涉外业务&#39;,
+ &#39;质量控制&#39;,
+ &#39;理财规划&#39;,
+ &#39;数据清洗整理&#39;,
+ &#39;费用管理&#39;,
+ &#39;数据测算&#39;,
+ &#39;数据流程&#39;,
+ &#39;生产指标&#39;,
+ &#39;跟进业务进度&#39;,
+ &#39;生产系统&#39;,
+ &#39;跟进生产进度&#39;,
+ &#39;跨境电商业务&#39;,
+ &#39;跨境电商数据&#39;,
+ &#39;数据核对&#39;,
+ &#39;数据校验&#39;,
+ &#39;数据架构&#39;,
+ &#39;软件工程&#39;,
+ &#39;数据敏感&#39;,
+ &#39;软件开发&#39;,
+ &#39;软件文档编写&#39;,
+ &#39;数据导入&#39;,
+ &#39;挖掘数据价值&#39;,
+ &#39;光伏&#39;,
+ &#39;图表&#39;,
+ &#39;出差津贴&#39;,
+ &#39;fba&#39;,
+ &#39;分布式系统&#39;,
+ &#39;分析业务数据&#39;,
+ &#39;分析体系&#39;,
+ &#39;业绩管控&#39;,
+ &#39;业绩提升&#39;,
+ &#39;图表呈现&#39;,
+ &#39;分析市场数据&#39;,
+ &#39;分析師&#39;,
+ &#39;分析建模&#39;,
+ &#39;业务模型&#39;,
+ &#39;图像算法&#39;,
+ &#39;分析报告编写&#39;,
+ &#39;国际贸易&#39;,
+ &#39;分析数据集&#39;,
+ &#39;jmp&#39;,
+ &#39;分析方法&#39;,
+ &#39;业务目标&#39;,
+ &#39;团队奖励&#39;,
+ &#39;团队合作&#39;,
+ &#39;团建聚餐&#39;,
+ &#39;临床&#39;,
+ &#39;engineering&#39;,
+ &#39;临床研究方案&#39;,
+ &#39;dubbo&#39;,
+ &#39;公司团建&#39;,
+ &#39;产业数据&#39;,
+ &#39;大病帮扶&#39;,
+ &#39;公司食堂&#39;,
+ &#39;公寓式住宿&#39;,
+ &#39;大气数据分析&#39;,
+ &#39;bpo行业&#39;,
+ &#39;六险二金&#39;,
+ &#39;cdisc&#39;,
+ &#39;chain&#39;,
+ &#39;交通便利&#39;,
+ &#39;夜班津贴&#39;,
+ &#39;交易员&#39;,
+ &#39;内控&#39;,
+ &#39;内部培训&#39;,
+ &#39;亚马逊运营&#39;,
+ &#39;写作&#39;,
+ &#39;五险二金&#39;,
+ &#39;处理数据&#39;,
+ &#39;互联网公司&#39;,
+ &#39;基本面&#39;,
+ &#39;回款&#39;,
+ &#39;商品运营&#39;,
+ &#39;arcgis&#39;,
+ &#39;一餐一元&#39;,
+ &#39;制造业&#39;,
+ &#39;opencv&#39;,
+ &#39;可视化分析&#39;,
+ &#39;可行性方案&#39;,
+ &#39;pdf&#39;,
+ &#39;pmp&#39;,
+ &#39;pmp证书&#39;,
+ &#39;pq&#39;,
+ &#39;办公软件熟练&#39;,
+ &#39;pytorch&#39;,
+ &#39;协调&#39;,
+ &#39;分析洞察&#39;,
+ &#39;功能开发&#39;,
+ &#39;半导体&#39;,
+ &#39;午餐津贴&#39;,
+ &#39;vocs&#39;,
+ &#39;vba&#39;,
+ &#39;scipy&#39;,
+ &#39;医药学&#39;,
+ &#39;server&#39;,
+ &#39;supply&#39;,
+ &#39;stata&#39;,
+ &#39;制药行业&#39;,
+ &#39;可转正&#39;,
+ &#39;制度流程&#39;,
+ &#39;制作报告&#39;,
+ &#39;业务报表&#39;,
+ &#39;商品上下架&#39;,
+ &#39;商业智能&#39;,
+ &#39;商业数据&#39;,
+ &#39;分析用户需求&#39;,
+ &#39;分析运营&#39;,
+ &#39;商业保险&#39;,
+ &#39;商业&#39;,
+ &#39;品类数据分析&#39;,
+ &#39;listing&#39;,
+ &#39;咨询顾问&#39;,
+ &#39;不锈钢&#39;,
+ &#39;咨询报告&#39;,
+ &#39;员工餐厅&#39;,
+ &#39;员工生日福利&#39;,
+ &#39;media&#39;,
+ &#39;员工生日&#39;,
+ &#39;不定期旅游&#39;,
+ &#39;不定期下午茶&#39;,
+ &#39;mining&#39;,
+ &#39;上市企业&#39;,
+ &#39;子女福利&#39;,
+ &#39;化妆品行业&#39;,
+ &#39;市场信息收集&#39;,
+ &#39;审核&#39;,
+ &#39;客户分析&#39;,
+ &#39;Analyst&#39;,
+ &#39;客服&#39;,
+ &#39;信贷&#39;,
+ &#39;信用卡&#39;,
+ &#39;客户关系维护&#39;,
+ &#39;产品调研&#39;,
+ &#39;8小时&#39;,
+ &#39;客服中心&#39;,
+ &#39;SAS&#39;,
+ &#39;宣传&#39;,
+ &#39;宿舍&#39;,
+ &#39;市场研究&#39;,
+ &#39;4A&#39;,
+ &#39;信息获取&#39;,
+ &#39;客户咨询&#39;,
+ &#39;SAP程序&#39;,
+ &#39;人力资源系统&#39;,
+ &#39;Mysql&#39;,
+ &#39;促销活动&#39;,
+ &#39;Oracle&#39;,
+ &#39;Power-BI&#39;,
+ &#39;促销方案&#39;,
+ &#39;工程数据分析&#39;,
+ &#39;API对接&#39;,
+ &#39;会计学&#39;,
+ &#39;人力资源数据&#39;,
+ &#39;工龄津贴&#39;,
+ &#39;供应链运营&#39;,
+ &#39;市场信息&#39;,
+ &#39;客户档案&#39;,
+ &#39;Analysis&#39;,
+ &#39;客户行为&#39;,
+ &#39;人性化&#39;,
+ &#39;Java开发&#39;,
+ &#39;产品设计&#39;,
+ &#39;ai模型训练&#39;,
+ &#39;analytics&#39;,
+ &#39;安全&#39;,
+ &#39;岗位津贴&#39;,
+ &#39;信息化管理&#39;,
+ &#39;analysis&#39;,
+ &#39;市场销售分析&#39;,
+ &#39;优化方案&#39;,
+ &#39;导师培养&#39;,
+ &#39;代码&#39;,
+ &#39;市场趋势&#39;,
+ &#39;定期下午茶&#39;,
+ &#39;免费食宿&#39;,
+ &#39;对策制定&#39;,
+ &#39;实验数据&#39;,
+ &#39;adam&#39;,
+ &#39;产品管理&#39;,
+ &#39;对比分析&#39;,
+ &#39;市场调查&#39;,
+ &#39;acos&#39;,
+ &#39;AWS&#39;,
+ &#39;BI报表&#39;,
+ &#39;agency&#39;,
+ &#39;会员数据&#39;,
+ &#39;会员管理&#39;,
+ &#39;不需要外出&#39;,
+ &#39;三险一金&#39;,
+ &#39;不定期团建&#39;,
+ &#39;优化工艺&#39;,
+ &#39;空间数据处理&#39;,
+ &#39;优化建议&#39;,
+ &#39;节假日礼金&#39;,
+ &#39;突发事件处理&#39;,
+ &#39;节假日加班费&#39;,
+ &#39;立项&#39;,
+ &#39;下单数据&#39;,
+ &#39;节日福利金&#39;,
+ &#39;不打电话&#39;,
+ &#39;产品性能分析&#39;,
+ &#39;节日红包&#39;,
+ &#39;ui&#39;,
+ &#39;传统节日礼品&#39;,
+ &#39;vd&#39;,
+ &#39;药品经营管理&#39;,
+ &#39;药品营销&#39;,
+ &#39;uv&#39;,
+ &#39;社群管理&#39;,
+ &#39;营业&#39;,
+ &#39;teradata&#39;,
+ &#39;英语口语流利&#39;,
+ &#39;社保齐全&#39;,
+ &#39;传统节日福利&#39;,
+ &#39;sources&#39;,
+ &#39;营销数据&#39;,
+ &#39;sop&#39;,
+ &#39;social&#39;,
+ &#39;落户广州&#39;,
+ &#39;wps&#39;,
+ &#39;xml&#39;,
+ &#39;万用表&#39;,
+ &#39;英文流利&#39;,
+ &#39;七险两金&#39;,
+ &#39;稽核计划&#39;,
+ &#39;英文听说读写&#39;,
+ &#39;英文文献&#39;,
+ &#39;优化产品&#39;,
+ &#39;七险一金&#39;,
+ &#39;科技创新&#39;,
+ &#39;科技&#39;,
+ &#39;youtube&#39;,
+ &#39;英文阅读&#39;,
+ &#39;福利年假&#39;,
+ &#39;会议组织&#39;,
+ &#39;传播数据分析&#39;,
+ &#39;一年2次调薪&#39;,
+ &#39;英语书写&#39;,
+ &#39;英语交流&#39;,
+ &#39;不需要销售&#39;,
+ &#39;业务沟通&#39;,
+ &#39;舆情&#39;,
+ &#39;结果产出&#39;,
+ &#39;交易&#39;,
+ &#39;产品规划&#39;,
+ &#39;系统优化&#39;,
+ &#39;亚马逊平台&#39;,
+ &#39;统计工具&#39;,
+ &#39;五险保障&#39;,
+ &#39;统计数据&#39;,
+ &#39;统计数据分析&#39;,
+ &#39;统计方法&#39;,
+ &#39;统计模型&#39;,
+ &#39;薪资优厚&#39;,
+ &#39;五天8小时&#39;,
+ &#39;绩效数据&#39;,
+ &#39;云计算&#39;,
+ &#39;临床试验设计&#39;,
+ &#39;系统功能&#39;,
+ &#39;产品良率&#39;,
+ &#39;编制报告&#39;,
+ &#39;经营规划&#39;,
+ &#39;产品开发&#39;,
+ &#39;组织培训&#39;,
+ &#39;产品匹配&#39;,
+ &#39;组织管理&#39;,
+ &#39;产品优化方案&#39;,
+ &#39;产品策略&#39;,
+ &#39;系统推进&#39;,
+ &#39;经济管理&#39;,
+ &#39;经营&#39;,
+ &#39;交通运输&#39;,
+ &#39;经营指标&#39;,
+ &#39;经营数据分析&#39;,
+ &#39;经营数据报表&#39;,
+ &#39;经营数据收集&#39;,
+ &#39;交通工程&#39;,
+ &#39;临床试验方案&#39;,
+ &#39;临床研究&#39;,
+ &#39;臭氧治理&#39;,
+ &#39;聚餐&#39;,
+ &#39;业务需求分析&#39;,
+ &#39;算法设计&#39;,
+ &#39;线上平台&#39;,
+ &#39;算法开发&#39;,
+ &#39;仓储&#39;,
+ &#39;业务支持&#39;,
+ &#39;简单互信氛围&#39;,
+ &#39;业务合同&#39;,
+ &#39;业务决策支持&#39;,
+ &#39;策略建议&#39;,
+ &#39;策略制定&#39;,
+ &#39;任务拆解&#39;,
+ &#39;专项分析&#39;,
+ &#39;专八&#39;,
+ &#39;专业报告&#39;,
+ &#39;人力资源&#39;,
+ &#39;业务风险&#39;,
+ &#39;管理数据分析&#39;,
+ &#39;京东&#39;,
+ &#39;编码实现&#39;,
+ &#39;中长期激励&#39;,
+ &#39;中药分析&#39;,
+ &#39;产品运营&#39;,
+ &#39;编辑&#39;,
+ &#39;中英文文献&#39;,
+ &#39;产品销售&#39;,
+ &#39;网络推广&#39;,
+ &#39;考勤系统&#39;,
+ &#39;管理分析&#39;,
+ &#39;管理信息系统&#39;,
+ &#39;考核标准&#39;,
+ &#39;个体化培养&#39;,
+ &#39;管理体系&#39;,
+ &#39;职业科研团队&#39;,
+ &#39;统计资料&#39;,
+ &#39;office办公&#39;,
+ &#39;smartbi&#39;,
+ &#39;bl&#39;,
+ &#39;bi报表开发&#39;,
+ &#39;金融法规&#39;,
+ &#39;bi可视化&#39;,
+ &#39;银行&#39;,
+ &#39;bash&#39;,
+ &#39;销售企划&#39;,
+ &#39;销售及管理&#39;,
+ &#39;azure&#39;,
+ &#39;axure&#39;,
+ &#39;aws&#39;,
+ &#39;销售支援&#39;,
+ &#39;apps&#39;,
+ &#39;销售数据录入&#39;,
+ &#39;销售数据报告&#39;,
+ &#39;销售数据管理&#39;,
+ &#39;销售模式&#39;,
+ &#39;ai算法&#39;,
+ &#39;销售管理体系&#39;,
+ &#39;a/b测试&#39;,
+ &#39;VB数据源开发&#39;,
+ &#39;SOL&#39;,
+ &#39;bi系统&#39;,
+ &#39;金融工程&#39;,
+ &#39;django&#39;,
+ &#39;bpo&#39;,
+ &#39;运营数据监控&#39;,
+ &#39;运营策略&#39;,
+ &#39;运营策略分析&#39;,
+ &#39;db2&#39;,
+ &#39;data_driven&#39;,
+ &#39;dashboards&#39;,
+ &#39;进度跟踪&#39;,
+ &#39;进销存数据&#39;,
+ &#39;进销存盘点&#39;,
+ &#39;dashboard&#39;,
+ &#39;透视表&#39;,
+ &#39;通信&#39;,
+ &#39;通信工程&#39;,
+ &#39;通信理论&#39;,
+ &#39;coq&#39;,
+ ...]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">count=wel_word[<span class="hljs-string">&#x27;level_1&#x27;</span>].tolist()<br>count<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">[690,
+ 580,
+ 466,
+ 444,
+ 380,
+ 371,
+ 298,
+ 296,
+ 281,
+ 254,
+ 234,
+ 231,
+ 205,
+ 205,
+ 195,
+ 165,
+ 165,
+ 163,
+ 153,
+ 114,
+ 107,
+ 104,
+ 98,
+ 84,
+ 84,
+ 81,
+ 78,
+ 73,
+ 65,
+ 65,
+ 61,
+ 58,
+ 57,
+ 56,
+ 56,
+ 55,
+ 54,
+ 51,
+ 50,
+ 50,
+ 50,
+ 48,
+ 46,
+ 45,
+ 45,
+ 42,
+ 41,
+ 41,
+ 41,
+ 40,
+ 40,
+ 39,
+ 38,
+ 38,
+ 38,
+ 37,
+ 36,
+ 35,
+ 34,
+ 34,
+ 33,
+ 32,
+ 31,
+ 30,
+ 27,
+ 27,
+ 27,
+ 26,
+ 26,
+ 26,
+ 25,
+ 25,
+ 24,
+ 24,
+ 24,
+ 24,
+ 23,
+ 22,
+ 22,
+ 22,
+ 22,
+ 22,
+ 22,
+ 21,
+ 21,
+ 21,
+ 21,
+ 19,
+ 19,
+ 18,
+ 18,
+ 18,
+ 18,
+ 17,
+ 17,
+ 17,
+ 17,
+ 17,
+ 17,
+ 17,
+ 17,
+ 17,
+ 17,
+ 16,
+ 16,
+ 15,
+ 15,
+ 15,
+ 15,
+ 14,
+ 14,
+ 14,
+ 14,
+ 14,
+ 14,
+ 14,
+ 14,
+ 13,
+ 13,
+ 13,
+ 13,
+ 13,
+ 13,
+ 13,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 12,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 11,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 10,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 9,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 8,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 7,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 6,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 5,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 4,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 3,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 2,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ 1,
+ ...]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a=<span class="hljs-built_in">list</span>(<span class="hljs-built_in">zip</span>(word,count))<br>a<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">[(&#39;五险一金&#39;, 690),
+ (&#39;数据分析&#39;, 580),
+ (&#39;年终奖金&#39;, 466),
+ (&#39;绩效奖金&#39;, 444),
+ (&#39;定期体检&#39;, 380),
+ (&#39;专业培训&#39;, 371),
+ (&#39;带薪年假&#39;, 298),
+ (&#39;餐饮补贴&#39;, 296),
+ (&#39;sql&#39;, 281),
+ (&#39;excel&#39;, 254),
+ (&#39;节日福利&#39;, 234),
+ (&#39;员工旅游&#39;, 231),
+ (&#39;周末双休&#39;, 205),
+ (&#39;交通补贴&#39;, 205),
+ (&#39;通讯补贴&#39;, 195),
+ (&#39;数学&#39;, 165),
+ (&#39;计算机&#39;, 165),
+ (&#39;弹性工作&#39;, 163),
+ (&#39;补充医疗保险&#39;, 153),
+ (&#39;统计&#39;, 114),
+ (&#39;方案&#39;, 107),
+ (&#39;数据&#39;, 104),
+ (&#39;免费班车&#39;, 98),
+ (&#39;办公软件&#39;, 84),
+ (&#39;数据挖掘&#39;, 84),
+ (&#39;数据支持&#39;, 81),
+ (&#39;数据可视化&#39;, 78),
+ (&#39;数据库&#39;, 73),
+ (&#39;ppt&#39;, 65),
+ (&#39;tableau&#39;, 65),
+ (&#39;计算机科学&#39;, 61),
+ (&#39;统计学&#39;, 58),
+ (&#39;五险&#39;, 57),
+ (&#39;高温补贴&#39;, 56),
+ (&#39;全勤奖&#39;, 56),
+ (&#39;数据收集&#39;, 55),
+ (&#39;分析报告&#39;, 54),
+ (&#39;做五休二&#39;, 51),
+ (&#39;建模&#39;, 50),
+ (&#39;数据处理&#39;, 50),
+ (&#39;数据仓库&#39;, 50),
+ (&#39;数据建模&#39;, 48),
+ (&#39;python&#39;, 46),
+ (&#39;补充公积金&#39;, 45),
+ (&#39;机器学习&#39;, 45),
+ (&#39;hive&#39;, 42),
+ (&#39;大数据&#39;, 41),
+ (&#39;运营数据&#39;, 41),
+ (&#39;编程语言&#39;, 41),
+ (&#39;出国机会&#39;, 40),
+ (&#39;数据统计&#39;, 40),
+ (&#39;股票期权&#39;, 39),
+ (&#39;培训&#39;, 38),
+ (&#39;word&#39;, 38),
+ (&#39;分析&#39;, 38),
+ (&#39;报表&#39;, 37),
+ (&#39;互联网&#39;, 36),
+ (&#39;双休&#39;, 35),
+ (&#39;带薪病假&#39;, 34),
+ (&#39;定期团建&#39;, 34),
+ (&#39;零食下午茶&#39;, 33),
+ (&#39;数据清洗&#39;, 32),
+ (&#39;财务&#39;, 31),
+ (&#39;统计分析&#39;, 30),
+ (&#39;bi&#39;, 27),
+ (&#39;项目奖金&#39;, 27),
+ (&#39;数据分析报告&#39;, 27),
+ (&#39;包吃&#39;, 26),
+ (&#39;大数据分析&#39;, 26),
+ (&#39;数据分析师&#39;, 26),
+ (&#39;经济学&#39;, 25),
+ (&#39;java&#39;, 25),
+ (&#39;年度旅游&#39;, 24),
+ (&#39;金融&#39;, 24),
+ (&#39;应用数学&#39;, 24),
+ (&#39;自动化&#39;, 24),
+ (&#39;编程&#39;, 23),
+ (&#39;市场营销&#39;, 22),
+ (&#39;数据管理&#39;, 22),
+ (&#39;节假日福利&#39;, 22),
+ (&#39;hadoop&#39;, 22),
+ (&#39;节假日&#39;, 22),
+ (&#39;经营管理&#39;, 22),
+ (&#39;office&#39;, 21),
+ (&#39;六险一金&#39;, 21),
+ (&#39;住房补贴&#39;, 21),
+ (&#39;oracle&#39;, 21),
+ (&#39;可视化&#39;, 19),
+ (&#39;数据质量&#39;, 19),
+ (&#39;数据报表&#39;, 18),
+ (&#39;英语&#39;, 18),
+ (&#39;数据模型&#39;, 18),
+ (&#39;数据敏感度&#39;, 18),
+ (&#39;包住宿&#39;, 17),
+ (&#39;数据洞察力&#39;, 17),
+ (&#39;spss&#39;, 17),
+ (&#39;数据监测&#39;, 17),
+ (&#39;数据治理&#39;, 17),
+ (&#39;mysql&#39;, 17),
+ (&#39;数字&#39;, 17),
+ (&#39;销售数据&#39;, 17),
+ (&#39;运营数据分析&#39;, 17),
+ (&#39;量化分析&#39;, 17),
+ (&#39;经营分析&#39;, 16),
+ (&#39;生日福利&#39;, 16),
+ (&#39;数据驱动&#39;, 15),
+ (&#39;数据采集&#39;, 15),
+ (&#39;spark&#39;, 15),
+ (&#39;法定节假&#39;, 15),
+ (&#39;运营&#39;, 14),
+ (&#39;数据提取&#39;, 14),
+ (&#39;加班补贴&#39;, 14),
+ (&#39;etl&#39;, 14),
+ (&#39;有餐补&#39;, 14),
+ (&#39;机械&#39;, 14),
+ (&#39;项目管理&#39;, 14),
+ (&#39;powerbi&#39;, 14),
+ (&#39;sas&#39;, 13),
+ (&#39;linux&#39;, 13),
+ (&#39;租房补贴&#39;, 13),
+ (&#39;免费工作餐&#39;, 13),
+ (&#39;下午茶&#39;, 13),
+ (&#39;sap&#39;, 13),
+ (&#39;运筹学&#39;, 13),
+ (&#39;化学&#39;, 12),
+ (&#39;销售&#39;, 12),
+ (&#39;data&#39;, 12),
+ (&#39;SQL&#39;, 12),
+ (&#39;电商&#39;, 12),
+ (&#39;带薪休假&#39;, 12),
+ (&#39;信息收集&#39;, 12),
+ (&#39;团队管理&#39;, 12),
+ (&#39;数据整理&#39;, 12),
+ (&#39;医药行业&#39;, 12),
+ (&#39;统计报表&#39;, 12),
+ (&#39;出差补贴&#39;, 11),
+ (&#39;设计解决方案&#39;, 11),
+ (&#39;设计建议&#39;, 11),
+ (&#39;实施方案&#39;, 11),
+ (&#39;报告撰写&#39;, 11),
+ (&#39;ai&#39;, 11),
+ (&#39;免费三餐&#39;, 11),
+ (&#39;电子&#39;, 11),
+ (&#39;标注&#39;, 11),
+ (&#39;数字敏感性&#39;, 11),
+ (&#39;数据洞察&#39;, 11),
+ (&#39;数据规则&#39;, 11),
+ (&#39;数据体系建设&#39;, 11),
+ (&#39;清洗&#39;, 11),
+ (&#39;管理&#39;, 10),
+ (&#39;团队氛围好&#39;, 10),
+ (&#39;数据分析软件&#39;, 10),
+ (&#39;数据统计分析&#39;, 10),
+ (&#39;零售&#39;, 10),
+ (&#39;包住&#39;, 10),
+ (&#39;会计&#39;, 10),
+ (&#39;数据指标&#39;, 10),
+ (&#39;包吃包住&#39;, 10),
+ (&#39;市场调研&#39;, 10),
+ (&#39;销售数据分析&#39;, 10),
+ (&#39;origin&#39;, 10),
+ (&#39;人工智能&#39;, 10),
+ (&#39;分析数据&#39;, 10),
+ (&#39;英语四级&#39;, 9),
+ (&#39;测试&#39;, 9),
+ (&#39;英语读写&#39;, 9),
+ (&#39;市场分析&#39;, 9),
+ (&#39;需求分析&#39;, 9),
+ (&#39;扁平管理&#39;, 9),
+ (&#39;餐补&#39;, 9),
+ (&#39;数据透视&#39;, 9),
+ (&#39;职业发展&#39;, 9),
+ (&#39;环境&#39;, 9),
+ (&#39;数据报告&#39;, 9),
+ (&#39;年终奖&#39;, 9),
+ (&#39;员工活动&#39;, 9),
+ (&#39;奖金&#39;, 8),
+ (&#39;经济&#39;, 8),
+ (&#39;产假&#39;, 8),
+ (&#39;流程优化&#39;, 8),
+ (&#39;保险&#39;, 8),
+ (&#39;社保&#39;, 8),
+ (&#39;大牛带队&#39;, 8),
+ (&#39;电商行业&#39;, 8),
+ (&#39;用户过亿&#39;, 8),
+ (&#39;节日慰问&#39;, 8),
+ (&#39;erp&#39;, 8),
+ (&#39;管控&#39;, 8),
+ (&#39;mysql数据库&#39;, 8),
+ (&#39;数据监控&#39;, 8),
+ (&#39;matlab&#39;, 8),
+ (&#39;pandas&#39;, 7),
+ (&#39;年度体检&#39;, 7),
+ (&#39;数据运营&#39;, 7),
+ (&#39;power&#39;, 7),
+ (&#39;医药&#39;, 7),
+ (&#39;审计&#39;, 7),
+ (&#39;供应链&#39;, 7),
+ (&#39;供应链管理&#39;, 7),
+ (&#39;晋升空间大&#39;, 7),
+ (&#39;业务分析&#39;, 7),
+ (&#39;数据分析模型&#39;, 7),
+ (&#39;业务数据&#39;, 7),
+ (&#39;营销&#39;, 7),
+ (&#39;电子商务&#39;, 7),
+ (&#39;工作餐&#39;, 7),
+ (&#39;风险管理&#39;, 7),
+ (&#39;子女医疗保险&#39;, 7),
+ (&#39;环境工程&#39;, 7),
+ (&#39;包吃住&#39;, 7),
+ (&#39;决策支持&#39;, 7),
+ (&#39;数据收集整理&#39;, 7),
+ (&#39;补贴&#39;, 7),
+ (&#39;提供住宿&#39;, 7),
+ (&#39;员工宿舍&#39;, 7),
+ (&#39;it行业&#39;, 6),
+ (&#39;商业分析&#39;, 6),
+ (&#39;c++&#39;, 6),
+ (&#39;算法&#39;, 6),
+ (&#39;电脑&#39;, 6),
+ (&#39;filter&#39;, 6),
+ (&#39;团队年轻&#39;, 6),
+ (&#39;跨境电商&#39;, 6),
+ (&#39;年轻团队&#39;, 6),
+ (&#39;目标管理&#39;, 6),
+ (&#39;13薪&#39;, 6),
+ (&#39;databases&#39;, 6),
+ (&#39;年假&#39;, 6),
+ (&#39;kafka&#39;, 6),
+ (&#39;数据科学&#39;, 6),
+ (&#39;团建旅游&#39;, 6),
+ (&#39;crm&#39;, 6),
+ (&#39;福利多多&#39;, 6),
+ (&#39;信息管理&#39;, 6),
+ (&#39;tensorflow&#39;, 6),
+ (&#39;业务策略&#39;, 6),
+ (&#39;业务决策&#39;, 6),
+ (&#39;深度学习&#39;, 6),
+ (&#39;晋升&#39;, 6),
+ (&#39;提供食宿&#39;, 6),
+ (&#39;金融行业&#39;, 6),
+ (&#39;服装&#39;, 6),
+ (&#39;spreadsheets&#39;, 6),
+ (&#39;systems&#39;, 6),
+ (&#39;odbc&#39;, 6),
+ (&#39;电商平台&#39;, 6),
+ (&#39;推广&#39;, 6),
+ (&#39;创建模型&#39;, 5),
+ (&#39;数据支撑&#39;, 5),
+ (&#39;大气科学&#39;, 5),
+ (&#39;加班费&#39;, 5),
+ (&#39;策略运营&#39;, 5),
+ (&#39;企业年金&#39;, 5),
+ (&#39;复核&#39;, 5),
+ (&#39;年底双薪&#39;, 5),
+ (&#39;环境科学&#39;, 5),
+ (&#39;指标管理&#39;, 5),
+ (&#39;数据分析报表&#39;, 5),
+ (&#39;电商运营&#39;, 5),
+ (&#39;指标体系&#39;, 5),
+ (&#39;工龄奖&#39;, 5),
+ (&#39;生日慰问&#39;, 5),
+ (&#39;医疗保险&#39;, 5),
+ (&#39;技能培训&#39;, 5),
+ (&#39;生鲜&#39;, 5),
+ (&#39;研发&#39;, 5),
+ (&#39;免费住宿&#39;, 5),
+ (&#39;广告&#39;, 5),
+ (&#39;数据集&#39;, 5),
+ (&#39;数据透视表&#39;, 5),
+ (&#39;法定节假日&#39;, 5),
+ (&#39;假日福利&#39;, 5),
+ (&#39;财务管理&#39;, 5),
+ (&#39;英语口语&#39;, 5),
+ (&#39;Python&#39;, 5),
+ (&#39;业务逻辑&#39;, 5),
+ (&#39;能力优先&#39;, 5),
+ (&#39;c#&#39;, 5),
+ (&#39;运营管理&#39;, 5),
+ (&#39;需求调研&#39;, 5),
+ (&#39;调优&#39;, 5),
+ (&#39;产品优化&#39;, 5),
+ (&#39;设计开发&#39;, 5),
+ (&#39;ab测试&#39;, 5),
+ (&#39;pmo&#39;, 5),
+ (&#39;powerpoint&#39;, 5),
+ (&#39;英语听说读写&#39;, 5),
+ (&#39;数字化转型&#39;, 4),
+ (&#39;数据中台&#39;, 4),
+ (&#39;amazon&#39;, 4),
+ (&#39;电气&#39;, 4),
+ (&#39;法定假期&#39;, 4),
+ (&#39;电子信息&#39;, 4),
+ (&#39;节假日休&#39;, 4),
+ (&#39;模型&#39;, 4),
+ (&#39;核算&#39;, 4),
+ (&#39;能源&#39;, 4),
+ (&#39;汽车配件&#39;, 4),
+ (&#39;团建&#39;, 4),
+ (&#39;津贴&#39;, 4),
+ (&#39;生物&#39;, 4),
+ (&#39;服装行业&#39;, 4),
+ (&#39;法定年休假&#39;, 4),
+ (&#39;ebay&#39;, 4),
+ (&#39;过节费&#39;, 4),
+ (&#39;生成报告&#39;, 4),
+ (&#39;软件&#39;, 4),
+ (&#39;员工食堂&#39;, 4),
+ (&#39;公积金&#39;, 4),
+ (&#39;电脑办公软件&#39;, 4),
+ (&#39;理工科&#39;, 4),
+ (&#39;员工培训&#39;, 4),
+ (&#39;财务数据&#39;, 4),
+ (&#39;发货计划&#39;, 4),
+ (&#39;发展空间&#39;, 4),
+ (&#39;mongodb&#39;, 4),
+ (&#39;numpy&#39;, 4),
+ (&#39;数据预处理&#39;, 4),
+ (&#39;旅游&#39;, 4),
+ (&#39;系统维护&#39;, 4),
+ (&#39;用户行为分析&#39;, 4),
+ (&#39;sql数据库&#39;, 4),
+ (&#39;库存周转率&#39;, 4),
+ (&#39;传播学&#39;, 4),
+ (&#39;项目成本&#39;, 4),
+ (&#39;BI&#39;, 4),
+ (&#39;媒体广告&#39;, 4),
+ (&#39;婚育礼金&#39;, 4),
+ (&#39;报表分析&#39;, 4),
+ (&#39;广告投放&#39;, 4),
+ (&#39;成本分析&#39;, 4),
+ (&#39;市场策略&#39;, 4),
+ (&#39;挖掘&#39;, 4),
+ (&#39;优于法定年假&#39;, 4),
+ (&#39;学习平台&#39;, 4),
+ (&#39;数据集成&#39;, 3),
+ (&#39;工业工程&#39;, 3),
+ (&#39;居家办公&#39;, 3),
+ (&#39;午餐补助&#39;, 3),
+ (&#39;库存管理&#39;, 3),
+ (&#39;方案设计&#39;, 3),
+ (&#39;CRM&#39;, 3),
+ (&#39;预测模型&#39;, 3),
+ (&#39;预算&#39;, 3),
+ (&#39;AI&#39;, 3),
+ (&#39;食品行业&#39;, 3),
+ (&#39;医学&#39;, 3),
+ (&#39;postgresql&#39;, 3),
+ (&#39;机器学习算法&#39;, 3),
+ (&#39;模型开发&#39;, 3),
+ (&#39;高温津贴&#39;, 3),
+ (&#39;14薪&#39;, 3),
+ (&#39;餐费补贴&#39;, 3),
+ (&#39;架构设计&#39;, 3),
+ (&#39;食堂&#39;, 3),
+ (&#39;营销策略&#39;, 3),
+ (&#39;市场定位&#39;, 3),
+ (&#39;数据结构算法&#39;, 3),
+ (&#39;包三餐&#39;, 3),
+ (&#39;rpg&#39;, 3),
+ (&#39;解决方案&#39;, 3),
+ (&#39;订单数据&#39;, 3),
+ (&#39;市场动态&#39;, 3),
+ (&#39;晋升机会&#39;, 3),
+ (&#39;化工行业&#39;, 3),
+ (&#39;可视化报告&#39;, 3),
+ (&#39;销售运营&#39;, 3),
+ (&#39;财务报表&#39;, 3),
+ (&#39;销售报表&#39;, 3),
+ (&#39;采购&#39;, 3),
+ (&#39;数据应用&#39;, 3),
+ (&#39;报表开发&#39;, 3),
+ (&#39;数据处理分析&#39;, 3),
+ (&#39;bi报表&#39;, 3),
+ (&#39;零售行业&#39;, 3),
+ (&#39;销售数据统计&#39;, 3),
+ (&#39;选型&#39;, 3),
+ (&#39;数据准确性&#39;, 3),
+ (&#39;指标分析&#39;, 3),
+ (&#39;失业保险&#39;, 3),
+ (&#39;R&#39;, 3),
+ (&#39;销售趋势&#39;, 3),
+ (&#39;大数据处理&#39;, 3),
+ (&#39;团建活动&#39;, 3),
+ (&#39;报表制作&#39;, 3),
+ (&#39;数据看板&#39;, 3),
+ (&#39;趋势分析&#39;, 3),
+ (&#39;kpi&#39;, 3),
+ (&#39;Tableau&#39;, 3),
+ (&#39;心理学&#39;, 3),
+ (&#39;快消品行业&#39;, 3),
+ (&#39;意外险&#39;, 3),
+ (&#39;质量管理&#39;, 3),
+ (&#39;咨询&#39;, 3),
+ (&#39;数据拟合&#39;, 3),
+ (&#39;数据标准&#39;, 3),
+ (&#39;Hadoop&#39;, 3),
+ (&#39;抖音&#39;, 3),
+ (&#39;韩语读写&#39;, 3),
+ (&#39;商品管理&#39;, 3),
+ (&#39;运营计划&#39;, 3),
+ (&#39;归因分析&#39;, 3),
+ (&#39;谈判&#39;, 3),
+ (&#39;带薪事假&#39;, 3),
+ (&#39;流程管理&#39;, 3),
+ (&#39;代码编写&#39;, 3),
+ (&#39;仪表板&#39;, 3),
+ (&#39;企业管理&#39;, 3),
+ (&#39;深度分析&#39;, 3),
+ (&#39;英语4级&#39;, 3),
+ (&#39;英文&#39;, 3),
+ (&#39;热能动力&#39;, 3),
+ (&#39;养老保险&#39;, 3),
+ (&#39;理工&#39;, 3),
+ (&#39;节日津贴&#39;, 3),
+ (&#39;福利假&#39;, 3),
+ (&#39;生产数据&#39;, 3),
+ (&#39;二次开发&#39;, 3),
+ (&#39;社会保险&#39;, 3),
+ (&#39;供应商管理&#39;, 3),
+ (&#39;生产计划&#39;, 3),
+ (&#39;生信分析&#39;, 3),
+ (&#39;生育保险&#39;, 3),
+ (&#39;缴纳五险&#39;, 3),
+ (&#39;免费午餐&#39;, 3),
+ (&#39;业务优化&#39;, 3),
+ (&#39;用户画像&#39;, 3),
+ (&#39;职业晋升&#39;, 3),
+ (&#39;健身瑜伽&#39;, 3),
+ (&#39;业务数据分析&#39;, 3),
+ (&#39;信息系统&#39;, 3),
+ (&#39;业务监控体系&#39;, 3),
+ (&#39;vlookup&#39;, 3),
+ (&#39;育儿假&#39;, 3),
+ (&#39;活动策划&#39;, 3),
+ (&#39;管理培训&#39;, 3),
+ (&#39;药学&#39;, 3),
+ (&#39;系统培训&#39;, 3),
+ (&#39;算法模型&#39;, 3),
+ (&#39;法定假日&#39;, 3),
+ (&#39;目标分解&#39;, 2),
+ (&#39;雅思&#39;, 2),
+ (&#39;排污企业排查&#39;, 2),
+ (&#39;结构&#39;, 2),
+ (&#39;接待客户&#39;, 2),
+ (&#39;编码&#39;, 2),
+ (&#39;接收客户&#39;, 2),
+ (&#39;问题分析&#39;, 2),
+ (&#39;推广复制&#39;, 2),
+ (&#39;监测系统&#39;, 2),
+ (&#39;编程支持&#39;, 2),
+ (&#39;社交平台&#39;, 2),
+ (&#39;维护数据系统&#39;, 2),
+ (&#39;维护数据库&#39;, 2),
+ (&#39;管理流程&#39;, 2),
+ (&#39;管理学&#39;, 2),
+ (&#39;需求收集&#39;, 2),
+ (&#39;报表逻辑&#39;, 2),
+ (&#39;管理优化&#39;, 2),
+ (&#39;维修订单&#39;, 2),
+ (&#39;需求文档&#39;, 2),
+ (&#39;系统集成&#39;, 2),
+ (&#39;线上营销推广&#39;, 2),
+ (&#39;销售预测&#39;, 2),
+ (&#39;高并发&#39;, 2),
+ (&#39;粤语&#39;, 2),
+ (&#39;职位晋升&#39;, 2),
+ (&#39;高温补助&#39;, 2),
+ (&#39;带薪假&#39;, 2),
+ (&#39;销售毛利分析&#39;, 2),
+ (&#39;数据产品&#39;, 2),
+ (&#39;数据交易员&#39;, 2),
+ (&#39;股权激励&#39;, 2),
+ (&#39;销售策略&#39;, 2),
+ (&#39;销售计划&#39;, 2),
+ (&#39;数字营销&#39;, 2),
+ (&#39;销售费用分析&#39;, 2),
+ (&#39;职业规划&#39;, 2),
+ (&#39;推广策略&#39;, 2),
+ (&#39;数字化&#39;, 2),
+ (&#39;带薪假期&#39;, 2),
+ (&#39;带薪培训&#39;, 2),
+ (&#39;效益奖金&#39;, 2),
+ (&#39;效果评估&#39;, 2),
+ (&#39;监控进度&#39;, 2),
+ (&#39;提供带薪培训&#39;, 2),
+ (&#39;销售通报&#39;, 2),
+ (&#39;系统分析&#39;, 2),
+ (&#39;年底奖金&#39;, 2),
+ (&#39;社保福利&#39;, 2),
+ (&#39;需求沟通&#39;, 2),
+ (&#39;风险把控&#39;, 2),
+ (&#39;项目预算&#39;, 2),
+ (&#39;年终分红&#39;, 2),
+ (&#39;竞品分析&#39;, 2),
+ (&#39;快消品&#39;, 2),
+ (&#39;答辩&#39;, 2),
+ (&#39;录入&#39;, 2),
+ (&#39;策略优化&#39;, 2),
+ (&#39;项目数据&#39;, 2),
+ (&#39;建模分析&#39;, 2),
+ (&#39;年终双薪&#39;, 2),
+ (&#39;项目跟进&#39;, 2),
+ (&#39;应用统计学&#39;, 2),
+ (&#39;应用统计&#39;, 2),
+ (&#39;算法调研&#39;, 2),
+ (&#39;结题&#39;, 2),
+ (&#39;策略分析&#39;, 2),
+ (&#39;库存管控&#39;, 2),
+ (&#39;组织工会活动&#39;, 2),
+ (&#39;库存数据分析&#39;, 2),
+ (&#39;库存&#39;, 2),
+ (&#39;年金&#39;, 2),
+ (&#39;顾问&#39;, 2),
+ (&#39;广告策略&#39;, 2),
+ (&#39;广告数据分析&#39;, 2),
+ (&#39;快递&#39;, 2),
+ (&#39;快速发展&#39;, 2),
+ (&#39;竞争态势分析&#39;, 2),
+ (&#39;绩效工资&#39;, 2),
+ (&#39;福利假期&#39;, 2),
+ (&#39;报告呈现&#39;, 2),
+ (&#39;报告制作&#39;, 2),
+ (&#39;报告分析&#39;, 2),
+ (&#39;报告&#39;, 2),
+ (&#39;预算管控&#39;, 2),
+ (&#39;年度调薪&#39;, 2),
+ (&#39;预算分析报表&#39;, 2),
+ (&#39;韩语&#39;, 2),
+ (&#39;绩效考核&#39;, 2),
+ (&#39;项目奖&#39;, 2),
+ (&#39;竞争分析&#39;, 2),
+ (&#39;投流&#39;, 2),
+ (&#39;项目实施&#39;, 2),
+ (&#39;销售数据更新&#39;, 2),
+ (&#39;技术方案&#39;, 2),
+ (&#39;技术开发&#39;, 2),
+ (&#39;统计编程&#39;, 2),
+ (&#39;技术分析&#39;, 2),
+ (&#39;技术分享&#39;, 2),
+ (&#39;托福&#39;, 2),
+ (&#39;空运单证&#39;, 2),
+ (&#39;技术选型&#39;, 2),
+ (&#39;沟通渠道&#39;, 2),
+ (&#39;销售支持&#39;, 2),
+ (&#39;英文沟通&#39;, 2),
+ (&#39;海外仓&#39;, 2),
+ (&#39;海外机会&#39;, 2),
+ (&#39;订单管理&#39;, 2),
+ (&#39;海运单证&#39;, 2),
+ (&#39;时间管理&#39;, 2),
+ (&#39;订单管理系统&#39;, 2),
+ (&#39;无责底薪&#39;, 2),
+ (&#39;消费行为研究&#39;, 2),
+ (&#39;深度数据分析&#39;, 2),
+ (&#39;英语六级&#39;, 2),
+ (&#39;整理数据&#39;, 2),
+ (&#39;证书补贴&#39;, 2),
+ (&#39;数据需求&#39;, 2),
+ (&#39;英语流利&#39;, 2),
+ (&#39;渠道&#39;, 2),
+ (&#39;证券从业资格&#39;, 2),
+ (&#39;评优奖励&#39;, 2),
+ (&#39;游戏数据分析&#39;, 2),
+ (&#39;数据追踪&#39;, 2),
+ (&#39;物料申购&#39;, 2),
+ (&#39;物联网&#39;, 2),
+ (&#39;调研&#39;, 2),
+ (&#39;调货&#39;, 2),
+ (&#39;系统开发&#39;, 2),
+ (&#39;数据调研&#39;, 2),
+ (&#39;财务bp&#39;, 2),
+ (&#39;晋升空间&#39;, 2),
+ (&#39;晋升管理&#39;, 2),
+ (&#39;带假假日&#39;, 2),
+ (&#39;活动主持&#39;, 2),
+ (&#39;汇总分析&#39;, 2),
+ (&#39;气象&#39;, 2),
+ (&#39;法定休假&#39;, 2),
+ (&#39;营销决策&#39;, 2),
+ (&#39;检核&#39;, 2),
+ (&#39;营销业务&#39;, 2),
+ (&#39;核价&#39;, 2),
+ (&#39;营销咨询&#39;, 2),
+ (&#39;法定节日&#39;, 2),
+ (&#39;架构优化&#39;, 2),
+ (&#39;材料输出&#39;, 2),
+ (&#39;材料计划&#39;, 2),
+ (&#39;机电&#39;, 2),
+ (&#39;计算机网络&#39;, 2),
+ (&#39;营销规划&#39;, 2),
+ (&#39;活动分析报告&#39;, 2),
+ (&#39;薪资面议&#39;, 2),
+ (&#39;营运质量&#39;, 2),
+ (&#39;行业研究&#39;, 2),
+ (&#39;行情分析&#39;, 2),
+ (&#39;补充养老保险&#39;, 2),
+ (&#39;补单&#39;, 2),
+ (&#39;补货计划&#39;, 2),
+ (&#39;活动经费&#39;, 2),
+ (&#39;晋升通道&#39;, 2),
+ (&#39;计划管理&#39;, 2),
+ (&#39;环保检测&#39;, 2),
+ (&#39;数据维护&#39;, 2),
+ (&#39;财务分析报告&#39;, 2),
+ (&#39;能耗数据&#39;, 2),
+ (&#39;运维&#39;, 2),
+ (&#39;数据接入&#39;, 2),
+ (&#39;航运管理&#39;, 2),
+ (&#39;数据探索&#39;, 2),
+ (&#39;自然语言处理&#39;, 2),
+ (&#39;数据指标体系&#39;, 2),
+ (&#39;自动化行业&#39;, 2),
+ (&#39;进出口数据&#39;, 2),
+ (&#39;能耗数据分析&#39;, 2),
+ (&#39;部门经费&#39;, 2),
+ (&#39;数据开发&#39;, 2),
+ (&#39;酒店行业&#39;, 2),
+ (&#39;量化指标&#39;, 2),
+ (&#39;财务审计&#39;, 2),
+ (&#39;能力建设&#39;, 2),
+ (&#39;数据库维护&#39;, 2),
+ (&#39;金融产品支持&#39;, 2),
+ (&#39;数据工具&#39;, 2),
+ (&#39;数据展示&#39;, 2),
+ (&#39;污染源&#39;, 2),
+ (&#39;金融数据&#39;, 2),
+ (&#39;金融数据分析&#39;, 2),
+ (&#39;金融机构&#39;, 2),
+ (&#39;数据分析能力&#39;, 2),
+ (&#39;数据分析方案&#39;, 2),
+ (&#39;销售报告&#39;, 2),
+ (&#39;数据搜集整理&#39;, 2),
+ (&#39;生日礼金&#39;, 2),
+ (&#39;节假日正常休&#39;, 2),
+ (&#39;过程跟进&#39;, 2),
+ (&#39;环保管家&#39;, 2),
+ (&#39;节能改造&#39;, 2),
+ (&#39;节日礼金&#39;, 2),
+ (&#39;数据研究&#39;, 2),
+ (&#39;节日礼品&#39;, 2),
+ (&#39;财务涉外业务&#39;, 2),
+ (&#39;质量控制&#39;, 2),
+ (&#39;理财规划&#39;, 2),
+ (&#39;数据清洗整理&#39;, 2),
+ (&#39;费用管理&#39;, 2),
+ (&#39;数据测算&#39;, 2),
+ (&#39;数据流程&#39;, 2),
+ (&#39;生产指标&#39;, 2),
+ (&#39;跟进业务进度&#39;, 2),
+ (&#39;生产系统&#39;, 2),
+ (&#39;跟进生产进度&#39;, 2),
+ (&#39;跨境电商业务&#39;, 2),
+ (&#39;跨境电商数据&#39;, 2),
+ (&#39;数据核对&#39;, 2),
+ (&#39;数据校验&#39;, 2),
+ (&#39;数据架构&#39;, 2),
+ (&#39;软件工程&#39;, 2),
+ (&#39;数据敏感&#39;, 2),
+ (&#39;软件开发&#39;, 2),
+ (&#39;软件文档编写&#39;, 2),
+ (&#39;数据导入&#39;, 2),
+ (&#39;挖掘数据价值&#39;, 2),
+ (&#39;光伏&#39;, 2),
+ (&#39;图表&#39;, 2),
+ (&#39;出差津贴&#39;, 2),
+ (&#39;fba&#39;, 2),
+ (&#39;分布式系统&#39;, 2),
+ (&#39;分析业务数据&#39;, 2),
+ (&#39;分析体系&#39;, 2),
+ (&#39;业绩管控&#39;, 2),
+ (&#39;业绩提升&#39;, 2),
+ (&#39;图表呈现&#39;, 2),
+ (&#39;分析市场数据&#39;, 2),
+ (&#39;分析師&#39;, 2),
+ (&#39;分析建模&#39;, 2),
+ (&#39;业务模型&#39;, 2),
+ (&#39;图像算法&#39;, 2),
+ (&#39;分析报告编写&#39;, 2),
+ (&#39;国际贸易&#39;, 2),
+ (&#39;分析数据集&#39;, 2),
+ (&#39;jmp&#39;, 2),
+ (&#39;分析方法&#39;, 2),
+ (&#39;业务目标&#39;, 2),
+ (&#39;团队奖励&#39;, 2),
+ (&#39;团队合作&#39;, 2),
+ (&#39;团建聚餐&#39;, 2),
+ (&#39;临床&#39;, 2),
+ (&#39;engineering&#39;, 2),
+ (&#39;临床研究方案&#39;, 2),
+ (&#39;dubbo&#39;, 2),
+ (&#39;公司团建&#39;, 2),
+ (&#39;产业数据&#39;, 2),
+ (&#39;大病帮扶&#39;, 2),
+ (&#39;公司食堂&#39;, 2),
+ (&#39;公寓式住宿&#39;, 2),
+ (&#39;大气数据分析&#39;, 2),
+ (&#39;bpo行业&#39;, 2),
+ (&#39;六险二金&#39;, 2),
+ (&#39;cdisc&#39;, 2),
+ (&#39;chain&#39;, 2),
+ (&#39;交通便利&#39;, 2),
+ (&#39;夜班津贴&#39;, 2),
+ (&#39;交易员&#39;, 2),
+ (&#39;内控&#39;, 2),
+ (&#39;内部培训&#39;, 2),
+ (&#39;亚马逊运营&#39;, 2),
+ (&#39;写作&#39;, 2),
+ (&#39;五险二金&#39;, 2),
+ (&#39;处理数据&#39;, 2),
+ (&#39;互联网公司&#39;, 2),
+ (&#39;基本面&#39;, 2),
+ (&#39;回款&#39;, 2),
+ (&#39;商品运营&#39;, 2),
+ (&#39;arcgis&#39;, 2),
+ (&#39;一餐一元&#39;, 2),
+ (&#39;制造业&#39;, 2),
+ (&#39;opencv&#39;, 2),
+ (&#39;可视化分析&#39;, 2),
+ (&#39;可行性方案&#39;, 2),
+ (&#39;pdf&#39;, 2),
+ (&#39;pmp&#39;, 2),
+ (&#39;pmp证书&#39;, 2),
+ (&#39;pq&#39;, 2),
+ (&#39;办公软件熟练&#39;, 2),
+ (&#39;pytorch&#39;, 2),
+ (&#39;协调&#39;, 2),
+ (&#39;分析洞察&#39;, 2),
+ (&#39;功能开发&#39;, 2),
+ (&#39;半导体&#39;, 2),
+ (&#39;午餐津贴&#39;, 2),
+ (&#39;vocs&#39;, 2),
+ (&#39;vba&#39;, 2),
+ (&#39;scipy&#39;, 2),
+ (&#39;医药学&#39;, 2),
+ (&#39;server&#39;, 2),
+ (&#39;supply&#39;, 2),
+ (&#39;stata&#39;, 2),
+ (&#39;制药行业&#39;, 2),
+ (&#39;可转正&#39;, 2),
+ (&#39;制度流程&#39;, 2),
+ (&#39;制作报告&#39;, 2),
+ (&#39;业务报表&#39;, 2),
+ (&#39;商品上下架&#39;, 2),
+ (&#39;商业智能&#39;, 2),
+ (&#39;商业数据&#39;, 2),
+ (&#39;分析用户需求&#39;, 2),
+ (&#39;分析运营&#39;, 2),
+ (&#39;商业保险&#39;, 2),
+ (&#39;商业&#39;, 2),
+ (&#39;品类数据分析&#39;, 2),
+ (&#39;listing&#39;, 2),
+ (&#39;咨询顾问&#39;, 2),
+ (&#39;不锈钢&#39;, 2),
+ (&#39;咨询报告&#39;, 2),
+ (&#39;员工餐厅&#39;, 2),
+ (&#39;员工生日福利&#39;, 2),
+ (&#39;media&#39;, 2),
+ (&#39;员工生日&#39;, 2),
+ (&#39;不定期旅游&#39;, 2),
+ (&#39;不定期下午茶&#39;, 2),
+ (&#39;mining&#39;, 2),
+ (&#39;上市企业&#39;, 2),
+ (&#39;子女福利&#39;, 2),
+ (&#39;化妆品行业&#39;, 2),
+ (&#39;市场信息收集&#39;, 2),
+ (&#39;审核&#39;, 2),
+ (&#39;客户分析&#39;, 2),
+ (&#39;Analyst&#39;, 2),
+ (&#39;客服&#39;, 2),
+ (&#39;信贷&#39;, 2),
+ (&#39;信用卡&#39;, 2),
+ (&#39;客户关系维护&#39;, 2),
+ (&#39;产品调研&#39;, 2),
+ (&#39;8小时&#39;, 2),
+ (&#39;客服中心&#39;, 2),
+ (&#39;SAS&#39;, 2),
+ (&#39;宣传&#39;, 2),
+ (&#39;宿舍&#39;, 2),
+ (&#39;市场研究&#39;, 2),
+ (&#39;4A&#39;, 2),
+ (&#39;信息获取&#39;, 2),
+ (&#39;客户咨询&#39;, 2),
+ (&#39;SAP程序&#39;, 2),
+ (&#39;人力资源系统&#39;, 2),
+ (&#39;Mysql&#39;, 2),
+ (&#39;促销活动&#39;, 2),
+ (&#39;Oracle&#39;, 2),
+ (&#39;Power-BI&#39;, 2),
+ (&#39;促销方案&#39;, 2),
+ (&#39;工程数据分析&#39;, 2),
+ (&#39;API对接&#39;, 2),
+ (&#39;会计学&#39;, 2),
+ (&#39;人力资源数据&#39;, 2),
+ (&#39;工龄津贴&#39;, 2),
+ (&#39;供应链运营&#39;, 2),
+ (&#39;市场信息&#39;, 2),
+ (&#39;客户档案&#39;, 2),
+ (&#39;Analysis&#39;, 2),
+ (&#39;客户行为&#39;, 2),
+ (&#39;人性化&#39;, 2),
+ (&#39;Java开发&#39;, 2),
+ (&#39;产品设计&#39;, 2),
+ (&#39;ai模型训练&#39;, 2),
+ (&#39;analytics&#39;, 2),
+ (&#39;安全&#39;, 2),
+ (&#39;岗位津贴&#39;, 2),
+ (&#39;信息化管理&#39;, 2),
+ (&#39;analysis&#39;, 2),
+ (&#39;市场销售分析&#39;, 2),
+ (&#39;优化方案&#39;, 2),
+ (&#39;导师培养&#39;, 2),
+ (&#39;代码&#39;, 2),
+ (&#39;市场趋势&#39;, 2),
+ (&#39;定期下午茶&#39;, 2),
+ (&#39;免费食宿&#39;, 2),
+ (&#39;对策制定&#39;, 2),
+ (&#39;实验数据&#39;, 2),
+ (&#39;adam&#39;, 2),
+ (&#39;产品管理&#39;, 2),
+ (&#39;对比分析&#39;, 2),
+ (&#39;市场调查&#39;, 2),
+ (&#39;acos&#39;, 2),
+ (&#39;AWS&#39;, 2),
+ (&#39;BI报表&#39;, 2),
+ (&#39;agency&#39;, 2),
+ (&#39;会员数据&#39;, 1),
+ (&#39;会员管理&#39;, 1),
+ (&#39;不需要外出&#39;, 1),
+ (&#39;三险一金&#39;, 1),
+ (&#39;不定期团建&#39;, 1),
+ (&#39;优化工艺&#39;, 1),
+ (&#39;空间数据处理&#39;, 1),
+ (&#39;优化建议&#39;, 1),
+ (&#39;节假日礼金&#39;, 1),
+ (&#39;突发事件处理&#39;, 1),
+ (&#39;节假日加班费&#39;, 1),
+ (&#39;立项&#39;, 1),
+ (&#39;下单数据&#39;, 1),
+ (&#39;节日福利金&#39;, 1),
+ (&#39;不打电话&#39;, 1),
+ (&#39;产品性能分析&#39;, 1),
+ (&#39;节日红包&#39;, 1),
+ (&#39;ui&#39;, 1),
+ (&#39;传统节日礼品&#39;, 1),
+ (&#39;vd&#39;, 1),
+ (&#39;药品经营管理&#39;, 1),
+ (&#39;药品营销&#39;, 1),
+ (&#39;uv&#39;, 1),
+ (&#39;社群管理&#39;, 1),
+ (&#39;营业&#39;, 1),
+ (&#39;teradata&#39;, 1),
+ (&#39;英语口语流利&#39;, 1),
+ (&#39;社保齐全&#39;, 1),
+ (&#39;传统节日福利&#39;, 1),
+ (&#39;sources&#39;, 1),
+ (&#39;营销数据&#39;, 1),
+ (&#39;sop&#39;, 1),
+ (&#39;social&#39;, 1),
+ (&#39;落户广州&#39;, 1),
+ (&#39;wps&#39;, 1),
+ (&#39;xml&#39;, 1),
+ (&#39;万用表&#39;, 1),
+ (&#39;英文流利&#39;, 1),
+ (&#39;七险两金&#39;, 1),
+ (&#39;稽核计划&#39;, 1),
+ (&#39;英文听说读写&#39;, 1),
+ (&#39;英文文献&#39;, 1),
+ (&#39;优化产品&#39;, 1),
+ (&#39;七险一金&#39;, 1),
+ (&#39;科技创新&#39;, 1),
+ (&#39;科技&#39;, 1),
+ (&#39;youtube&#39;, 1),
+ (&#39;英文阅读&#39;, 1),
+ (&#39;福利年假&#39;, 1),
+ (&#39;会议组织&#39;, 1),
+ (&#39;传播数据分析&#39;, 1),
+ (&#39;一年2次调薪&#39;, 1),
+ (&#39;英语书写&#39;, 1),
+ (&#39;英语交流&#39;, 1),
+ (&#39;不需要销售&#39;, 1),
+ (&#39;业务沟通&#39;, 1),
+ (&#39;舆情&#39;, 1),
+ (&#39;结果产出&#39;, 1),
+ (&#39;交易&#39;, 1),
+ (&#39;产品规划&#39;, 1),
+ (&#39;系统优化&#39;, 1),
+ (&#39;亚马逊平台&#39;, 1),
+ (&#39;统计工具&#39;, 1),
+ (&#39;五险保障&#39;, 1),
+ (&#39;统计数据&#39;, 1),
+ (&#39;统计数据分析&#39;, 1),
+ (&#39;统计方法&#39;, 1),
+ (&#39;统计模型&#39;, 1),
+ (&#39;薪资优厚&#39;, 1),
+ (&#39;五天8小时&#39;, 1),
+ (&#39;绩效数据&#39;, 1),
+ (&#39;云计算&#39;, 1),
+ (&#39;临床试验设计&#39;, 1),
+ (&#39;系统功能&#39;, 1),
+ (&#39;产品良率&#39;, 1),
+ (&#39;编制报告&#39;, 1),
+ (&#39;经营规划&#39;, 1),
+ (&#39;产品开发&#39;, 1),
+ (&#39;组织培训&#39;, 1),
+ (&#39;产品匹配&#39;, 1),
+ (&#39;组织管理&#39;, 1),
+ (&#39;产品优化方案&#39;, 1),
+ (&#39;产品策略&#39;, 1),
+ (&#39;系统推进&#39;, 1),
+ (&#39;经济管理&#39;, 1),
+ (&#39;经营&#39;, 1),
+ (&#39;交通运输&#39;, 1),
+ (&#39;经营指标&#39;, 1),
+ (&#39;经营数据分析&#39;, 1),
+ (&#39;经营数据报表&#39;, 1),
+ (&#39;经营数据收集&#39;, 1),
+ (&#39;交通工程&#39;, 1),
+ (&#39;临床试验方案&#39;, 1),
+ (&#39;临床研究&#39;, 1),
+ (&#39;臭氧治理&#39;, 1),
+ (&#39;聚餐&#39;, 1),
+ (&#39;业务需求分析&#39;, 1),
+ (&#39;算法设计&#39;, 1),
+ (&#39;线上平台&#39;, 1),
+ (&#39;算法开发&#39;, 1),
+ (&#39;仓储&#39;, 1),
+ (&#39;业务支持&#39;, 1),
+ (&#39;简单互信氛围&#39;, 1),
+ (&#39;业务合同&#39;, 1),
+ (&#39;业务决策支持&#39;, 1),
+ (&#39;策略建议&#39;, 1),
+ (&#39;策略制定&#39;, 1),
+ (&#39;任务拆解&#39;, 1),
+ (&#39;专项分析&#39;, 1),
+ (&#39;专八&#39;, 1),
+ (&#39;专业报告&#39;, 1),
+ (&#39;人力资源&#39;, 1),
+ (&#39;业务风险&#39;, 1),
+ (&#39;管理数据分析&#39;, 1),
+ (&#39;京东&#39;, 1),
+ (&#39;编码实现&#39;, 1),
+ (&#39;中长期激励&#39;, 1),
+ (&#39;中药分析&#39;, 1),
+ (&#39;产品运营&#39;, 1),
+ (&#39;编辑&#39;, 1),
+ (&#39;中英文文献&#39;, 1),
+ (&#39;产品销售&#39;, 1),
+ (&#39;网络推广&#39;, 1),
+ (&#39;考勤系统&#39;, 1),
+ (&#39;管理分析&#39;, 1),
+ (&#39;管理信息系统&#39;, 1),
+ (&#39;考核标准&#39;, 1),
+ (&#39;个体化培养&#39;, 1),
+ (&#39;管理体系&#39;, 1),
+ (&#39;职业科研团队&#39;, 1),
+ (&#39;统计资料&#39;, 1),
+ (&#39;office办公&#39;, 1),
+ (&#39;smartbi&#39;, 1),
+ (&#39;bl&#39;, 1),
+ (&#39;bi报表开发&#39;, 1),
+ (&#39;金融法规&#39;, 1),
+ (&#39;bi可视化&#39;, 1),
+ (&#39;银行&#39;, 1),
+ (&#39;bash&#39;, 1),
+ (&#39;销售企划&#39;, 1),
+ (&#39;销售及管理&#39;, 1),
+ (&#39;azure&#39;, 1),
+ (&#39;axure&#39;, 1),
+ (&#39;aws&#39;, 1),
+ (&#39;销售支援&#39;, 1),
+ (&#39;apps&#39;, 1),
+ (&#39;销售数据录入&#39;, 1),
+ (&#39;销售数据报告&#39;, 1),
+ (&#39;销售数据管理&#39;, 1),
+ (&#39;销售模式&#39;, 1),
+ (&#39;ai算法&#39;, 1),
+ (&#39;销售管理体系&#39;, 1),
+ (&#39;a/b测试&#39;, 1),
+ (&#39;VB数据源开发&#39;, 1),
+ (&#39;SOL&#39;, 1),
+ (&#39;bi系统&#39;, 1),
+ (&#39;金融工程&#39;, 1),
+ (&#39;django&#39;, 1),
+ (&#39;bpo&#39;, 1),
+ (&#39;运营数据监控&#39;, 1),
+ (&#39;运营策略&#39;, 1),
+ (&#39;运营策略分析&#39;, 1),
+ (&#39;db2&#39;, 1),
+ (&#39;data_driven&#39;, 1),
+ (&#39;dashboards&#39;, 1),
+ (&#39;进度跟踪&#39;, 1),
+ (&#39;进销存数据&#39;, 1),
+ (&#39;进销存盘点&#39;, 1),
+ (&#39;dashboard&#39;, 1),
+ (&#39;透视表&#39;, 1),
+ (&#39;通信&#39;, 1),
+ (&#39;通信工程&#39;, 1),
+ (&#39;通信理论&#39;, 1),
+ (&#39;coq&#39;, 1),
+ ...]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pyecharts.<span class="hljs-built_in">globals</span> <span class="hljs-keyword">import</span> CurrentConfig<br>CurrentConfig.ONLINE_HOST = <span class="hljs-string">&quot;http://127.0.0.1:8000/assets/</span><br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">c=(WordCloud()<br>  .add(<span class="hljs-string">&quot;&quot;</span>,a,word_size_range=[<span class="hljs-number">12</span>,<span class="hljs-number">55</span>],textstyle_opts=opt.TextStyleOpts(font_family=<span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>,font_weight=<span class="hljs-string">&#x27;bold&#x27;</span>))<br>  .set_global_opts(title_opts=opt.TitleOpts(title=<span class="hljs-string">&quot;数据分析岗位关键词词云图&quot;</span>))<br>  .set_[color](https://wenku.csdn.net/doc/6401acf5cce7214c316edc4e?spm=<span class="hljs-number">1055.2569</span><span class="hljs-number">.3001</span><span class="hljs-number">.10083</span>&amp;amp;kwd=color)s([<span class="hljs-string">&quot;#FF0000&quot;</span>, <span class="hljs-string">&quot;#00FF00&quot;</span>, <span class="hljs-string">&quot;#0000FF&quot;</span>])<br>   .render(<span class="hljs-string">&quot;shufenwordcloud.html&quot;</span>)<br>)<br><span class="hljs-comment"># c.render_notebook()</span><br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/jobsrwuImg/output3-5.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<h1 id="四、利用stasmodel进行数据统计分析与建模预测"><a href="#四、利用stasmodel进行数据统计分析与建模预测" class="headerlink" title="四、利用stasmodel进行数据统计分析与建模预测"></a>四、利用stasmodel进行数据统计分析与建模预测</h1><h2 id="4-1单因素方差分析"><a href="#4-1单因素方差分析" class="headerlink" title="4.1单因素方差分析"></a>4.1单因素方差分析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> statsmodels.api <span class="hljs-keyword">as</span> sm<br><span class="hljs-keyword">from</span> statsmodels.formula.api <span class="hljs-keyword">import</span> ols<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dfa=pd.read_excel(<span class="hljs-string">&#x27;C:\\数据分析师\\2大数据分析师\\12数据分析项目\\项目1 求职分析\\51salary.xlsx&#x27;</span>,sheet_name=<span class="hljs-string">&#x27;Sheet1&#x27;</span>) <br>dfa.drop([<span class="hljs-string">&#x27;Unnamed: 0&#x27;</span>],axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>) <br>dfa.head()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output4-1.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 以exp为自变量，以lnsalary为因变量，做单因素方差分析</span><br>a = ols(<span class="hljs-string">&#x27;lnsalary~C(exp)&#x27;</span>, data=dfa).fit()<br>anoval1 = sm.stats.anova_lm(a)<br>anoval1._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#以exp为自变量，以lnsalary为因变量，做单因素方差分析</span><br>a=ols(<span class="hljs-string">&#x27;insalary~C(exp)&#x27;</span>,data=dfa).fit()<br>anoval1=sm.stats.anova_lm(a)<br>anoval1._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">0
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;工作经验对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;lnsalary~C(exp)&#x27;</span>, data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;学历对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;lnsalary~C(education)&#x27;</span>, data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;公司规模对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;lnsalary~C(scale)&#x27;</span>, data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;城市对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;lnsalary~C(city)&#x27;</span>, data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;公司类型对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;lnsalary~C(type)&#x27;</span>, data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;行业对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;lnsalary~C(industry)&#x27;</span>, data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;工作经验对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;insalary~C(exp)&#x27;</span>,data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;学历对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;insalary~C(education)&#x27;</span>,data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;公司规模对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;insalary~C(scale)&#x27;</span>,data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;城市对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;insalary~C(city)&#x27;</span>,data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;公司类型对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;insalary~C(type)&#x27;</span>,data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;行业对对数平均薪酬做方法分析的p值：%.3f&#x27;</span>%sm.stats.anova_lm(ols(<span class="hljs-string">&#x27;insalary~C(industry)&#x27;</span>,data=dfa).fit())._values[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>])<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">工作经验对对数平均薪酬做方法分析的p值：0.000
+学历对对数平均薪酬做方法分析的p值：0.000
+公司规模对对数平均薪酬做方法分析的p值：0.000
+城市对对数平均薪酬做方法分析的p值：0.000
+公司类型对对数平均薪酬做方法分析的p值：0.000
+行业对对数平均薪酬做方法分析的p值：0.000
+</code></pre>
+<h2 id="4-2多因素分析多重线性回归"><a href="#4-2多因素分析多重线性回归" class="headerlink" title="4.2多因素分析多重线性回归"></a>4.2多因素分析多重线性回归</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#最小二乘法做线性回归，返回模型</span><br>lm=ols(<span class="hljs-string">&#x27;insalary~C(exp)+C(education)+C(scale)+C(city)+C(type)+C(industry)&#x27;</span>,data=dfa).fit() <br>lm.summary()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>        <td>insalary</td>     <th>  R-squared:         </th> <td>   0.358</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.323</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   10.45</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Sat, 08 Mar 2025</td> <th>  Prob (F-statistic):</th> <td>1.15e-58</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>18:35:14</td>     <th>  Log-Likelihood:    </th> <td> -891.19</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   950</td>      <th>  AIC:               </th> <td>   1880.</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   901</td>      <th>  BIC:               </th> <td>   2118.</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>    48</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+                  <td></td>                    <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>                        <td>    2.9367</td> <td>    0.177</td> <td>   16.573</td> <td> 0.000</td> <td>    2.589</td> <td>    3.285</td>
+</tr>
+<tr>
+  <th>C(exp)[T.2年及以上经验]</th>                <td>    0.0818</td> <td>    0.071</td> <td>    1.152</td> <td> 0.250</td> <td>   -0.058</td> <td>    0.221</td>
+</tr>
+<tr>
+  <th>C(exp)[T.3-5年经验]</th>                 <td>    0.1456</td> <td>    0.062</td> <td>    2.329</td> <td> 0.020</td> <td>    0.023</td> <td>    0.268</td>
+</tr>
+<tr>
+  <th>C(exp)[T.5年及以上经验]</th>                <td>    0.5221</td> <td>    0.089</td> <td>    5.887</td> <td> 0.000</td> <td>    0.348</td> <td>    0.696</td>
+</tr>
+<tr>
+  <th>C(exp)[T.7年及以上经验]</th>                <td>    1.1345</td> <td>    0.225</td> <td>    5.041</td> <td> 0.000</td> <td>    0.693</td> <td>    1.576</td>
+</tr>
+<tr>
+  <th>C(exp)[T.无需经验]</th>                   <td>   -0.1278</td> <td>    0.064</td> <td>   -2.009</td> <td> 0.045</td> <td>   -0.253</td> <td>   -0.003</td>
+</tr>
+<tr>
+  <th>C(education)[T.本科]</th>               <td>    0.3264</td> <td>    0.054</td> <td>    6.057</td> <td> 0.000</td> <td>    0.221</td> <td>    0.432</td>
+</tr>
+<tr>
+  <th>C(education)[T.硕士]</th>               <td>    0.7529</td> <td>    0.109</td> <td>    6.934</td> <td> 0.000</td> <td>    0.540</td> <td>    0.966</td>
+</tr>
+<tr>
+  <th>C(scale)[T.10000人以上]</th>             <td>   -0.1497</td> <td>    0.086</td> <td>   -1.748</td> <td> 0.081</td> <td>   -0.318</td> <td>    0.018</td>
+</tr>
+<tr>
+  <th>C(scale)[T.150-500人]</th>             <td>   -0.3929</td> <td>    0.075</td> <td>   -5.216</td> <td> 0.000</td> <td>   -0.541</td> <td>   -0.245</td>
+</tr>
+<tr>
+  <th>C(scale)[T.50-150人]</th>              <td>   -0.3546</td> <td>    0.079</td> <td>   -4.487</td> <td> 0.000</td> <td>   -0.510</td> <td>   -0.199</td>
+</tr>
+<tr>
+  <th>C(scale)[T.500-1000人]</th>            <td>   -0.3075</td> <td>    0.085</td> <td>   -3.623</td> <td> 0.000</td> <td>   -0.474</td> <td>   -0.141</td>
+</tr>
+<tr>
+  <th>C(scale)[T.5000-10000人]</th>          <td>   -0.0638</td> <td>    0.126</td> <td>   -0.506</td> <td> 0.613</td> <td>   -0.311</td> <td>    0.184</td>
+</tr>
+<tr>
+  <th>C(scale)[T.少于50人]</th>                <td>   -0.5544</td> <td>    0.088</td> <td>   -6.336</td> <td> 0.000</td> <td>   -0.726</td> <td>   -0.383</td>
+</tr>
+<tr>
+  <th>C(scale)[T.未知]</th>                   <td>   -0.5079</td> <td>    0.094</td> <td>   -5.410</td> <td> 0.000</td> <td>   -0.692</td> <td>   -0.324</td>
+</tr>
+<tr>
+  <th>C(city)[T.佛山]</th>                    <td>   -0.5775</td> <td>    0.172</td> <td>   -3.363</td> <td> 0.001</td> <td>   -0.915</td> <td>   -0.240</td>
+</tr>
+<tr>
+  <th>C(city)[T.其他]</th>                    <td>   -0.2899</td> <td>    0.068</td> <td>   -4.290</td> <td> 0.000</td> <td>   -0.422</td> <td>   -0.157</td>
+</tr>
+<tr>
+  <th>C(city)[T.北京]</th>                    <td>    0.0167</td> <td>    0.103</td> <td>    0.163</td> <td> 0.871</td> <td>   -0.184</td> <td>    0.218</td>
+</tr>
+<tr>
+  <th>C(city)[T.南京]</th>                    <td>    0.0172</td> <td>    0.129</td> <td>    0.133</td> <td> 0.894</td> <td>   -0.237</td> <td>    0.271</td>
+</tr>
+<tr>
+  <th>C(city)[T.宁波]</th>                    <td>    0.3394</td> <td>    0.148</td> <td>    2.298</td> <td> 0.022</td> <td>    0.050</td> <td>    0.629</td>
+</tr>
+<tr>
+  <th>C(city)[T.广州]</th>                    <td>   -0.1624</td> <td>    0.088</td> <td>   -1.854</td> <td> 0.064</td> <td>   -0.334</td> <td>    0.010</td>
+</tr>
+<tr>
+  <th>C(city)[T.成都]</th>                    <td>   -0.0678</td> <td>    0.128</td> <td>   -0.528</td> <td> 0.597</td> <td>   -0.320</td> <td>    0.184</td>
+</tr>
+<tr>
+  <th>C(city)[T.无锡]</th>                    <td>   -0.3095</td> <td>    0.155</td> <td>   -1.995</td> <td> 0.046</td> <td>   -0.614</td> <td>   -0.005</td>
+</tr>
+<tr>
+  <th>C(city)[T.杭州]</th>                    <td>   -0.1159</td> <td>    0.150</td> <td>   -0.773</td> <td> 0.440</td> <td>   -0.410</td> <td>    0.178</td>
+</tr>
+<tr>
+  <th>C(city)[T.武汉]</th>                    <td>   -0.1146</td> <td>    0.109</td> <td>   -1.049</td> <td> 0.295</td> <td>   -0.329</td> <td>    0.100</td>
+</tr>
+<tr>
+  <th>C(city)[T.深圳]</th>                    <td>   -0.1475</td> <td>    0.087</td> <td>   -1.690</td> <td> 0.091</td> <td>   -0.319</td> <td>    0.024</td>
+</tr>
+<tr>
+  <th>C(city)[T.苏州]</th>                    <td>   -0.1521</td> <td>    0.139</td> <td>   -1.093</td> <td> 0.275</td> <td>   -0.425</td> <td>    0.121</td>
+</tr>
+<tr>
+  <th>C(city)[T.郑州]</th>                    <td>   -0.2802</td> <td>    0.214</td> <td>   -1.308</td> <td> 0.191</td> <td>   -0.701</td> <td>    0.140</td>
+</tr>
+<tr>
+  <th>C(city)[T.重庆]</th>                    <td>   -0.3127</td> <td>    0.159</td> <td>   -1.961</td> <td> 0.050</td> <td>   -0.626</td> <td>    0.000</td>
+</tr>
+<tr>
+  <th>C(city)[T.长沙]</th>                    <td>    0.3975</td> <td>    0.162</td> <td>    2.454</td> <td> 0.014</td> <td>    0.080</td> <td>    0.715</td>
+</tr>
+<tr>
+  <th>C(type)[T.国企]</th>                    <td>   -0.1406</td> <td>    0.127</td> <td>   -1.104</td> <td> 0.270</td> <td>   -0.391</td> <td>    0.109</td>
+</tr>
+<tr>
+  <th>C(type)[T.外资企业]</th>                  <td>   -0.0484</td> <td>    0.117</td> <td>   -0.415</td> <td> 0.678</td> <td>   -0.277</td> <td>    0.180</td>
+</tr>
+<tr>
+  <th>C(type)[T.已上市]</th>                   <td>   -0.1825</td> <td>    0.132</td> <td>   -1.388</td> <td> 0.166</td> <td>   -0.441</td> <td>    0.076</td>
+</tr>
+<tr>
+  <th>C(type)[T.民营]</th>                    <td>   -0.1328</td> <td>    0.105</td> <td>   -1.260</td> <td> 0.208</td> <td>   -0.340</td> <td>    0.074</td>
+</tr>
+<tr>
+  <th>C(industry)[T.互联网/电子商务]</th>          <td>   -0.3147</td> <td>    0.130</td> <td>   -2.426</td> <td> 0.015</td> <td>   -0.569</td> <td>   -0.060</td>
+</tr>
+<tr>
+  <th>C(industry)[T.其他]</th>                <td>   -0.2208</td> <td>    0.114</td> <td>   -1.937</td> <td> 0.053</td> <td>   -0.444</td> <td>    0.003</td>
+</tr>
+<tr>
+  <th>C(industry)[T.制药/生物工程]</th>           <td>   -0.5477</td> <td>    0.161</td> <td>   -3.397</td> <td> 0.001</td> <td>   -0.864</td> <td>   -0.231</td>
+</tr>
+<tr>
+  <th>C(industry)[T.快速消费品(食品、饮料、化妆品)]</th>  <td>   -0.6247</td> <td>    0.141</td> <td>   -4.436</td> <td> 0.000</td> <td>   -0.901</td> <td>   -0.348</td>
+</tr>
+<tr>
+  <th>C(industry)[T.批发/零售]</th>             <td>   -0.1452</td> <td>    0.167</td> <td>   -0.867</td> <td> 0.386</td> <td>   -0.474</td> <td>    0.184</td>
+</tr>
+<tr>
+  <th>C(industry)[T.新能源]</th>               <td>   -0.2691</td> <td>    0.175</td> <td>   -1.539</td> <td> 0.124</td> <td>   -0.612</td> <td>    0.074</td>
+</tr>
+<tr>
+  <th>C(industry)[T.服装/纺织/皮革]</th>          <td>   -0.5075</td> <td>    0.165</td> <td>   -3.074</td> <td> 0.002</td> <td>   -0.831</td> <td>   -0.184</td>
+</tr>
+<tr>
+  <th>C(industry)[T.机械/设备/重工]</th>          <td>   -0.3451</td> <td>    0.161</td> <td>   -2.148</td> <td> 0.032</td> <td>   -0.660</td> <td>   -0.030</td>
+</tr>
+<tr>
+  <th>C(industry)[T.汽车]</th>                <td>   -0.1293</td> <td>    0.167</td> <td>   -0.775</td> <td> 0.438</td> <td>   -0.457</td> <td>    0.198</td>
+</tr>
+<tr>
+  <th>C(industry)[T.环保]</th>                <td>   -0.4693</td> <td>    0.158</td> <td>   -2.972</td> <td> 0.003</td> <td>   -0.779</td> <td>   -0.159</td>
+</tr>
+<tr>
+  <th>C(industry)[T.电子技术/半导体/集成电路]</th>     <td>   -0.3333</td> <td>    0.131</td> <td>   -2.553</td> <td> 0.011</td> <td>   -0.589</td> <td>   -0.077</td>
+</tr>
+<tr>
+  <th>C(industry)[T.计算机服务(系统、数据服务、维修)]</th> <td>   -0.1105</td> <td>    0.152</td> <td>   -0.728</td> <td> 0.467</td> <td>   -0.408</td> <td>    0.187</td>
+</tr>
+<tr>
+  <th>C(industry)[T.计算机软件]</th>             <td>   -0.1787</td> <td>    0.123</td> <td>   -1.457</td> <td> 0.145</td> <td>   -0.419</td> <td>    0.062</td>
+</tr>
+<tr>
+  <th>C(industry)[T.贸易/进出口]</th>            <td>    0.4990</td> <td>    0.136</td> <td>    3.669</td> <td> 0.000</td> <td>    0.232</td> <td>    0.766</td>
+</tr>
+<tr>
+  <th>C(industry)[T.金融/投资/证券]</th>          <td>   -0.1881</td> <td>    0.172</td> <td>   -1.095</td> <td> 0.274</td> <td>   -0.525</td> <td>    0.149</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>345.433</td> <th>  Durbin-Watson:     </th> <td>   2.095</td> 
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td>1404.801</td> 
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 1.689</td>  <th>  Prob(JB):          </th> <td>8.94e-306</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 7.906</td>  <th>  Cond. No.          </th> <td>    34.5</td> 
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
+
+<h2 id="4-3利用构建好的模型进行回归预测"><a href="#4-3利用构建好的模型进行回归预测" class="headerlink" title="4.3利用构建好的模型进行回归预测"></a>4.3利用构建好的模型进行回归预测</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">假设你的朋友有一年工作经验，本科学历，在上海找一家<span class="hljs-number">50</span>~<span class="hljs-number">150</span>人的外资企业，行业是互联网/电子商务，请预测他的薪酬水平？<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">x=dfa.head(<span class="hljs-number">1</span>)<br>x<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output4-2.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">x[<span class="hljs-string">&#x27;exp&#x27;</span>] = <span class="hljs-string">&#x27;1年及以上经验&#x27;</span><br>x[<span class="hljs-string">&#x27;education&#x27;</span>] = <span class="hljs-string">&#x27;本科&#x27;</span><br>x[<span class="hljs-string">&#x27;scale&#x27;</span>] = <span class="hljs-string">&#x27;50-150人&#x27;</span><br>x[<span class="hljs-string">&#x27;city&#x27;</span>] = <span class="hljs-string">&#x27;郑州&#x27;</span><br>x[<span class="hljs-string">&#x27;type&#x27;</span>] = <span class="hljs-string">&#x27;外资企业&#x27;</span><br>x[<span class="hljs-string">&#x27;industry&#x27;</span>] = <span class="hljs-string">&#x27;制药/生物工程&#x27;</span><br>x<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/blog/pic/jobsrwuImg/output4-3.png" srcset="/blog/img/loading.gif" lazyload alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># lm.predict(x)</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">0    2.545443
+dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> math<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;这位朋友的薪酬大约是%.2f千元/月&#x27;</span>%math.exp(lm.predict(x)))<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">这位朋友的薪酬大约是7.63千元/月
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfa[<span class="hljs-string">&#x27;city&#x27;</span>].value_counts()<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">city
+其他    287
+上海    153
+深圳     93
+广州     89
+北京     60
+武汉     49
+成都     32
+南京     31
+苏州     26
+宁波     23
+杭州     22
+无锡     21
+重庆     19
+长沙     19
+佛山     16
+郑州     10
+Name: count, dtype: int64
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前程无忧数据分析岗位可视化分析</div>
+      <div>https://3022799479.github.io/blog/2025/02/15/求职项目/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2025/01/06/%E4%B8%BA%E5%BA%94%E8%81%98%E8%80%85%E6%8E%92%E5%90%8D/" title="为应聘者排名">
+                        <span class="hidden-mobile">为应聘者排名</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

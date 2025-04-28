@@ -87,7 +87,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/blog/">
-      <strong>Fluid</strong>
+      <strong>数据分析项目集</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -183,13 +183,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/blog/img/bg/OIP-C.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+            <span id="subtitle" data-typed-text="如果你拷问数据到一定程度，它会坦白一切。"></span>
           
         </div>
 
@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/blog/2025/03/20/test/" target="_self">
-          
+        <a href="/blog/2025/02/15/%E6%B1%82%E8%81%8C%E9%A1%B9%E7%9B%AE/" target="_self">
+          前程无忧数据分析岗位可视化分析
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2025/03/20/test/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2025/02/15/%E6%B1%82%E8%81%8C%E9%A1%B9%E7%9B%AE/" target="_self">
         <div>
-          
+          一、准备工作1.1 载入库和初始化设置1234567891011#载入库和初始化设置import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport math#字体plt.rcParams[&#x27;font.sans-serif&#x27;]=[&#x27;SimHei&#x27;]plt.rcParams[&
         </div>
       </a>
 
@@ -243,8 +243,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-20 19:04" pubdate>
-              2025-03-20
+            <time datetime="2025-02-15 16:49" pubdate>
+              2025-02-15
             </time>
           </div>
         
@@ -260,15 +260,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/blog/2025/03/20/hello-world/" target="_self">
-          Hello World
+        <a href="/blog/2025/01/06/%E4%B8%BA%E5%BA%94%E8%81%98%E8%80%85%E6%8E%92%E5%90%8D/" target="_self">
+          为应聘者排名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2025/03/20/hello-world/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2025/01/06/%E4%B8%BA%E5%BA%94%E8%81%98%E8%80%85%E6%8E%92%E5%90%8D/" target="_self">
         <div>
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+          为应聘者排名1、业务背景通过应聘者对一系列问题回答的选择，判断应聘者跟岗位的适配度 2、数据准备模型数据源信息  3、数据分析数据处理在源数据的基础上添加ID列，以标识每一行数据 判断数据是否适合做主成分分析将要判断的变量纳入相关分析中  由上图可看出，大部分变量之间相关系数&gt;0.3,具有相关性，可以做主成分分析 经过多次主成分分析确定变量成分分析-降维-因子分析  KMO检验系数&gt;0
         </div>
       </a>
 
@@ -276,8 +276,107 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-20 18:43" pubdate>
-              2025-03-20
+            <time datetime="2025-01-06 15:59" pubdate>
+              2025-01-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/blog/2024/12/25/2003%E5%B9%B41-6%E6%9C%88%E5%87%BA%E5%8F%A3%E9%94%80%E5%94%AE%E6%80%BB%E9%A2%9D%E9%A2%84%E6%B5%8B/" target="_self">
+          2003年1-6月出口销售总额预测
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/12/25/2003%E5%B9%B41-6%E6%9C%88%E5%87%BA%E5%8F%A3%E9%94%80%E5%94%AE%E6%80%BB%E9%A2%9D%E9%A2%84%E6%B5%8B/" target="_self">
+        <div>
+          2003年1-6月出口销售总额预测1、业务背景依据1993-2003年（总出口额）数据,使用时间序列分析预测2003年1-6月的出口销售总额 2、数据准备模型数据源信息  数据处理缺失值处理 该数据集中没有缺失值  [!NOTE] 时间序列分析中-缺失值可删头删尾，中间缺失值填补  创建时间序列变量数据-定义日期和时间  [!NOTE] 只有定义了时间变量，SPSS系统才能识别指定序列的时间变量，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-12-25 10:59" pubdate>
+              2024-12-25
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/blog/2024/11/10/%E5%B7%A5%E8%B5%84%E9%A2%84%E6%B5%8B/" target="_self">
+          工资的高低，与哪些因素有关？
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/11/10/%E5%B7%A5%E8%B5%84%E9%A2%84%E6%B5%8B/" target="_self">
+        <div>
+          工资的高低，与哪些因素有关？1、数据准备数据表信息 模型数据源信息：     模型数据源信息处理后数据信息：    数据处理 针对性别：通过转换-自动重新编码转换成数值型的分类变量    针对受教育程度：作为连续变量使用  针对出生日期：通过转换-计算变量转化为年龄   $$DATEDIFF($TIME,bdate,”year”)$$  [!CAUTION] 构建模型时尽可能使自变量和因变量是一致
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-10 17:59" pubdate>
+              2024-11-10
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/blog/2024/11/02/%E8%84%91%E5%8D%92%E4%B8%AD%E5%81%A5%E5%BA%B7%E6%95%99%E8%82%B2/" target="_self">
+          中小学关于脑卒中健康教育的效果研究
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/11/02/%E8%84%91%E5%8D%92%E4%B8%AD%E5%81%A5%E5%BA%B7%E6%95%99%E8%82%B2/" target="_self">
+        <div>
+          中小学关于脑卒中健康教育的效果研究1、业务背景“脑卒中”又称“中风”、“脑血管意外”是一种急性脑血管疾病，是由于脑部血管突然破裂或因血管阻塞导致血液不能流入大脑而引起脑组织损伤的一组疾病。某地针对多所中小学学生开展了关于脑卒中预防与防治的相关健康知识教育。在经过一段时间后，教育部门希望了解中小学关于脑卒中健康教育的效果 1、该专项健康教育是否有效？ 2、接受该专项健康教育的同学在哪些方面体现出了差
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-02 17:59" pubdate>
+              2024-11-02
             </time>
           </div>
         
