@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="淘宝用户行为分析一、业务背景业务需求1：随着互联网和电商的发展，人们习惯于网上购物。在国内，电商平台深受欢迎，每年的双11，双12活动，大量的用户在淘宝平台浏览商品，或收藏或加入购物车或直接购买。通过对用户的行为分析，探索用户购买的规律，了解商品的受欢迎程度，结合店铺的营销策略，实现更加精细和精准的运营，让业务获得更好的增长。 本数据集来源：阿里天池数据集 数据集包含所有的用户行为数据，字段名称分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python淘宝用户行为分析">
+<meta property="og:url" content="https://3022799479.github.io/blog/2025/04/12/%E6%B7%98%E5%AE%9D%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E4%B8%8E%E5%95%86%E5%93%81%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="淘宝用户行为分析一、业务背景业务需求1：随着互联网和电商的发展，人们习惯于网上购物。在国内，电商平台深受欢迎，每年的双11，双12活动，大量的用户在淘宝平台浏览商品，或收藏或加入购物车或直接购买。通过对用户的行为分析，探索用户购买的规律，了解商品的受欢迎程度，结合店铺的营销策略，实现更加精细和精准的运营，让业务获得更好的增长。 本数据集来源：阿里天池数据集 数据集包含所有的用户行为数据，字段名称分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao1.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao2.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao3.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao4.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao5.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao6.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao7.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao8.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao9.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao10.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/output_62_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao11.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/output_67_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao12.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao13.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao14.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao15.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao16.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao17.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/output_96_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao18.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao19.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao20.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao21.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/output_114_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao22.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao23.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao24.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/output_130_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/output_131_0.png">
+<meta property="og:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao25.png">
+<meta property="article:published_time" content="2025-04-12T04:49:38.000Z">
+<meta property="article:modified_time" content="2025-05-29T12:05:04.704Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://3022799479.github.io/blog/pic/taobaoImg/taobao1.png">
+  
+  
+  
+  <title>Python淘宝用户行为分析 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"3022799479.github.io","root":"/blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>数据分析项目集</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python淘宝用户行为分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-12 12:49" pubdate>
+          2025年4月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Python淘宝用户行为分析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="淘宝用户行为分析"><a href="#淘宝用户行为分析" class="headerlink" title="淘宝用户行为分析"></a>淘宝用户行为分析</h1><h1 id="一、业务背景"><a href="#一、业务背景" class="headerlink" title="一、业务背景"></a>一、业务背景</h1><p>业务需求1：随着互联网和电商的发展，人们习惯于网上购物。在国内，电商平台深受欢迎，每年的双11，双12活动，大量的用户在淘宝平台浏览商品，或收藏或加入购物车或直接购买。通过对用户的行为分析，探索用户购买的规律，了解商品的受欢迎程度，结合店铺的营销策略，实现更加精细和精准的运营，让业务获得更好的增长。</p>
+<p>本数据集来源：阿里天池数据集</p>
+<p>数据集包含所有的用户行为数据，字段名称分别为<br><br>用户ID-整数类型-userId<br><br>商品ID-整数类型-commodityId<br><br>商品类目ID-整数类型-commodityName<br><br>行为类型-字符串，包括（’pv’、’buy’、’cart’、’fav’），含义分别是（”商品详情页PV，等价于点击”、”商品购买”、”将商品加入购物车”、”收藏商品”）-behaviorType<br><br>时间戳-time<br><br>该数据集为亿级以上数据集，这里提取100万数据到数据库中做分析</p>
+<h1 id="二、分析框架和思路并提出问题"><a href="#二、分析框架和思路并提出问题" class="headerlink" title="二、分析框架和思路并提出问题"></a>二、分析框架和思路并提出问题</h1><h2 id="2-1分析框架和思路"><a href="#2-1分析框架和思路" class="headerlink" title="2.1分析框架和思路"></a>2.1分析框架和思路</h2><p>(1)用户维度<br><br>在用户维度我们想要知道什么问题呢？了解用户购买的行为习惯。<br><br>需要哪些指标呢：<br><br>PV、UV、平均访问量、跳失率等指标，分析用户最活跃的日期及活跃时段</p>
+<p>(2) 产品维度<br><br>从成交量、人均购买次数、复购率等指标，探索用户对商品的购买偏好，了解商品的销售规律</p>
+<p>(3)用户行为维度<br><br>从收藏转化率、购物车转化率、成交转化率，对用户行为从浏览到购买进行漏斗分析</p>
+<p>(4)用户价值维度（RFM）<br><br>参照RFM模型，对用户进行分类，找出有价值的用户<br><br>分析框架图如下：<br><img src="/blog/pic/taobaoImg/taobao1.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="2-2提出问题"><a href="#2-2提出问题" class="headerlink" title="2.2提出问题"></a>2.2提出问题</h2><h1 id="三、分析正文"><a href="#三、分析正文" class="headerlink" title="三、分析正文"></a>三、分析正文</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">分析步骤如下：<br>准备工作------理解数据------数据处理和清洗------构建模型------数据可视化<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-1-载入和初始化设置"><a href="#3-1-载入和初始化设置" class="headerlink" title="3.1 载入和初始化设置"></a>3.1 载入和初始化设置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#载入库和初始化设置</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> mysql.connector<br><span class="hljs-keyword">import</span> codecs,sys<br><span class="hljs-keyword">import</span> datetime<br><span class="hljs-comment">#字体</span><br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>]=[<span class="hljs-string">&#x27;SimHei&#x27;</span>]<br>plt.rcParams[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="hljs-literal">False</span><br><span class="hljs-comment">#通过警告过滤器对是否发出警告信息进行控制</span><br><span class="hljs-keyword">import</span> warnings<br>warnings.filterwarnings(<span class="hljs-string">&#x27;ignore&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建数据库连接</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_conn</span>():<br>	db = mysql.connector.connect(<br>	    host=<span class="hljs-string">&quot;localhost&quot;</span>,  <span class="hljs-comment"># MySQL服务器地址</span><br>	    user=<span class="hljs-string">&quot;root&quot;</span>,   <span class="hljs-comment"># 用户名</span><br>	    password=<span class="hljs-string">&quot;123456&quot;</span>,  <span class="hljs-comment"># 密码</span><br>	    database=<span class="hljs-string">&quot;taoudatabase&quot;</span>  <span class="hljs-comment"># 数据库名称</span><br>	)<br>	<span class="hljs-keyword">return</span> db<span class="hljs-comment">#是一个数据库，可以创建游标对象</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="3-2-数据处理和清洗"><a href="#3-2-数据处理和清洗" class="headerlink" title="3.2 数据处理和清洗"></a>3.2 数据处理和清洗</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#使用参数化查询</span><br>db=get_conn()<br>query = <span class="hljs-string">&quot;SELECT * FROM UserBehaviorZZ&quot;</span><br>df = pd.read_sql(query, db)<br>df.head()<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao2.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">timeS</span>(<span class="hljs-params">time,method</span>):<br>    <span class="hljs-keyword">if</span> method==<span class="hljs-string">&#x27;day&#x27;</span>:<br>        p=datetime.datetime.fromtimestamp(time).strftime(<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>)<br>        <span class="hljs-keyword">return</span> p<br>    <span class="hljs-keyword">elif</span> method==<span class="hljs-string">&#x27;hour&#x27;</span>:<br>        p=datetime.datetime.fromtimestamp(time).strftime(<span class="hljs-string">&#x27;%H&#x27;</span>)<br>        <span class="hljs-keyword">return</span> p<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;程序错误&#x27;</span>)<br>    <br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;timeDate&#x27;</span>]=df.time.apply(timeS,method=<span class="hljs-string">&#x27;day&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;timeHour&#x27;</span>]=df.time.apply(timeS,method=<span class="hljs-string">&#x27;hour&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.head()<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao3.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#查看缺失值</span><br>df.info()<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1000001 entries, 0 to 1000000
+Data columns (total 7 columns):
+ #   Column         Non-Null Count    Dtype 
+---  ------         --------------    ----- 
+ 0   userId         1000001 non-null  int64 
+ 1   commodityId    1000001 non-null  int64 
+ 2   commodityName  1000001 non-null  int64 
+ 3   behaviorType   1000001 non-null  object
+ 4   time           1000001 non-null  int64 
+ 5   timeDate       1000001 non-null  object
+ 6   timeHour       1000001 non-null  object
+dtypes: int64(4), object(3)
+memory usage: 53.4+ MB
+</code></pre>
+<p>可以看到数据并无缺失值<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#选择所需数据集</span><br><span class="hljs-comment">#选取时间为2017年11月25日至2017年12月3日的数据集</span><br>df1=df.loc[(df[<span class="hljs-string">&#x27;timeDate&#x27;</span>]&gt;=<span class="hljs-string">&#x27;2017-11-25&#x27;</span>)&amp;(df[<span class="hljs-string">&#x27;timeDate&#x27;</span>]&lt;=<span class="hljs-string">&#x27;2017-12-03&#x27;</span>),:]<br><span class="hljs-comment"># df1.head()</span><br>df1.groupby(<span class="hljs-string">&#x27;timeDate&#x27;</span>)[<span class="hljs-string">&#x27;timeDate&#x27;</span>].count()<br>    <br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">timeDate
+2017-11-25    104408
+2017-11-26    106576
+2017-11-27     97808
+2017-11-28     99100
+2017-11-29    102240
+2017-11-30    105587
+2017-12-01    109390
+2017-12-02    137774
+2017-12-03    136648
+Name: timeDate, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#通过以上结果可以看书，数据选取结果符合要求</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="3-3构建模型"><a href="#3-3构建模型" class="headerlink" title="3.3构建模型"></a>3.3构建模型</h2><h3 id="3-3-1用户购物情况整体分析"><a href="#3-3-1用户购物情况整体分析" class="headerlink" title="3.3.1用户购物情况整体分析"></a>3.3.1用户购物情况整体分析</h3><p>(1) 用户的访客量、点击数、平均访问量情况</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#UV（访客数）、PV(点击数）和平均访问量</span><br>final=pd.DataFrame()<br><span class="hljs-comment">#访客数</span><br>userC=df1[<span class="hljs-string">&#x27;userId&#x27;</span>].unique()<br>uv=<span class="hljs-built_in">len</span>(userC)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#点击数</span><br>behaC=df1[df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;pv&#x27;</span>]<br>pv=<span class="hljs-built_in">len</span>(behaC)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#人均访问数</span><br>visitsPerPerson=<span class="hljs-built_in">round</span>(pv/uv,<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">userAnalysis=pd.DataFrame(&#123;<span class="hljs-string">&#x27;uv(访客数)&#x27;</span>:uv,<span class="hljs-string">&#x27;pv(点击数)&#x27;</span>:pv,<span class="hljs-string">&#x27;visitsPerPerson(人均访问数)&#x27;</span>:visitsPerPerson&#125;,index=[<span class="hljs-string">&#x27;统计&#x27;</span>])<br>userAnalysis<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao4.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>我们可以看到这段时间内的访客数为9739，点击数为895637，人均访问数为91.96次。可以看出：<br><br>在这9天中人均每天访问约9次，可见用户经常使用。</p>
+<p>(2) 用户跳出率分析</p>
+<p>用户跳出率 只访问一次页面用户数&#x2F;总用户数 此处只访问一次页面数的计算方法是不考虑用户PV之外的其他行为表现是0<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dfT0=df1.loc[:,[<span class="hljs-string">&#x27;userId&#x27;</span>,<span class="hljs-string">&#x27;behaviorType&#x27;</span>]]<br>dfT0[<span class="hljs-string">&#x27;index1&#x27;</span>]=dfT0.iloc[:,<span class="hljs-number">0</span>]<br>dfT0<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao5.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># dfT=df1.groupby([&#x27;userId&#x27;,&#x27;behaviorType&#x27;])[&#x27;behaviorType&#x27;].count()</span><br>dfT=pd.pivot_table(dfT0,index=<span class="hljs-string">&#x27;userId&#x27;</span>,columns=<span class="hljs-string">&#x27;behaviorType&#x27;</span>,values=<span class="hljs-string">&#x27;index1&#x27;</span>,aggfunc=<span class="hljs-string">&#x27;count&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">dfT=dfT.fillna(value=<span class="hljs-number">0</span>)<br>dfT<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao6.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dfT[<span class="hljs-string">&#x27;索引&#x27;</span>]=<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(dfT)+<span class="hljs-number">1</span>)<br>dfT<br>dfT.set_index(<span class="hljs-string">&#x27;索引&#x27;</span>,inplace=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python">visitOne=<span class="hljs-number">0</span><br>opp=<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(dfT)+<span class="hljs-number">1</span>):  <br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(dfT[<span class="hljs-string">&#x27;buy&#x27;</span>][i])==<span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(dfT[<span class="hljs-string">&#x27;cart&#x27;</span>][i])==<span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(dfT[<span class="hljs-string">&#x27;fav&#x27;</span>][i])==<span class="hljs-number">0</span>:<br>                <span class="hljs-comment"># print(&#x27;只访问一次输出%d&#x27;%(i))</span><br>                visitOne=visitOne+<span class="hljs-number">1</span><br>    <span class="hljs-comment">#         else:</span><br>    <span class="hljs-comment">#             # print(&#x27;fav!=0位置%d&#x27;%(i))</span><br>    <span class="hljs-comment">#             # opp=opp+1</span><br>    <span class="hljs-comment">#             # print(&#x27;输出%d&#x27;%(opp))</span><br>    <span class="hljs-comment">#     else:</span><br>    <span class="hljs-comment">#         # print(&#x27;cart!=0位置%d&#x27;%(i))</span><br>    <span class="hljs-comment">#         # opp=opp+1</span><br>    <span class="hljs-comment">#         # print(&#x27;输出%d&#x27;%(opp))            </span><br>    <span class="hljs-comment"># else:</span><br>    <span class="hljs-comment">#     # print(&#x27;buy!=0位置%d&#x27;%(i))</span><br>    <span class="hljs-comment">#     # opp=opp+1</span><br>    <span class="hljs-comment">#     # print(&#x27;输出%d&#x27;%(opp))        </span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>得到用户跳出率<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#userT用户跳出率</span><br>userT=pd.DataFrame(&#123;<span class="hljs-string">&#x27;总用户数&#x27;</span>:<span class="hljs-built_in">len</span>(dfT),<span class="hljs-string">&#x27;只访问一次页面数&#x27;</span>:visitOne,<span class="hljs-string">&#x27;跳出率&#x27;</span>:<span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(visitOne/<span class="hljs-built_in">len</span>(dfT)*<span class="hljs-number">100</span>,<span class="hljs-number">2</span>))+<span class="hljs-string">&#x27;%&#x27;</span>&#125;,index=[<span class="hljs-string">&#x27;统计&#x27;</span>])<br>userT<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao7.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>结果跳出率只有5.82%，跳出率比较低，说明大部分用户都转到下一个页面了，用户愿意在此上花费时间和精力，去挑选自己的商品，收藏或者加入购物车以及购买。</p>
+<h3 id="3-3-2用户活跃周期"><a href="#3-3-2用户活跃周期" class="headerlink" title="3.3.2用户活跃周期"></a>3.3.2用户活跃周期</h3><p>(1)用户活跃周期可以按日期分和小时段分</p>
+<p>a.每日用户的点击量，访客数，收藏次数，加入购物车次数，购买次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfL=pd.pivot_table(df1,index=<span class="hljs-string">&#x27;timeDate&#x27;</span>,columns=<span class="hljs-string">&#x27;behaviorType&#x27;</span>,values=<span class="hljs-string">&#x27;userId&#x27;</span>,aggfunc=<span class="hljs-string">&#x27;count&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#去除默认索引</span><br>dfL.reset_index()<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao8.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">dfL2=df1.groupby(<span class="hljs-string">&#x27;timeDate&#x27;</span>).agg(&#123;<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;nunique&#x27;</span>&#125;).reset_index()<br>dfL2<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao9.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfL3=pd.merge(dfL,dfL2,on=<span class="hljs-string">&#x27;timeDate&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#重命名列</span><br>dfL4 = dfL3.rename(columns=&#123;<span class="hljs-string">&#x27;buy&#x27;</span>: <span class="hljs-string">&#x27;购买次数&#x27;</span>,<span class="hljs-string">&#x27;cart&#x27;</span>:<span class="hljs-string">&#x27;加入购物车次数&#x27;</span>,<span class="hljs-string">&#x27;fav&#x27;</span>:<span class="hljs-string">&#x27;收藏次数&#x27;</span>,<span class="hljs-string">&#x27;pv&#x27;</span>:<span class="hljs-string">&#x27;活跃点击量&#x27;</span>,<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;访客数&#x27;</span>&#125;)<br>dfL4<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/pic/taobaoImg/taobao10.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding=utf-8</span><br><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> matplotlib<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-comment"># 通过NumPy设置x和y轴的坐标</span><br>x = dfL4[<span class="hljs-string">&#x27;timeDate&#x27;</span>].tolist()<br>y1=dfL4[<span class="hljs-string">&#x27;活跃点击量&#x27;</span>].tolist()<br>y2=dfL4[<span class="hljs-string">&#x27;购买次数&#x27;</span>].tolist()<br>y3=dfL4[<span class="hljs-string">&#x27;加入购物车次数&#x27;</span>].tolist()<br>y4=dfL4[<span class="hljs-string">&#x27;收藏次数&#x27;</span>].tolist()<br>y5=dfL4[<span class="hljs-string">&#x27;访客数&#x27;</span>].tolist()<br><br>fig=plt.figure(figsize=(<span class="hljs-number">28</span>,<span class="hljs-number">10</span>))<br><span class="hljs-comment"># plt.tick_params(labelsize=14)</span><br>ax1=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)<br>ax1.plot(x,y1,color=<span class="hljs-string">&#x27;#CE0000&#x27;</span>,label=<span class="hljs-string">&quot;活跃点击量&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax1.set_title(<span class="hljs-string">&quot;每日活跃点击量&quot;</span>, color=<span class="hljs-string">&#x27;#000000&#x27;</span>, fontsize=<span class="hljs-number">22</span>)<br>ax1.grid(axis=<span class="hljs-string">&#x27;y&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">0.5</span>)<br>ax1.set_xticklabels(x,rotation=<span class="hljs-number">40</span>,fontsize=<span class="hljs-number">14</span>)<br>ax1.set_yticklabels([<span class="hljs-number">16000</span>,<span class="hljs-number">17000</span>,<span class="hljs-number">18000</span>,<span class="hljs-number">19000</span>,<span class="hljs-number">20000</span>,<span class="hljs-number">21000</span>,<span class="hljs-number">22000</span>,<span class="hljs-number">23000</span>,<span class="hljs-number">24000</span>,<span class="hljs-number">25000</span>],fontsize=<span class="hljs-number">14</span>)<br>ax1.legend(bbox_to_anchor=(<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.25</span>),loc=<span class="hljs-number">8</span>,ncol=<span class="hljs-number">10</span>,fontsize=<span class="hljs-number">18</span>)<br><br><br>ax2=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)<br>ax2.plot(x,y2,color=<span class="hljs-string">&#x27;#336666&#x27;</span>,label=<span class="hljs-string">&quot;购买次数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.plot(x,y3,color=<span class="hljs-string">&#x27;#7E3D76&#x27;</span>,label=<span class="hljs-string">&quot;加入购物车次数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.plot(x,y4,color=<span class="hljs-string">&#x27;#F75000&#x27;</span>,label=<span class="hljs-string">&quot;收藏次数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.plot(x,y5,color=<span class="hljs-string">&#x27;#73BF00&#x27;</span>,label=<span class="hljs-string">&quot;访客数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.set_title(<span class="hljs-string">&quot;每日用户行为数据&quot;</span>, color=<span class="hljs-string">&#x27;#000000&#x27;</span>, fontsize=<span class="hljs-number">22</span>)<br>ax2.grid(axis=<span class="hljs-string">&#x27;y&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">0.5</span>)<br>ax2.set_xticklabels(x,rotation=<span class="hljs-number">40</span>,fontsize=<span class="hljs-number">14</span>)<br>ax2.set_yticklabels([<span class="hljs-number">0</span>,<span class="hljs-number">400</span>,<span class="hljs-number">600</span>,<span class="hljs-number">800</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">1200</span>,<span class="hljs-number">1400</span>,<span class="hljs-number">1600</span>,<span class="hljs-number">1800</span>,<span class="hljs-number">2000</span>],fontsize=<span class="hljs-number">14</span>)<br>ax2.legend(bbox_to_anchor=(<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.25</span>),loc=<span class="hljs-number">8</span>,ncol=<span class="hljs-number">10</span>,fontsize=<span class="hljs-number">18</span>)<br>plt.show() <span class="hljs-comment"># 通过show方法展示</span><br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/taobaoImg/output_62_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>从图中可以看出所有的趋势随着日期变化基本一致。其中访客数在12月1日-12月3日有明显增加，同时点击量和其它指标也有所增加。<br><br>分析知，这两天日期为周五、周六和周日，说明在这三天的用户使用频率和购物频率有所增加，可以针对这三天多做一些运营或者商品推送和优化。</p>
+<p>(2)各个时间段内用户的行为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">dfH2=pd.pivot_table(df1,index=<span class="hljs-string">&#x27;timeHour&#x27;</span>,columns=<span class="hljs-string">&#x27;behaviorType&#x27;</span>,values=<span class="hljs-string">&#x27;userId&#x27;</span>,aggfunc=<span class="hljs-string">&#x27;count&#x27;</span>)<br>dfH2.reset_index()<br>dfH3=df1.groupby(<span class="hljs-string">&#x27;timeHour&#x27;</span>).agg(&#123;<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;nunique&#x27;</span>&#125;).reset_index()<br>dfH4=pd.merge(dfH2,dfH3,on=<span class="hljs-string">&#x27;timeHour&#x27;</span>)<br>dfH5 = dfH4.rename(columns=&#123;<span class="hljs-string">&#x27;buy&#x27;</span>: <span class="hljs-string">&#x27;购买次数&#x27;</span>,<span class="hljs-string">&#x27;cart&#x27;</span>:<span class="hljs-string">&#x27;加入购物车次数&#x27;</span>,<span class="hljs-string">&#x27;fav&#x27;</span>:<span class="hljs-string">&#x27;收藏次数&#x27;</span>,<span class="hljs-string">&#x27;pv&#x27;</span>:<span class="hljs-string">&#x27;活跃点击量&#x27;</span>,<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;访客数&#x27;</span>&#125;)<br>dfH5<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/pic/taobaoImg/taobao11.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding=utf-8</span><br><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> matplotlib<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-comment"># 通过NumPy设置x和y轴的坐标</span><br>x = dfH5[<span class="hljs-string">&#x27;timeHour&#x27;</span>].tolist()<br>y1=dfH5[<span class="hljs-string">&#x27;活跃点击量&#x27;</span>].tolist()<br>y2=dfH5[<span class="hljs-string">&#x27;购买次数&#x27;</span>].tolist()<br>y3=dfH5[<span class="hljs-string">&#x27;加入购物车次数&#x27;</span>].tolist()<br>y4=dfH5[<span class="hljs-string">&#x27;收藏次数&#x27;</span>].tolist()<br>y5=dfH5[<span class="hljs-string">&#x27;访客数&#x27;</span>].tolist()<br><br>fig=plt.figure(figsize=(<span class="hljs-number">28</span>,<span class="hljs-number">10</span>))<br><span class="hljs-comment"># plt.tick_params(labelsize=14)</span><br>ax1=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)<br>ax1.plot(x,y1,color=<span class="hljs-string">&#x27;#CE0000&#x27;</span>,label=<span class="hljs-string">&quot;活跃点击量&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax1.set_title(<span class="hljs-string">&quot;不同时段活跃点击量&quot;</span>, color=<span class="hljs-string">&#x27;#000000&#x27;</span>, fontsize=<span class="hljs-number">22</span>)<br>ax1.grid(axis=<span class="hljs-string">&#x27;y&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">0.5</span>)<br>ax1.set_xticklabels(x,rotation=<span class="hljs-number">40</span>,fontsize=<span class="hljs-number">14</span>)<br>ax1.set_yticklabels([<span class="hljs-number">0</span>,<span class="hljs-number">10000</span>,<span class="hljs-number">20000</span>,<span class="hljs-number">30000</span>,<span class="hljs-number">40000</span>,<span class="hljs-number">50000</span>,<span class="hljs-number">60000</span>,<span class="hljs-number">70000</span>],fontsize=<span class="hljs-number">14</span>)<br>ax1.legend(bbox_to_anchor=(<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.25</span>),loc=<span class="hljs-number">8</span>,ncol=<span class="hljs-number">10</span>,fontsize=<span class="hljs-number">18</span>)<br><br><br>ax2=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)<br>ax2.plot(x,y2,color=<span class="hljs-string">&#x27;#336666&#x27;</span>,label=<span class="hljs-string">&quot;购买次数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.plot(x,y3,color=<span class="hljs-string">&#x27;#7E3D76&#x27;</span>,label=<span class="hljs-string">&quot;加入购物车次数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.plot(x,y4,color=<span class="hljs-string">&#x27;#F75000&#x27;</span>,label=<span class="hljs-string">&quot;收藏次数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.plot(x,y5,color=<span class="hljs-string">&#x27;#73BF00&#x27;</span>,label=<span class="hljs-string">&quot;访客数&quot;</span>,linewidth=<span class="hljs-string">&#x27;1.5&#x27;</span>,linestyle=<span class="hljs-string">&#x27;-&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br>ax2.set_title(<span class="hljs-string">&quot;不同时段用户行为数据&quot;</span>, color=<span class="hljs-string">&#x27;#000000&#x27;</span>, fontsize=<span class="hljs-number">22</span>)<br>ax2.grid(axis=<span class="hljs-string">&#x27;y&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">0.5</span>)<br>ax2.set_xticklabels(x,rotation=<span class="hljs-number">40</span>,fontsize=<span class="hljs-number">14</span>)<br>ax2.set_yticklabels([-<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">2000</span>,<span class="hljs-number">3000</span>,<span class="hljs-number">4000</span>,<span class="hljs-number">5000</span>,<span class="hljs-number">6000</span>,<span class="hljs-number">7000</span>],fontsize=<span class="hljs-number">14</span>)<br>ax2.legend(bbox_to_anchor=(<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.25</span>),loc=<span class="hljs-number">8</span>,ncol=<span class="hljs-number">10</span>,fontsize=<span class="hljs-number">18</span>)<br>plt.show() <span class="hljs-comment"># 通过show方法展示</span><br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/taobaoImg/output_67_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>观察知，活跃点击量和访客数的趋势一致，在17-22时访客达到高峰，说明用户在下午和晚上经常访问APP，然后继续分析这些时间段内的购买情况：<br><br>可以观察到18-22时购买情况上升趋势明显，这个阶段人们倾向于做出购物决策，说明人们晚上做出购物决策的情况较多，这个时候人们有充足的时间进行<br><br>商品挑选和加入购物车，也符合现代人们的生活作息。可以针对这个情况对晚上的商品进行更多的推送和其它运营策略。</p>
+<h3 id="3-3-3-用户对商品有哪些购买偏好"><a href="#3-3-3-用户对商品有哪些购买偏好" class="headerlink" title="3.3.3 用户对商品有哪些购买偏好"></a>3.3.3 用户对商品有哪些购买偏好</h3><p>(1)销量前10的商品和种类</p>
+<p>a.分析销量最好的商品</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfCid=df1.loc[df[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>].groupby([<span class="hljs-string">&#x27;commodityId&#x27;</span>,<span class="hljs-string">&#x27;commodityName&#x27;</span>]).agg(&#123;<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;count&#x27;</span>&#125;).reset_index()<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">dfCid1 = dfCid.sort_values(<span class="hljs-string">&#x27;userId&#x27;</span>, ascending=<span class="hljs-literal">False</span>)<br>dfCid1.head(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao12.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>通过对商品销量的分析，总销量最好的是商品3122135,所属种类为1516409。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">b.分析销量最好的商品种类<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dfCid2=df1.loc[df[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>].groupby(<span class="hljs-string">&#x27;commodityName&#x27;</span>).agg(&#123;<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;count&#x27;</span>&#125;).reset_index()<br>dfCid3 = dfCid2.sort_values(<span class="hljs-string">&#x27;userId&#x27;</span>, ascending=<span class="hljs-literal">False</span>)<br>dfCid3.head(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao13.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>销量最好的种类编号是2735466，销量为363。<br><br>得到这些销量数据，我们可以针对性对销量好的商品和种类进行优化推广，权重提高等；<br><br>当然还要分析销量好的种类是不是日常需求比较大的生活用品如米油等，还需要分析其销售额才能确定，部分商品虽然销量高但是销售额小，要综合判断。</p>
+<p>(2)人均购买次数和复购率分析</p>
+<p>a.人均购买次数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#人均购买次数</span><br>buyPer=pd.DataFrame(&#123;<span class="hljs-string">&#x27;订单量&#x27;</span>:<span class="hljs-built_in">len</span>(df1),<span class="hljs-string">&#x27;用户数&#x27;</span>:uv,<span class="hljs-string">&#x27;人均购买次数&#x27;</span>:<span class="hljs-built_in">round</span>(df1.loc[df[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>].behaviorType.count()/uv,<span class="hljs-number">2</span>)&#125;,index=[<span class="hljs-string">&#x27;统计&#x27;</span>])<br>buyPer<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao14.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>可以看出人均购买次数在2次左右。</p>
+<p>b.复购率购买两次及以上用户数&#x2F;总购买用户数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfF=df1.loc[df[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>].groupby(<span class="hljs-string">&#x27;userId&#x27;</span>).agg(&#123;<span class="hljs-string">&#x27;behaviorType&#x27;</span>:<span class="hljs-string">&#x27;count&#x27;</span>&#125;).reset_index()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">twoN=dfF.loc[dfF[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]&gt;<span class="hljs-number">1</span>].behaviorType.count()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">buyA=<span class="hljs-built_in">len</span>(df1.loc[df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>].userId.unique())<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#复购率</span><br>buyPer=pd.DataFrame(&#123;<span class="hljs-string">&#x27;用户数&#x27;</span>:uv,<span class="hljs-string">&#x27;总购买用户数&#x27;</span>:buyA,<span class="hljs-string">&#x27;购买两次及以上用户数&#x27;</span>:twoN,<span class="hljs-string">&#x27;复购率&#x27;</span>:<span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(twoN/buyA,<span class="hljs-number">2</span>)*<span class="hljs-number">100</span>)+<span class="hljs-string">&#x27;%&#x27;</span>&#125;,index=[<span class="hljs-string">&#x27;统计&#x27;</span>])<br>buyPer<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/pic/taobaoImg/taobao15.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>复购率为66.0%,可以看出复购率较高，说明大多数人在消费以后还愿意继续购买。 </p>
+<p>c.经常消费的重点客户（次数和金额）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">buyOften = dfF.sort_values(<span class="hljs-string">&#x27;behaviorType&#x27;</span>, ascending=<span class="hljs-literal">False</span>)<br>buyOften.head(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao16.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>看出购买次数的前十客户，这部分客户需要重点关注，同时还要关注他们的消费金额和消费行为习惯等。</p>
+<h3 id="3-3-4用户行为间的转化情况"><a href="#3-3-4用户行为间的转化情况" class="headerlink" title="3.3.4用户行为间的转化情况"></a>3.3.4用户行为间的转化情况</h3><p>(1)用户行为转化漏斗分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">viewFunnel=<span class="hljs-built_in">len</span>(df1)<br>buyFunnel=<span class="hljs-built_in">len</span>(df1.loc[df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>])<br>cartFunnel=<span class="hljs-built_in">len</span>(df1.loc[df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;cart&#x27;</span>])<br>favFunnel=<span class="hljs-built_in">len</span>(df1.loc[df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;fav&#x27;</span>])<br>pvFunnel=<span class="hljs-built_in">len</span>(df1.loc[df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;pv&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#用户行为数据</span><br>buyPer=pd.DataFrame(&#123;<span class="hljs-string">&#x27;用户行为&#x27;</span>:[<span class="hljs-string">&#x27;view&#x27;</span>,<span class="hljs-string">&#x27;pv&#x27;</span>,<span class="hljs-string">&#x27;fav&#x27;</span>,<span class="hljs-string">&#x27;cart&#x27;</span>,<span class="hljs-string">&#x27;buy&#x27;</span>],<span class="hljs-string">&#x27;用户行为次数&#x27;</span>:[viewFunnel,pvFunnel,favFunnel,cartFunnel,buyFunnel]&#125;)<br>buyPer<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao17.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd <br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><span class="hljs-keyword">from</span> matplotlib.patches <span class="hljs-keyword">import</span> Polygon  <span class="hljs-comment"># Polygon()可以用来传入按顺序组织的多边形顶点，从而生成出多边形</span><br><span class="hljs-keyword">from</span> matplotlib.collections <span class="hljs-keyword">import</span> PatchCollection<br><br><span class="hljs-comment"># plt.style.use(&#x27;seaborn-dark&#x27;)  # 设置主题</span><br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;SimHei&#x27;</span>]  <span class="hljs-comment"># 用来正常显示中文标签</span><br>plt.rcParams[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="hljs-literal">False</span>  <span class="hljs-comment"># 用来正常显示负号</span><br><br>visitor_num = <span class="hljs-number">199909</span><br>data = buyPer[<span class="hljs-string">&#x27;用户行为次数&#x27;</span>].tolist()<br>phase = [<span class="hljs-string">&#x27;浏览量&#x27;</span>, <span class="hljs-string">&#x27;点击量&#x27;</span>, <span class="hljs-string">&#x27;收藏量&#x27;</span>, <span class="hljs-string">&#x27;加入购物车量&#x27;</span>, <span class="hljs-string">&#x27;购买量&#x27;</span>]<br>data1 = [visitor_num/<span class="hljs-number">0.4</span> - i/<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data]<br>data2 = [i+j <span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(data, data1)]<br>color_list = [ <span class="hljs-string">&#x27;#750000&#x27;</span>, <span class="hljs-string">&#x27;#CE0000&#x27;</span>,<span class="hljs-string">&#x27;#F75000&#x27;</span>,<span class="hljs-string">&#x27;#7E3D76&#x27;</span>, <span class="hljs-string">&#x27;#336666&#x27;</span>]  <span class="hljs-comment"># 柱子颜色</span><br><br>fig,ax = plt.subplots(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">7</span>),facecolor=<span class="hljs-string">&#x27;#f4f4f4&#x27;</span>)<br>ax.barh(phase[::-<span class="hljs-number">1</span>], data2[::-<span class="hljs-number">1</span>], color = color_list[::-<span class="hljs-number">1</span>], height=<span class="hljs-number">0.7</span>,alpha=<span class="hljs-number">0.6</span>)  <span class="hljs-comment"># 柱宽设置为0.7 phase的意思是将列表数据逆序排列</span><br>ax.barh(phase[::-<span class="hljs-number">1</span>], data1[::-<span class="hljs-number">1</span>], color = <span class="hljs-string">&#x27;#f4f4f4&#x27;</span>, height=<span class="hljs-number">0.7</span>)  <span class="hljs-comment"># 设置成背景同色</span><br>ax.axis(<span class="hljs-string">&#x27;off&#x27;</span>)<span class="hljs-comment">#关闭子图的轴</span><br>ax.set_title(<span class="hljs-string">&quot;用户行为转化漏斗图&quot;</span>, color=<span class="hljs-string">&#x27;#000000&#x27;</span>, fontsize=<span class="hljs-number">22</span>)<br>polygons = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data)):<br>    <span class="hljs-comment"># 阶段</span><br>    ax.text(<br>      <span class="hljs-number">0</span>,  <span class="hljs-comment"># 坐标</span><br>      i,  <span class="hljs-comment"># 高度</span><br>      phase[::-<span class="hljs-number">1</span>][i],  <span class="hljs-comment"># 文本</span><br>      color=<span class="hljs-string">&#x27;black&#x27;</span>, alpha=<span class="hljs-number">0.8</span>, size=<span class="hljs-number">16</span>, ha=<span class="hljs-string">&quot;right&quot;</span>)<br>    <br>    <span class="hljs-comment"># 数量</span><br>    ax.text(<br>      data2[<span class="hljs-number">0</span>] / <span class="hljs-number">2</span> ,  <br>      i, <br>      <span class="hljs-built_in">str</span>(data[::-<span class="hljs-number">1</span>][i]) +<span class="hljs-string">&#x27;(&#x27;</span> +<span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(data[::-<span class="hljs-number">1</span>][i] / data[<span class="hljs-number">0</span>] * <span class="hljs-number">100</span>, <span class="hljs-number">1</span>)) + <span class="hljs-string">&#x27;%)&#x27;</span>, <br>      color=<span class="hljs-string">&#x27;black&#x27;</span>, alpha=<span class="hljs-number">0.8</span>, size=<span class="hljs-number">12</span>, ha=<span class="hljs-string">&quot;center&quot;</span>)<br>    <br>    <span class="hljs-keyword">if</span> i &lt; <span class="hljs-number">4</span>:<br>        <span class="hljs-comment"># 比例</span><br>        ax.text(<br>          data2[<span class="hljs-number">0</span>] / <span class="hljs-number">2</span> ,  <br>          <span class="hljs-number">3.4</span> - i, <br>          <span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(data[i+<span class="hljs-number">1</span>] / data[i], <span class="hljs-number">2</span>) * <span class="hljs-number">100</span>) + <span class="hljs-string">&#x27;%&#x27;</span>, <br>          color=<span class="hljs-string">&#x27;blue&#x27;</span>, alpha=<span class="hljs-number">0.9</span>, size=<span class="hljs-number">16</span>, ha=<span class="hljs-string">&quot;center&quot;</span>)<br>        <br>        <span class="hljs-comment"># 绘制多边形</span><br>        polygons.append(Polygon(xy=np.array([(data1[i+<span class="hljs-number">1</span>], <span class="hljs-number">3</span>+<span class="hljs-number">0.35</span>-i),   <span class="hljs-comment"># 因为柱状图的宽度设置成了0.7，所以一半便是0.35</span><br>                                             (data2[i+<span class="hljs-number">1</span>], <span class="hljs-number">3</span>+<span class="hljs-number">0.35</span>-i), <br>                                             (data2[i], <span class="hljs-number">4</span>-<span class="hljs-number">0.35</span>-i), <br>                                             (data1[i], <span class="hljs-number">4</span>-<span class="hljs-number">0.35</span>-i)])))<br>        <br><span class="hljs-comment"># 使用add_collection与PatchCollection来向Axes上添加多边形</span><br>ax.add_collection(PatchCollection(polygons, <br>                                  facecolor=<span class="hljs-string">&#x27;#e2b0b0&#x27;</span>,<br>                                  alpha=<span class="hljs-number">0.8</span>));<br>plt.show()<br><br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/taobaoImg/output_96_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>从上图可以看出用户浏览商品后，大概会有90%的概率会点击商品，在点击商品后，收藏商品的概率会比加入购物车的少很多，<br><br>对于购买路径的转化，还需分三种情况继续分析，如下图所示。<br></p>
+<p>(2)从点击商品到购买商品的三种路径转化率分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">dfR=pd.pivot_table(df1,index=[<span class="hljs-string">&#x27;userId&#x27;</span>,<span class="hljs-string">&#x27;commodityId&#x27;</span>],columns=<span class="hljs-string">&#x27;behaviorType&#x27;</span>,values=<span class="hljs-string">&#x27;commodityName&#x27;</span>,aggfunc=<span class="hljs-string">&#x27;count&#x27;</span>)<br>dfR=dfR.reset_index()<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">dfR=dfR.fillna(value=<span class="hljs-number">0</span>)<br>dfR<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao18.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>a.浏览-加入购物车-购买<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">caR=<span class="hljs-number">0</span><br>buR=<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(dfR)):                                  <br>    <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">3</span>]!=<span class="hljs-number">0</span>:<br>        caR=caR+dfR.iloc[i].to_list()[<span class="hljs-number">3</span>]                                    <br>        <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">2</span>]!=<span class="hljs-number">0</span>:<br>            buR=buR+dfR.iloc[i].to_list()[<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">buyPerc=pd.DataFrame(&#123;<span class="hljs-string">&#x27;用户行为&#x27;</span>:[<span class="hljs-string">&#x27;pv&#x27;</span>,<span class="hljs-string">&#x27;cart&#x27;</span>,<span class="hljs-string">&#x27;buy&#x27;</span>],<span class="hljs-string">&#x27;用户行为次数&#x27;</span>:[viewFunnel,caR,buR]&#125;)<br>buyPerc<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao19.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>b.浏览-收藏-购买</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">faR1=<span class="hljs-number">0</span><br>buRc1=<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(dfR)):                                              <br>    <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">4</span>]!=<span class="hljs-number">0</span>:<br>        faR1=faR1+dfR.iloc[i].to_list()[<span class="hljs-number">4</span>]                                                <br>        <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">2</span>]!=<span class="hljs-number">0</span>:<br>            buRc1=buRc1+dfR.iloc[i].to_list()[<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">buyPerf=pd.DataFrame(&#123;<span class="hljs-string">&#x27;用户行为&#x27;</span>:[<span class="hljs-string">&#x27;uv&#x27;</span>,<span class="hljs-string">&#x27;fav&#x27;</span>,<span class="hljs-string">&#x27;buy&#x27;</span>],<span class="hljs-string">&#x27;用户行为次数&#x27;</span>:[viewFunnel,faR1,buRc1]&#125;)<br>buyPerf<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao20.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">c.浏览-购买<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">buRp=<span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(dfR)):                                              <br>    <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">4</span>]!=<span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">3</span>]!=<span class="hljs-number">0</span>:                                                <br>            <span class="hljs-keyword">if</span> dfR.iloc[i].to_list()[<span class="hljs-number">2</span>]!=<span class="hljs-number">0</span>:<br>                buRp=buRp+dfR.iloc[i].to_list()[<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">buyPerb=pd.DataFrame(&#123;<span class="hljs-string">&#x27;用户行为&#x27;</span>:[<span class="hljs-string">&#x27;pv&#x27;</span>,<span class="hljs-string">&#x27;buy&#x27;</span>],<span class="hljs-string">&#x27;用户行为次数&#x27;</span>:[viewFunnel,buRp]&#125;)<br>buyPerb<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/pic/taobaoImg/taobao21.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> matplotlib.patches <span class="hljs-keyword">import</span> ArrowStyle<br><span class="hljs-keyword">import</span> math<br><span class="hljs-comment"># from matplotlib import font_manager</span><br><br><span class="hljs-comment"># #调用中文字体</span><br><span class="hljs-comment"># my_font = font_manager.FontProperties(fname = &quot;C:/WINDOWS/Fonts/STSONG.TTF&quot;)</span><br><br><span class="hljs-comment">#设置图形大小</span><br>fig=plt.figure(figsize=(<span class="hljs-number">20</span>,<span class="hljs-number">6</span>),dpi = <span class="hljs-number">80</span>)<br><span class="hljs-comment">#数据</span><br>a1 = [<span class="hljs-string">&quot;浏览量&quot;</span>,<span class="hljs-string">&quot;加入购物车量&quot;</span>,<span class="hljs-string">&quot;购买量&quot;</span>]<br>a2 = [<span class="hljs-string">&quot;浏览量&quot;</span>,<span class="hljs-string">&quot;收藏量&quot;</span>,<span class="hljs-string">&quot;购买量&quot;</span>]<br>a3 = [<span class="hljs-string">&quot;浏览量&quot;</span>,<span class="hljs-string">&quot;购买量&quot;</span>]<br>b1 = buyPerc[<span class="hljs-string">&#x27;用户行为次数&#x27;</span>].tolist()<br>b2 = buyPerf[<span class="hljs-string">&#x27;用户行为次数&#x27;</span>].tolist()<br>b3 = buyPerb[<span class="hljs-string">&#x27;用户行为次数&#x27;</span>].tolist()<br><span class="hljs-comment"># phase = [&#x27;浏览量&#x27;, &#x27;点击量&#x27;, &#x27;收藏量&#x27;, &#x27;加入购物车量&#x27;, &#x27;购买量&#x27;]</span><br><span class="hljs-comment"># color_list = [&#x27;#750000&#x27;, &#x27;#CE0000&#x27;,&#x27;#F75000&#x27;,&#x27;#7E3D76&#x27;, &#x27;#336666&#x27;]   # 柱子颜色</span><br>color_listf = [<span class="hljs-string">&#x27;#CE0000&#x27;</span>,<span class="hljs-string">&#x27;#F75000&#x27;</span>,<span class="hljs-string">&#x27;#336666&#x27;</span>]   <span class="hljs-comment"># 柱子颜色</span><br>color_listc = [<span class="hljs-string">&#x27;#CE0000&#x27;</span>,<span class="hljs-string">&#x27;#7E3D76&#x27;</span>, <span class="hljs-string">&#x27;#336666&#x27;</span>]<br>color_listb = [<span class="hljs-string">&#x27;#CE0000&#x27;</span>, <span class="hljs-string">&#x27;#336666&#x27;</span>]<br>height=<span class="hljs-number">0.2</span><br><span class="hljs-comment">#绘图</span><br>ax1=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>)<br>ax1.barh(a1[::-<span class="hljs-number">1</span>],b1[::-<span class="hljs-number">1</span>],height= height,color = color_listc[::-<span class="hljs-number">1</span>])<br><span class="hljs-comment">#绘制网格</span><br><span class="hljs-comment"># ax1.grid(alpha = 0.4)</span><br><span class="hljs-comment">#y轴坐标刻度标识</span><br>ax1.set_yticklabels(a1[::-<span class="hljs-number">1</span>],fontsize = <span class="hljs-number">14</span>)<br>ax1.set_xticklabels([],fontsize = <span class="hljs-number">14</span>)<br><span class="hljs-comment"># ax1.axis(&#x27;off&#x27;)</span><br><span class="hljs-comment">#添加图例</span><br><span class="hljs-comment"># ax1.legend()</span><br><span class="hljs-comment">#添加横纵坐标，标题</span><br>ax1.set_title(<span class="hljs-string">&quot;浏览-加入购物车-购买转化率&quot;</span>,fontsize = <span class="hljs-number">24</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>):<br>    x1, y1 = <span class="hljs-built_in">round</span>(b1[<span class="hljs-number">0</span>]/(<span class="hljs-number">1.5</span>*(i+<span class="hljs-number">1</span>)),<span class="hljs-number">2</span>),<span class="hljs-built_in">round</span>(<span class="hljs-number">1.9</span>-i,<span class="hljs-number">2</span>)<br>    x2, y2 =<span class="hljs-built_in">round</span>(b1[<span class="hljs-number">0</span>]/(<span class="hljs-number">1.5</span>*(i+<span class="hljs-number">1</span>)),<span class="hljs-number">2</span>),<span class="hljs-number">1</span>-i<br>    arrowstyle=ArrowStyle(<span class="hljs-string">&quot;simple&quot;</span>,head_length=<span class="hljs-number">1.5</span>,head_width=<span class="hljs-number">3</span>,tail_width=<span class="hljs-number">1</span>)<br>    props = <span class="hljs-built_in">dict</span>(arrowstyle=arrowstyle, connectionstyle=<span class="hljs-string">&quot;arc3,rad=-1.5&quot;</span>,color=<span class="hljs-string">&#x27;#e2b0b0&#x27;</span>)  <span class="hljs-comment"># 左低右高的弧度连接</span><br>    ax1.annotate(<span class="hljs-string">&quot;&quot;</span>, xy=(x2, y2), xycoords=<span class="hljs-string">&#x27;data&#x27;</span>, xytext=(x1, y1), textcoords=<span class="hljs-string">&#x27;data&#x27;</span>,arrowprops=props)<br>    ax1.text(x1+x1*<span class="hljs-number">0.4</span>*(i+<span class="hljs-number">1</span>), <span class="hljs-number">2</span>-<span class="hljs-number">0.5</span>*(i+i+<span class="hljs-number">1</span>), <span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(b1[i+<span class="hljs-number">1</span>] / b1[i] * <span class="hljs-number">100</span>, <span class="hljs-number">2</span>)) +<span class="hljs-string">&#x27;%&#x27;</span>, color=<span class="hljs-string">&#x27;blue&#x27;</span>, alpha=<span class="hljs-number">0.8</span>, size=<span class="hljs-number">16</span>, ha=<span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-comment">#绘图</span><br>ax2=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>)<br>ax2.barh(a2[::-<span class="hljs-number">1</span>],b2[::-<span class="hljs-number">1</span>],height= height,color = color_listf[::-<span class="hljs-number">1</span>])<br><span class="hljs-comment">#绘制网格</span><br>ax2.grid(alpha = <span class="hljs-number">0.4</span>)<br><span class="hljs-comment">#y轴坐标刻度标识</span><br>ax2.set_yticklabels(a2[::-<span class="hljs-number">1</span>],fontsize = <span class="hljs-number">14</span>)<br>ax2.set_xticklabels([],fontsize = <span class="hljs-number">14</span>)<br><span class="hljs-comment"># ax2.axis(&#x27;off&#x27;)</span><br><span class="hljs-comment">#添加图例</span><br><span class="hljs-comment"># ax2.legend()</span><br><span class="hljs-comment">#添加横纵坐标，标题</span><br>ax2.set_title(<span class="hljs-string">&quot;浏览-收藏-购买转化率&quot;</span>,fontsize = <span class="hljs-number">24</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>):<br>    x1, y1 = <span class="hljs-built_in">round</span>(b2[<span class="hljs-number">0</span>]/(<span class="hljs-number">1.5</span>*(i+<span class="hljs-number">1</span>)),<span class="hljs-number">2</span>),<span class="hljs-built_in">round</span>(<span class="hljs-number">1.9</span>-i,<span class="hljs-number">2</span>)<br>    x2, y2 =<span class="hljs-built_in">round</span>(b2[<span class="hljs-number">0</span>]/(<span class="hljs-number">1.5</span>*(i+<span class="hljs-number">1</span>)),<span class="hljs-number">2</span>),<span class="hljs-number">1</span>-i<br>    arrowstyle=ArrowStyle(<span class="hljs-string">&quot;simple&quot;</span>,head_length=<span class="hljs-number">1.5</span>,head_width=<span class="hljs-number">3</span>,tail_width=<span class="hljs-number">1</span>)<br>    props = <span class="hljs-built_in">dict</span>(arrowstyle=arrowstyle, connectionstyle=<span class="hljs-string">&quot;arc3,rad=-1.5&quot;</span>,color=<span class="hljs-string">&#x27;#e2b0b0&#x27;</span>)  <span class="hljs-comment"># 左低右高的弧度连接</span><br>    ax2.annotate(<span class="hljs-string">&quot;&quot;</span>, xy=(x2, y2), xycoords=<span class="hljs-string">&#x27;data&#x27;</span>, xytext=(x1, y1), textcoords=<span class="hljs-string">&#x27;data&#x27;</span>,arrowprops=props)<br>    ax2.text(x1+x1*<span class="hljs-number">0.4</span>*(i+<span class="hljs-number">1</span>), <span class="hljs-number">2</span>-<span class="hljs-number">0.5</span>*(i+i+<span class="hljs-number">1</span>), <span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(b2[i+<span class="hljs-number">1</span>] / b2[i] * <span class="hljs-number">100</span>, <span class="hljs-number">2</span>)) +<span class="hljs-string">&#x27;%&#x27;</span>, color=<span class="hljs-string">&#x27;blue&#x27;</span>, alpha=<span class="hljs-number">0.8</span>, size=<span class="hljs-number">16</span>, ha=<span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-comment">#绘图</span><br>ax3=fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br>ax3.barh(a3[::-<span class="hljs-number">1</span>],b3[::-<span class="hljs-number">1</span>],height= height,color = color_listb[::-<span class="hljs-number">1</span>])<br><span class="hljs-comment">#绘制网格</span><br>ax3.grid(alpha = <span class="hljs-number">0.4</span>)<br><span class="hljs-comment">#y轴坐标刻度标识</span><br>ax3.set_yticklabels(a3[::-<span class="hljs-number">1</span>],fontsize = <span class="hljs-number">14</span>)<br>ax3.set_xticklabels([],fontsize = <span class="hljs-number">14</span>)<br><span class="hljs-comment"># ax3.axis(&#x27;off&#x27;)</span><br><span class="hljs-comment">#添加图例</span><br><span class="hljs-comment"># ax3.legend()</span><br><span class="hljs-comment">#添加横纵坐标，标题</span><br>ax3.set_title(<span class="hljs-string">&quot;浏览-购买转化率&quot;</span>,fontsize = <span class="hljs-number">24</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>):<br>    x1, y1 = <span class="hljs-built_in">round</span>(b3[<span class="hljs-number">0</span>]/<span class="hljs-number">2</span>),<span class="hljs-number">0.9</span><br>    x2, y2 =<span class="hljs-built_in">round</span>(b3[<span class="hljs-number">0</span>]/<span class="hljs-number">2</span>,<span class="hljs-number">2</span>),<span class="hljs-number">0</span><br>    arrowstyle=ArrowStyle(<span class="hljs-string">&quot;simple&quot;</span>,head_length=<span class="hljs-number">1.5</span>,head_width=<span class="hljs-number">3</span>,tail_width=<span class="hljs-number">1</span>)<br>    props = <span class="hljs-built_in">dict</span>(arrowstyle=arrowstyle, connectionstyle=<span class="hljs-string">&quot;arc3,rad=-1.2&quot;</span>,color=<span class="hljs-string">&#x27;#e2b0b0&#x27;</span>)  <span class="hljs-comment"># 左低右高的弧度连接</span><br>    ax3.annotate(<span class="hljs-string">&quot;&quot;</span>, xy=(x2, y2), xycoords=<span class="hljs-string">&#x27;data&#x27;</span>, xytext=(x1, y1), textcoords=<span class="hljs-string">&#x27;data&#x27;</span>,arrowprops=props)<br>    ax3.text(x1+x1*<span class="hljs-number">0.75</span>*(i+<span class="hljs-number">1</span>), <span class="hljs-number">1</span>-<span class="hljs-number">0.6</span>*(i+i+<span class="hljs-number">1</span>), <span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(b3[i+<span class="hljs-number">1</span>] / b1[i] * <span class="hljs-number">100</span>, <span class="hljs-number">2</span>)) +<span class="hljs-string">&#x27;%&#x27;</span>, color=<span class="hljs-string">&#x27;blue&#x27;</span>, alpha=<span class="hljs-number">0.8</span>, size=<span class="hljs-number">16</span>, ha=<span class="hljs-string">&quot;center&quot;</span>)<br><br><span class="hljs-comment">#显示图形</span><br>plt.show()<br><br><br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/taobaoImg/output_114_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>从上图可以看出用户浏览商品后，大概会有2.81%的用户收藏商品，5.55%的用户选择加入购物车<br><br>加入购物车后，只有6.97%的用户选择了购买商品，90%以上都没有选择购买商品，推测原因可能是：<br><br>1.加入购物车是为了与不同店铺的同种产品进行比价；<br><br>2.为了凑单，进行满减；<br><br>3.先放着，过几天再购买；<br><br>4.等活动优惠</p>
+<p>(3)根据分析结果，提出问题</p>
+<p>业务问题：在点击后用户流失率较高，那么用户流失的原因是什么？<br><br>淘宝推送是根据用户日常的浏览行为数据，比如日常搜索的关键词，收藏和加购的商品，已经关注的店铺，还有购买记录等，综合判断来给用户进行推送可能感兴趣的商品。<br><br>如果淘宝的推送机制合理，那么推送的商品和用户需求的商品将会呈现较高的匹配度，从而用户最终的购买转化率也相应较高，从而推送的商品销量变高，变成热销商品；<br><br>反之则较低，即表明用户流失严重。本次分析使用假设检验分析方法对用户流失原因进行分析。分析思路如下图所示：</p>
+<p>提出假设：平台推送的商品和用户需求不匹配，导致用户在浏览过程中没有找到喜欢的商品，进而导致用户流失。<br><br>收集证据：统计用户数量、商品数量、商品类别数和用户行为类型数等。</p>
+<p>(4)数据分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#统计用户数量、商品数量、商品类别数和用户行为类型数</span><br>userNum=pd.DataFrame(&#123;<span class="hljs-string">&#x27;统计用户数量&#x27;</span>:<span class="hljs-built_in">len</span>(df1[<span class="hljs-string">&#x27;userId&#x27;</span>].unique()),<span class="hljs-string">&#x27;商品数量&#x27;</span>:<span class="hljs-built_in">len</span>(df1[<span class="hljs-string">&#x27;commodityId&#x27;</span>].unique()),<span class="hljs-string">&#x27;商品类别数&#x27;</span>:<span class="hljs-built_in">len</span>(df1[<span class="hljs-string">&#x27;commodityName&#x27;</span>].unique()),<span class="hljs-string">&#x27;用户行为数&#x27;</span>:<span class="hljs-built_in">len</span>(df1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>].unique())&#125;,index=[<span class="hljs-string">&#x27;统计&#x27;</span>])<br>userNum<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao22.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>可以看到数据集中用户数有9739名，398972个商品，商品类型5793种，4种用户行为。<br><br>表明数据集中类别丰富，商品数量和种类充足。<br><br>在前面已经分析了用户对哪些商品有喜好，这里重点关注用户点击的商品和用户下单的商品之间的关系，是否支持我们的假设：平台推送的商品和用户需求不匹配。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#商品种类点击量排名前10的商品种类</span><br>dfDem=df1.loc[df[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;pv&#x27;</span>].groupby(<span class="hljs-string">&#x27;commodityName&#x27;</span>).agg(&#123;<span class="hljs-string">&#x27;behaviorType&#x27;</span>:<span class="hljs-string">&#x27;count&#x27;</span>&#125;).reset_index()<br>dfDem1 = dfDem.sort_values(<span class="hljs-string">&#x27;behaviorType&#x27;</span>, ascending=<span class="hljs-literal">False</span>)<br>dfDem1 = dfDem1.rename(columns=&#123;<span class="hljs-string">&#x27;commodityName&#x27;</span>: <span class="hljs-string">&#x27;商品种类&#x27;</span>,<span class="hljs-string">&#x27;behaviorType&#x27;</span>:<span class="hljs-string">&#x27;点击次数&#x27;</span>&#125;)<br>dfDem1.head(<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao23.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfDem1[<span class="hljs-string">&#x27;商品种类&#x27;</span>]=dfDem1[<span class="hljs-string">&#x27;商品种类&#x27;</span>].astype(<span class="hljs-built_in">str</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#商品点击量排名前10的商品</span><br>dfDems=df1.loc[df[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;pv&#x27;</span>].groupby([<span class="hljs-string">&#x27;commodityId&#x27;</span>,<span class="hljs-string">&#x27;commodityName&#x27;</span>]).agg(&#123;<span class="hljs-string">&#x27;behaviorType&#x27;</span>:<span class="hljs-string">&#x27;count&#x27;</span>&#125;).reset_index()<br>dfDems1 = dfDems.sort_values(<span class="hljs-string">&#x27;behaviorType&#x27;</span>, ascending=<span class="hljs-literal">False</span>)<br>dfDems1 = dfDems1.rename(columns=&#123;<span class="hljs-string">&#x27;commodityId&#x27;</span>: <span class="hljs-string">&#x27;商品名称&#x27;</span>,<span class="hljs-string">&#x27;commodityName&#x27;</span>: <span class="hljs-string">&#x27;商品种类&#x27;</span>,<span class="hljs-string">&#x27;behaviorType&#x27;</span>:<span class="hljs-string">&#x27;点击次数&#x27;</span>&#125;)<br>dfDems2=dfDems1.head(<span class="hljs-number">10</span>)<br>dfDems2<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao24.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>]=dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>].astype(<span class="hljs-built_in">str</span>)<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding=utf-8</span><br><span class="hljs-comment">#点击量前10的商品种类</span><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br>x=dfDem2[<span class="hljs-string">&#x27;商品种类&#x27;</span>].tolist()<span class="hljs-comment"># x轴刻度</span><br>y=dfDem2[<span class="hljs-string">&#x27;点击次数&#x27;</span>].tolist()<span class="hljs-comment"># y轴刻度</span><br>color=[<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;yellow&#x27;</span>,<span class="hljs-string">&#x27;yellow&#x27;</span>]<br>x_label=x<br><span class="hljs-comment"># 绘制x刻度标签</span><br><span class="hljs-comment"># plt.xticks(x, x_label,fontsize=10)</span><br>fig=plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>),dpi = <span class="hljs-number">80</span>)<br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>]=[<span class="hljs-string">&#x27;SimHei&#x27;</span>]<span class="hljs-comment"># 设置中文</span><br><span class="hljs-comment"># s设置标题</span><br>plt.title(<span class="hljs-string">&quot;点击量前10的商品种类&quot;</span>)<br><span class="hljs-comment"># 绘制柱状图</span><br>plt.bar(x,y,color=color)<br><span class="hljs-comment"># plt.grid(linewidth=&#x27;1&#x27;,linestyle=&#x27;:&#x27;,color=&#x27;yellow&#x27;,alpha=0.5)</span><br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/taobaoImg/output_130_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#点击量前10的商品</span><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br>x=dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>].tolist()<span class="hljs-comment"># x轴刻度</span><br>y=dfDems2[<span class="hljs-string">&#x27;点击次数&#x27;</span>].tolist()<span class="hljs-comment"># y轴刻度</span><br>color=[<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;yellow&#x27;</span>,<span class="hljs-string">&#x27;yellow&#x27;</span>]<br>x_label=x<br><span class="hljs-comment"># 绘制x刻度标签</span><br><span class="hljs-comment"># plt.xticks(x, x_label,fontsize=10)</span><br>fig=plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>),dpi = <span class="hljs-number">80</span>)<br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>]=[<span class="hljs-string">&#x27;SimHei&#x27;</span>]<span class="hljs-comment"># 设置中文</span><br><span class="hljs-comment"># s设置标题</span><br>plt.title(<span class="hljs-string">&quot;点击量前10的商品&quot;</span>)<br><span class="hljs-comment"># 绘制柱状图</span><br>plt.bar(x,y,color=color)<br><span class="hljs-comment"># plt.grid(linewidth=&#x27;1&#x27;,linestyle=&#x27;:&#x27;,color=&#x27;yellow&#x27;,alpha=0.5)</span><br>plt.show()<br></code></pre></td></tr></table></figure>
+
+
+<p><img src="/blog/pic/taobaoImg/output_131_0.png" srcset="/blog/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>]=dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>].astype(<span class="hljs-built_in">int</span>)<br><span class="hljs-comment">#点击次数排名前10的商品购买率</span><br>listbuyP=[]<br>listBuy=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(dfDems2)):<br>    comId=dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>].tolist()[i]<span class="hljs-comment">#按顺序去除排名前10的商品名称</span><br>    cs1=df1.loc[df1[<span class="hljs-string">&#x27;commodityId&#x27;</span>]==comId].groupby(<span class="hljs-string">&#x27;behaviorType&#x27;</span>).agg(&#123;<span class="hljs-string">&#x27;userId&#x27;</span>:<span class="hljs-string">&#x27;count&#x27;</span>&#125;).reset_index() <span class="hljs-comment">#是商品名称下的behaviorType分组表   </span><br>    cs2=cs1.loc[cs1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>] <span class="hljs-comment">#behaviorType为buy的那条数据   </span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(cs2)&gt;<span class="hljs-number">0</span>:<br>        x=cs1.loc[cs1[<span class="hljs-string">&#x27;behaviorType&#x27;</span>]==<span class="hljs-string">&#x27;buy&#x27;</span>].userId[<span class="hljs-number">0</span>]<br>        y=dfDems2.loc[dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>]==comId].点击次数.tolist()[<span class="hljs-number">0</span>]<br>        listbuyP.append(x)<br>        listBuy.append(<span class="hljs-built_in">str</span>(<span class="hljs-built_in">round</span>(x/y,<span class="hljs-number">2</span>)*<span class="hljs-number">100</span>)+<span class="hljs-string">&#x27;%&#x27;</span>)    <br>    <span class="hljs-keyword">else</span>:<br>        listbuyP.append(<span class="hljs-number">0</span>)<br>        listBuy.append(<span class="hljs-built_in">str</span>(<span class="hljs-number">0</span>)+<span class="hljs-string">&#x27;%&#x27;</span>)<br>listBuy<br></code></pre></td></tr></table></figure>
+
+
+
+
+<pre><code class="hljs">[&#39;0.0%&#39;, &#39;0%&#39;, &#39;0.0%&#39;, &#39;1.0%&#39;, &#39;1.0%&#39;, &#39;0%&#39;, &#39;2.0%&#39;, &#39;4.0%&#39;, &#39;0%&#39;, &#39;0%&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">userbuyR=pd.DataFrame(&#123;<span class="hljs-string">&#x27;商品名称&#x27;</span>:dfDems2[<span class="hljs-string">&#x27;商品名称&#x27;</span>].to_list(),<span class="hljs-string">&#x27;点击次数&#x27;</span>:dfDems2[<span class="hljs-string">&#x27;点击次数&#x27;</span>].to_list(),<span class="hljs-string">&#x27;购买次数&#x27;</span>:listbuyP,<span class="hljs-string">&#x27;购买率&#x27;</span>:listBuy&#125;)<br>userbuyR<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/pic/taobaoImg/taobao25.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>通过以上结果看出，浏览次数最高的商品的购买率只有0.0%，而浏览量排名第8的商品购买率达到了4%。<br><br>结论：假设成立 通过以上分析，可以得出结论淘宝的推送机制不合理，推送的商品无法和用户的需求不匹配，导致用户在浏览过程中没有找到想要的商品，从而用户实际购买的转化率非常低，即用户流失严重。 以上分析只从推送商品的点击率去分析，维度比较单一，还应该考虑到商品种类和其它因素的影响进一步进行论证和分析。</p>
+<h1 id="4-结论和建议"><a href="#4-结论和建议" class="headerlink" title="4 结论和建议"></a>4 结论和建议</h1><p>1、平台的人均访问数为91.96次，跳出率为有5.82%，可见用户经常使用，用户粘性较高。<br><br>2、访客数在12月1日和12月2日有明显增加，说明用户在周末比较活跃，应该在周末多进行一些促销活动促进销量。<br><br>3、淘宝用户活跃黄金时间段一般在晚上20点到22点，然而在9-16点用户更倾向于狼吞虎咽般点击后直接购买，19点-23点用户更愿意慢慢品尝，在点击浏览后加入购物车或收藏。可在20点到22点进行推广和宣传活动，推送促销活动可设置在9点-16点，刺激消费。<br><br>4、重点关注销量较高的商品和商品类别，如2735466、1464116这些品类，可推出爆款和个性化推荐。<br><br>5、用户加入购物车或收藏商品转化率不到8%，转换率较低，建议个性化推送购物车降价或优惠活动或满减活动，显示剩余库存刺激消费。<br><br>6、淘宝的推送机制不合理，推送的商品无法和用户的需求不匹配，导致用户在浏览过程中没有找到想要的商品，从而用户实际购买的转化率非常低，即用户流失严重。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python淘宝用户行为分析</div>
+      <div>https://3022799479.github.io/blog/2025/04/12/淘宝用户行为与商品推荐分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2025/02/15/%E6%B1%82%E8%81%8C%E9%A1%B9%E7%9B%AE/" title="前程无忧数据分析岗位可视化分析">
+                        <span class="hidden-mobile">前程无忧数据分析岗位可视化分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
